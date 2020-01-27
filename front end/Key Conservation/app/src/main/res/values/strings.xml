@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Key Conservation</string>
+    <string name="i_want_to_help">I want to help</string>
+    <string name="my_organization_needs_help">My Organization Needs Help</string>
+    <string name="select_one">Select One:</string>
+    <string name="com_auth0_client_id">elyo5qK7vYReEsKAPEADW2T8LAMpIJaf</string>
+    <string name="com_auth0_domain">https://auth.expo.io</string>
+</resources>
