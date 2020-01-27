@@ -12,7 +12,7 @@ import java.util.Date;
 public class Campaigns extends Auditable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long eventid;
+    private long id;
     private String title;
     @Column(nullable = true)
     private String banner_image;
@@ -35,8 +35,8 @@ public class Campaigns extends Auditable{
 
     public Campaigns(){}
 
-    public Campaigns(long eventid, String title, String banner_image, String location, Date created_at, String event_image, String event_name, String event_description, User user) {
-        this.eventid = eventid;
+    public Campaigns(long id, String title, String banner_image, String location, Date created_at, String event_image, String event_name, String event_description, User user) {
+        this.id = id;
         this.title = title;
         this.banner_image = banner_image;
         this.location = location;
@@ -48,11 +48,11 @@ public class Campaigns extends Auditable{
     }
 
     public long getEventid() {
-        return eventid;
+        return id;
     }
 
-    public void setEventid(long eventid) {
-        this.eventid = eventid;
+    public void setEventid(long id) {
+        this.id = id;
     }
 
     public String getTitle() {

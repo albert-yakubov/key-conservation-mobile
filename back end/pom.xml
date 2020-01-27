@@ -11,7 +11,7 @@
     <groupId>com.stepasha</groupId>
     <artifactId>key-conservation</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>key-conservation</name>
+    <name>key-conservation-mobile</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -118,7 +118,7 @@
 
     <build>
 
-        <finalName>key-conservation</finalName>
+        <finalName>key-conservation-mobile</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

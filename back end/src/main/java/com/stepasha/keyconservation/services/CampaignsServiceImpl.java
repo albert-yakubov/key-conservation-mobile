@@ -1,7 +1,7 @@
 package com.stepasha.keyconservation.services;
 
 import com.stepasha.keyconservation.models.Campaigns;
-import com.stepasha.keyconservation.repos.CampaignsRepoasitory;
+import com.stepasha.keyconservation.repos.CampaignsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,23 +10,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Transactional
-@Service(value = "campaigsService")
+@Service(value = "campaignsService")
 public class CampaignsServiceImpl implements CampaignsService {
 
     @Autowired
     private CampaignsService campaignsService;
     @Autowired
-    private CampaignsRepoasitory campaignsRepoasitory;
+    private CampaignsRepository campaignsRepository;
 
     @Override
     public Campaigns getCampaignsById(long id) {
-        return campaignsRepoasitory.findCampaignByid(id);
+        return campaignsRepository.findCampaignByid(id);
     }
 
     @Override
     public List<Campaigns> findAll() {
         List<Campaigns> list = new ArrayList<>();
-        campaignsRepoasitory.findAll().iterator().forEachRemaining(list::add);
+        campaignsRepository.findAll().iterator().forEachRemaining(list::add);
         return list;
     }
 
@@ -44,12 +44,12 @@ public class CampaignsServiceImpl implements CampaignsService {
         newCampaigns.setEvent_description(campaigns.getEvent_description());
 
 
-        return campaignsRepoasitory.save(newCampaigns);
+        return campaignsRepository.save(newCampaigns);
     }
     @Transactional
     @Override
-    public Campaigns update(Campaigns campaigns, long eventid) {
-        Campaigns currentCampaign = getCampaignsById(eventid);
+    public Campaigns update(Campaigns campaigns, long id) {
+        Campaigns currentCampaign = getCampaignsById(id);
         if (currentCampaign.getTitle() != null) {
             currentCampaign.setTitle(campaigns.getTitle());
         }
@@ -73,13 +73,13 @@ public class CampaignsServiceImpl implements CampaignsService {
         }
 
 
-        return campaignsRepoasitory.save(currentCampaign);
+        return campaignsRepository.save(currentCampaign);
     }
 
     @Override
-    public void delete(long eventid) {
-        if (getCampaignsById(eventid) != null){
-            campaignsRepoasitory.deleteById(eventid);
+    public void delete(long id) {
+        if (getCampaignsById(id) != null){
+            campaignsRepository.deleteById(id);
         }
 
     }

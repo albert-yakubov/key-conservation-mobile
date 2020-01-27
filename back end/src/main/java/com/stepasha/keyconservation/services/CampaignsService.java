@@ -6,15 +6,15 @@ import java.util.List;
 
 public interface CampaignsService {
 
-    Campaigns getCampaignsById(long eventid);
+    Campaigns getCampaignsById(long id);
 
     List<Campaigns> findAll();
 
     Campaigns save(Campaigns campaigns);
 
-    Campaigns update(Campaigns campaigns, long eventid);
+    Campaigns update(Campaigns campaigns, long id);
 
-    void delete(long eventid);
+    void delete(long id);
 
 
 }
