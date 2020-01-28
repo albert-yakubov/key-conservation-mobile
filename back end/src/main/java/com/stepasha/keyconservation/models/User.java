@@ -37,6 +37,7 @@ public class User extends Auditable
     private String primaryemail;
     private String firstname;
     private String lastname;
+
     private Boolean position;
     @Column(nullable = true)
     private String mini_bio;
@@ -143,6 +144,7 @@ public class User extends Auditable
     }
 
     public void setPosition(Boolean position) {
+
         this.position = position;
     }
 
