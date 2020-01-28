@@ -3,7 +3,9 @@ package com.stepasha.keyconservation.models;
 
 import com.stepasha.keyconservation.logging.Loggable;
 
+
 import javax.persistence.Column;
+
 
 @Loggable
 public class UserMinimum
@@ -16,7 +18,8 @@ public class UserMinimum
     private String firstname;
     private String lastname;
     private String location;
-    private String position;
+
+    private Boolean position;
 
     private String mini_bio;
 
@@ -96,11 +99,13 @@ public class UserMinimum
         this.primaryemail = primaryemail;
     }
 
-    public String getPosition() {
+
+    public Boolean getPosition() {
         return position;
     }
 
-    public void setPosition(String position) {
+    public void setPosition(Boolean position) {
+
         this.position = position;
     }
 

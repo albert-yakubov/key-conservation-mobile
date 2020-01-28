@@ -10,7 +10,7 @@ interface LoginServiceSql{
 
     companion object {
 
-        const val BASE_URL = "https://ay-mylocator.herokuapp.com/"
+        const val BASE_URL = "https://key-conservation-mobile.herokuapp.com/"
 
         private val retrofit = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
