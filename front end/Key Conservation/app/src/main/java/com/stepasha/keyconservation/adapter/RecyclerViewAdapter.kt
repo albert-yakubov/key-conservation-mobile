@@ -7,12 +7,20 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.exoplayer2.ui.SimpleExoPlayerView
 import com.squareup.picasso.Picasso
 import com.stepasha.keyconservation.R
+
 import com.stepasha.keyconservation.model.Campaign
+import com.stepasha.keyconservation.model.User
+import kotlinx.android.synthetic.main.item_view.view.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
     RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
+
+    private var users: MutableList<User>? = null
 
     private var context: Context? = null
 
@@ -32,23 +40,33 @@ class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
 
 
         val currentCampaign = campaigns?.get(position)
+   //     val currentCampaignAuthor = users?.get(position)
 
         // If the url link is longer than 10, then get the image from the url. Else use a default image.
-        val imageSuffix = currentCampaign?.banner_image.toString()
-        if ((currentCampaign?.banner_image.toString().endsWith("jpeg")) ||
-            (currentCampaign?.banner_image.toString().endsWith("jpg")) ||
-            (currentCampaign?.banner_image.toString().endsWith("png")) ||
-            (currentCampaign?.banner_image.toString().contains("auto"))
+    //   val bannerImageSfx = currentCampaign?.banner_image.toString()
+    //   if ((currentCampaign?.banner_image.toString().endsWith("jpeg")) ||
+    //       (currentCampaign?.banner_image.toString().endsWith("jpg")) ||
+    //       (currentCampaign?.banner_image.toString().endsWith("png")) ||
+    //       (currentCampaign?.banner_image.toString().contains("auto"))
+    //   ) {
+    //       Picasso.get().load(currentCampaign?.banner_image).into(holder.bannerImage)
+    //   }
+
+        val eventPictireSfx = currentCampaign?.event_image.toString()
+        if ((currentCampaign?.event_image.toString().endsWith("jpeg")) ||
+            (currentCampaign?.event_image.toString().endsWith("jpg")) ||
+            (currentCampaign?.event_image.toString().endsWith("png")) ||
+            (currentCampaign?.event_image.toString().contains("auto"))
         ) {
-            Picasso.get().load(currentCampaign?.banner_image).into(holder.image)
+            Picasso.get().load(currentCampaign?.event_image).into(holder.bannerImage)
         }
+        //holder.username?.text = currentCampaignAuthor?.username
+        holder.location?.text = currentCampaign?.location
+        holder.eventName?.text = currentCampaign?.event_name
+        holder.eventDescription?.text = currentCampaign?.event_description
+        holder.eventDate?.text = currentCampaign?.created_at.toString()
 
 
-
-        holder.mapAddress.text = currentMap?.address
-        holder.description.text = currentMap?.description
-        holder.postdate.text = currentMap?.posteddate
-        holder.additionalInfo.text = currentMap?.additionalInfo
 
 
     }
@@ -56,11 +74,13 @@ class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val image: ImageView? = itemView.iv_property_image
-        val mapAddress: TextView = itemView.vAddress
-        val description: TextView = itemView.vDescription
-        val postdate: TextView = itemView.vPostDate
-        val additionalInfo: TextView = itemView.vAdditionalInfo
+        val location: TextView? = itemView.textview_location
+        val bannerImage: ImageView? = itemView.imageView_bannerimage
+
+        val eventName: TextView? = itemView.textview_eventname
+        val eventDescription: TextView? = itemView.textview_eventdescription
+        val eventDate: TextView? = itemView.textview_eventdate
+
 
 
         //   fun cardViewDeleteOnLongPress(itemPosition: Int) {
@@ -69,8 +89,8 @@ class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
         //   }
     }
 
-    fun updateMap(newList: ArrayList<Map>?) {
-        maps = newList
+    fun updateCampaign(newList: ArrayList<Campaign>?) {
+        campaigns = newList
         notifyDataSetChanged()
     }
 
