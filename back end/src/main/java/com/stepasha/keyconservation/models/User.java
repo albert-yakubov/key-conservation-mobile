@@ -37,7 +37,7 @@ public class User extends Auditable
     private String primaryemail;
     private String firstname;
     private String lastname;
-    private String position;
+    private Boolean position;
     @Column(nullable = true)
     private String mini_bio;
     @Column(nullable = true)
@@ -74,7 +74,7 @@ public class User extends Auditable
     private List<Campaigns> campaigns = new ArrayList<>();
     public User(){}
 
-    public User(long userid, String profilepicture, String username, String password, @Email String primaryemail, String position, String firstname, String lastname, List<UserRoles> userroles, String mini_bio, String species, String facebook, String instagram, String twitter, String location, String about_us, String issues, List<Useremail> useremails, List<Campaigns> campaigns) {
+    public User(long userid, String profilepicture, String username, String password, @Email String primaryemail, Boolean position, String firstname, String lastname, List<UserRoles> userroles, String mini_bio, String species, String facebook, String instagram, String twitter, String location, String about_us, String issues, List<Useremail> useremails, List<Campaigns> campaigns) {
         this.userid = userid;
         this.profilepicture = profilepicture;
         setUsername(username);
@@ -137,11 +137,12 @@ public class User extends Auditable
         return twitter;
     }
 
-    public String getPosition() {
+    public Boolean getPosition() {
+
         return position;
     }
 
-    public void setPosition(String position) {
+    public void setPosition(Boolean position) {
         this.position = position;
     }
 

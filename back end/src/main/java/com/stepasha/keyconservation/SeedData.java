@@ -1,6 +1,6 @@
 //package com.stepasha.keyconservation;
-
-
+//
+//
 //import com.stepasha.keyconservation.models.Role;
 //import com.stepasha.keyconservation.models.User;
 //import com.stepasha.keyconservation.models.UserRoles;
@@ -50,7 +50,7 @@
 //                           "admin2",
 //                           "password",
 //                           "mrayakubov@hotmail.com",
-//                           "organization",
+//                           true,
 //                "Albert",
 //                "Yakubov",
 //                admins,
@@ -83,7 +83,7 @@
 //                "user2",
 //                "password",
 //                "mrayakubov1@hotmail.com",
-//                "user",
+//                false,
 //                "Sam",
 //                "Wise",
 //                datas,
@@ -117,7 +117,7 @@
 //                "admin123",
 //                "password",
 //                "mrayakubov2@hotmail.com",
-//                "user",
+//                false,
 //                "Albert",
 //                "Yakubov",
 //                users,
@@ -144,7 +144,7 @@
 //                "user123",
 //                "password",
 //                "mrayakubov3@hotmail.com",
-//                "user",
+//                false,
 //                "Albert",
 //                "Yakubov",
 //                users,
@@ -168,7 +168,7 @@
 //                "admin1234",
 //                "password",
 //                "mrayakubov5@hotmail.com",
-//                "user",
+//                false,
 //                "Albert",
 //                "Yakubov",
 //                admins,
