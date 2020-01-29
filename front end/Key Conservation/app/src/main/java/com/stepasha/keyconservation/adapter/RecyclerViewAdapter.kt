@@ -1,20 +1,20 @@
 package com.stepasha.keyconservation.adapter
 
 import android.content.Context
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.VideoView
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.exoplayer2.ui.SimpleExoPlayerView
 import com.squareup.picasso.Picasso
 import com.stepasha.keyconservation.R
 
 import com.stepasha.keyconservation.model.Campaign
 import com.stepasha.keyconservation.model.User
 import kotlinx.android.synthetic.main.item_view.view.*
-import java.util.*
 import kotlin.collections.ArrayList
 
 class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
@@ -22,7 +22,11 @@ class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
 
     private var users: MutableList<User>? = null
 
+
     private var context: Context? = null
+
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         context = parent.context
@@ -40,19 +44,23 @@ class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
 
 
         val currentCampaign = campaigns?.get(position)
-   //     val currentCampaignAuthor = users?.get(position)
+
+
+
+        //     val currentCampaignAuthor = users?.get(position)
 
         // If the url link is longer than 10, then get the image from the url. Else use a default image.
-    //   val bannerImageSfx = currentCampaign?.banner_image.toString()
-    //   if ((currentCampaign?.banner_image.toString().endsWith("jpeg")) ||
-    //       (currentCampaign?.banner_image.toString().endsWith("jpg")) ||
-    //       (currentCampaign?.banner_image.toString().endsWith("png")) ||
-    //       (currentCampaign?.banner_image.toString().contains("auto"))
-    //   ) {
-    //       Picasso.get().load(currentCampaign?.banner_image).into(holder.bannerImage)
-    //   }
+        //   val bannerImageSfx = currentCampaign?.banner_image.toString()
+        //   if ((currentCampaign?.banner_image.toString().endsWith("jpeg")) ||
+        //       (currentCampaign?.banner_image.toString().endsWith("jpg")) ||
+        //       (currentCampaign?.banner_image.toString().endsWith("png")) ||
+        //       (currentCampaign?.banner_image.toString().contains("auto"))
+        //   ) {
+        //       Picasso.get().load(currentCampaign?.banner_image).into(holder.bannerImage)
+        //   }
 
         val eventPictireSfx = currentCampaign?.event_image.toString()
+        val uri: Uri = Uri.parse(eventPictireSfx)
         if ((currentCampaign?.event_image.toString().endsWith("jpeg")) ||
             (currentCampaign?.event_image.toString().endsWith("jpg")) ||
             (currentCampaign?.event_image.toString().endsWith("png")) ||
@@ -66,17 +74,19 @@ class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
         holder.eventDescription?.text = currentCampaign?.event_description
         holder.eventDate?.text = currentCampaign?.created_at.toString()
 
+        holder.bannerImage?.setOnClickListener {
 
+        holder.bannerImage.visibility = View.GONE
 
-
+            holder.myVideo?.setVideoURI(uri)
+            holder.myVideo?.start()
+        }
     }
-
-
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val location: TextView? = itemView.textview_location
-        val bannerImage: ImageView? = itemView.imageView_bannerimage
-
+        val bannerImage: ImageView? = itemView.imageView_eventimage
+        val myVideo: VideoView? = itemView.view_myvideo
         val eventName: TextView? = itemView.textview_eventname
         val eventDescription: TextView? = itemView.textview_eventdescription
         val eventDate: TextView? = itemView.textview_eventdate
