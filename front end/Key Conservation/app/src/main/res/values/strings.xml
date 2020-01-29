@@ -12,4 +12,5 @@
     <string name="event_description">EVENT DESCRIPTION</string>
     <string name="post_date">POST DATE</string>
     <string name="flag_for_review">Flag for Review</string>
+    <string name="empty" />
 </resources>
