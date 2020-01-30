@@ -13,4 +13,11 @@
     <string name="post_date">POST DATE</string>
     <string name="flag_for_review">Flag for Review</string>
     <string name="empty" />
+    <string name="campaign_title">Campaign Title:</string>
+    <string name="is_this_an_update_urgent_or_new_post">Is this an Update, Urgent or new Post?</string>
+    <string name="date">Date</string>
+    <string name="post_campaign">Post Campaign</string>
+    <string name="image_url">Image URl</string>
+    <string name="post_description">Post Description</string>
+    <string name="event_name_eg_saving_turtles_planting_trees">Event Name: eg: saving turtles, planting trees</string>
 </resources>

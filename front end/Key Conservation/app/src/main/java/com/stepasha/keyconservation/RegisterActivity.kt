@@ -33,6 +33,7 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var username: String
     lateinit var primaryemail: String
     lateinit var password: String
+    var position: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,10 +46,15 @@ class RegisterActivity : AppCompatActivity() {
             validateEmail()
             validatePassword()
             confirmRegister()
+            validateAdmin()
         }
         btn_cancel_registration.setOnClickListener {
             finish()
         }
+    }
+    private fun validateAdmin(): Boolean{
+        position = false
+        return true
     }
     //Checks to see if the entered first name is okay or not.
     private fun validateFirstName(): Boolean {
@@ -175,7 +181,7 @@ class RegisterActivity : AppCompatActivity() {
         finish()
     }
     private fun createUserr(){
-        val call: Call<RegisterResponse> = ServiceBuilder.create().createUser(NewUser(firstname,lastname,primaryemail, username,password))
+        val call: Call<RegisterResponse> = ServiceBuilder.create().createUser(NewUser(firstname,lastname,primaryemail, username,password, position))
 
         call.enqueue(object: Callback<RegisterResponse> {
             override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {

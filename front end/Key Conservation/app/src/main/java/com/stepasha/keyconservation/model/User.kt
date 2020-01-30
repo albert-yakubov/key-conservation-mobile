@@ -29,5 +29,5 @@ data class User(
 
 
 )
-data class Result(val username: String? = null)
-data class UserResult(val result: Result)
+data class Result(val username: String? = null, val postion: Boolean? = null)
+data class UserResult(val result: Result, val postion: Boolean? = null)

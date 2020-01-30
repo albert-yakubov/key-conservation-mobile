@@ -26,6 +26,11 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         setContentView(R.layout.activity_main)
         navigation.setOnNavigationItemSelectedListener(this)
 
+        view_floatingbutton.setOnClickListener {
+            val intent = Intent(this, CreatePostActivity::class.java)
+            startActivity(intent)
+        }
+
         getAllCampaigns()
 
 
