@@ -5,11 +5,10 @@ import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.VideoView
+import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import com.stepasha.keyconservation.LoginActivity
 import com.stepasha.keyconservation.R
 
 import com.stepasha.keyconservation.model.Campaign
@@ -44,7 +43,11 @@ class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
 
 
         val currentCampaign = campaigns?.get(position)
-
+        if (!LoginActivity.admins){
+            holder.deleteButton.visibility = View.GONE
+        }else if(LoginActivity.admins){
+            holder.deleteButton.visibility =View.VISIBLE
+        }
 
 
         //     val currentCampaignAuthor = users?.get(position)
@@ -83,7 +86,7 @@ class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
         }
     }
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
+        val deleteButton: ImageButton = itemView.imageButton
         val location: TextView? = itemView.textview_location
         val bannerImage: ImageView? = itemView.imageView_eventimage
         val myVideo: VideoView? = itemView.view_myvideo

@@ -16,7 +16,7 @@ data class User(
     var primaryemail: String? = null,
     var firstname: String? = null,
     var lastname: String? = null,
-    var postion: Boolean? = null,
+    var position: Boolean? = null,
     var mini_bio: String? = null,
     var species: String? = null,
     var facebook: String? = null,
@@ -29,5 +29,5 @@ data class User(
 
 
 )
-data class Result(val username: String? = null, val postion: Boolean? = null)
-data class UserResult(val result: Result, val postion: Boolean? = null)
+data class Result(val username: String? = null, val position: Boolean? = null, val userid: Long? = null)
+data class UserResult(val result: Result, val position: Boolean? = null, val  userid: Long? = null)
