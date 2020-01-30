@@ -17,7 +17,9 @@ import retrofit2.Response
 class LoginActivity : AppCompatActivity() {
 companion object{
     var successfulLogin: Boolean = false
-    private var admins = false
+    var admins : Boolean = false
+    var userid: Long = 12314546
+
 }
 
     private var validatedUsername: Boolean = false
@@ -25,6 +27,7 @@ companion object{
     private var error: Boolean? = false
     lateinit var username: String
     lateinit var password: String
+
 
     override fun onCreate(@Nullable savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -108,9 +111,10 @@ companion object{
             override fun onResponse(call: Call<UserResult>, response: Response<UserResult>) {
                 if(response.isSuccessful) {
 
-                    admins = response.body()?.postion ?: false
+                    admins = response.body()?.position ?: false
+                    userid = response.body()?.userid ?: 1231234
                     Log.i("Login", "Success ${response.body()}")
-
+        
                     Toast.makeText(this@LoginActivity, "Welcome $username", Toast.LENGTH_LONG).show()
                     successfulLogin = true
 
