@@ -14,5 +14,8 @@ class NewUser (
     @SerializedName("username")
     var username: String?,
     @SerializedName("password")
-    var password: String?
+    var password: String?,
+    @SerializedName("position")
+    var position: Boolean
 ) : Serializable
+

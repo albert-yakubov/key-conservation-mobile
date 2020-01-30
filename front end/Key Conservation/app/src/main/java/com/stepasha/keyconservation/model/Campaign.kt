@@ -19,3 +19,21 @@ data class Campaign(
 
 
 ) : Serializable
+
+data class NewCampaign(
+    var title: String,
+
+    var banner_image: String,
+
+    var location: String,
+
+    var created_at: Long,
+
+    var event_image: String,
+
+    var event_name: String,
+
+    var event_description: String
+
+
+) : Serializable
