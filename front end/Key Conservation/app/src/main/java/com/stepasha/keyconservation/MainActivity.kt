@@ -81,7 +81,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
                 startActivity(intent)
             }
             R.id.navigation_profile -> {
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, ProfileActivity::class.java)
                 startActivity(intent)
             }
 
