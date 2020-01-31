@@ -20,4 +20,6 @@
     <string name="image_url">Image URl</string>
     <string name="post_description">Post Description</string>
     <string name="event_name_eg_saving_turtles_planting_trees">Event Name: eg: saving turtles, planting trees</string>
+    <string name="mini_bio">Mini Bio</string>
+    <string name="species_and_habitats">Species and habitats</string>
 </resources>

@@ -17,6 +17,9 @@ interface LoginServiceSql{
     //fun getAllProperties(@Header("Authorization") authToken: String): Call<Properties>
     fun getAllCampaigns() : Call<MutableList<Campaign>>
 
+    @GET("users/user/{userId}")
+    fun getUserById(@Path("userId") userId: Long) : Call<User>
+
 
 
     @POST("createnewuser")
