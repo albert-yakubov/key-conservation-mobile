@@ -1,4 +1,4 @@
-//package com.stepasha.keyconservation;
+package com.stepasha.keyconservation;
 
 //import com.stepasha.keyconservation.models.Role;
 //import com.stepasha.keyconservation.models.User;
@@ -49,11 +49,10 @@
 //                           "admin2",
 //                           "password",
 //                           "mrayakubov@hotmail.com",
-
-//                           "organization",
-
+//
+//
 //                           true,
-
+//
 //                "Albert",
 //                "Yakubov",
 //                admins,
@@ -63,6 +62,8 @@
 //                "twitter",
 //                "instagram",
 //                "39.672228519306685, -104.91650000000358",
+//                39.672228519306685f,
+//                -104.91650000000358f,
 //                "Junior Android Developer",
 //                "Global Warming", emails ,
 //                null);
@@ -86,11 +87,8 @@
 //                "user2",
 //                "password",
 //                "mrayakubov1@hotmail.com",
-
-//                "user",
-
 //                false,
-
+//
 //                "Sam",
 //                "Wise",
 //                datas,
@@ -100,6 +98,8 @@
 //                "twitter",
 //                "instagram",
 //                "Denver, Colorado",
+//                39.672228519306685f,
+//                -105.91650000000358f,
 //                "Junior Android Developer",
 //                "Global Warming",
 //                emails,
@@ -124,11 +124,10 @@
 //                "admin123",
 //                "password",
 //                "mrayakubov2@hotmail.com",
-
-//                "user",
-
+//
+//
 //                false,
-
+//
 //                "Albert",
 //                "Yakubov",
 //                users,
@@ -138,6 +137,8 @@
 //                "twitter",
 //                "instagram",
 //                "39.672228519306685, -104.91650000000358",
+//                40.672228519306685f,
+//                -104.91650000000358f,
 //                "Junior Android Developer",
 //                "Global Warming",
 //                emails,
@@ -155,11 +156,10 @@
 //                "user123",
 //                "password",
 //                "mrayakubov3@hotmail.com",
-
-//                "user",
-
+//
+//
 //                false,
-
+//
 //                "Albert",
 //                "Yakubov",
 //                users,
@@ -169,6 +169,8 @@
 //                "twitter",
 //                "instagram",
 //                "39.672228519306685, -104.91650000000358",
+//                0f,
+//                0f,
 //                "Junior Android Developer",
 //                "Global Warming",
 //                emails,
@@ -183,9 +185,8 @@
 //                "admin1234",
 //                "password",
 //                "mrayakubov5@hotmail.com",
-
-//                "user",
-
+//
+//
 //                false,
 //                "Albert",
 //                "Yakubov",
@@ -196,6 +197,8 @@
 //                "twitter",
 //                "instagram",
 //                "39.672228519306685, -104.91650000000358",
+//                41.672228519306685f,
+//                -110.91650000000358f,
 //                "Junior Android Developer",
 //                "Global Warming",
 //                emails,

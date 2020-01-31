@@ -22,4 +22,5 @@
     <string name="event_name_eg_saving_turtles_planting_trees">Event Name: eg: saving turtles, planting trees</string>
     <string name="mini_bio">Mini Bio</string>
     <string name="species_and_habitats">Species and habitats</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

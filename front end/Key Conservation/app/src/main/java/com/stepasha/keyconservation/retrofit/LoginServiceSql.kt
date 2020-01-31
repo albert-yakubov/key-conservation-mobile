@@ -17,6 +17,14 @@ interface LoginServiceSql{
     //fun getAllProperties(@Header("Authorization") authToken: String): Call<Properties>
     fun getAllCampaigns() : Call<MutableList<Campaign>>
 
+    @GET("campaigns/campaigns")
+    //fun getAllProperties(@Header("Authorization") authToken: String): Call<Properties>
+    fun getAllCampaignMaps() : Call<MutableList<CampResults>>
+
+    @GET("users/users")
+    //fun getAllUsers(@Header("Authorization") authToken: String): Call<Properties>
+    fun getAllUsers() : Call<MutableList<User>>
+
     @GET("users/user/{userId}")
     fun getUserById(@Path("userId") userId: Long) : Call<User>
 

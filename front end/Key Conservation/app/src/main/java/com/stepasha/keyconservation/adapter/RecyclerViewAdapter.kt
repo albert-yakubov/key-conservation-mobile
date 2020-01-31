@@ -73,6 +73,8 @@ class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
         }
         //holder.username?.text = currentCampaignAuthor?.username
         holder.location?.text = currentCampaign?.location
+        holder.lat?.text = currentCampaign?.latitude.toString()
+        holder.lon?.text = currentCampaign?.longitude.toString()
         holder.eventName?.text = currentCampaign?.event_name
         holder.eventDescription?.text = currentCampaign?.event_description
         holder.eventDate?.text = currentCampaign?.created_at.toString()
@@ -88,6 +90,8 @@ class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val deleteButton: ImageButton = itemView.imageButton
         val location: TextView? = itemView.textview_location
+        val lat: TextView? = itemView.textview_lat
+        val lon: TextView? = itemView.textview_lon
         val bannerImage: ImageView? = itemView.imageView_eventimage
         val myVideo: VideoView? = itemView.view_myvideo
         val eventName: TextView? = itemView.textview_eventname

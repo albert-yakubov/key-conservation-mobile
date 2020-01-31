@@ -9,6 +9,10 @@ data class Campaign(
 
     val location: String? = null,
 
+    val latitude: Double? = null,
+
+    val longitude: Double? = null,
+
     val created_at: Long? = null,
 
     val event_image: String? = null,
@@ -37,3 +41,6 @@ data class NewCampaign(
 
 
 ) : Serializable
+
+data class CampResult(val latitude: Double? = null, val longitude: Double? = null)
+data class CampResults(val result: CampResult, val latitude: Double? = null, val longitude: Double? = null)
