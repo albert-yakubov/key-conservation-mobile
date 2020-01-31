@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
                 startActivity(intent)
             }
             R.id.navigation_map -> {
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, MapsActivity::class.java)
                 startActivity(intent)
             }
             R.id.navigation_profile -> {
