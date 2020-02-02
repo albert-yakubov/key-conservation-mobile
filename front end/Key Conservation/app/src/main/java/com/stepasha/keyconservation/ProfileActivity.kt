@@ -16,6 +16,8 @@ import com.stepasha.keyconservation.model.User
 import com.stepasha.keyconservation.retrofit.ServiceBuilder
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_profile.*
+import kotlinx.android.synthetic.main.activity_profile.view_minibio
+import kotlinx.android.synthetic.main.activity_update_profile.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -33,6 +35,11 @@ class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
+
+        view_buttonUpdate.setOnClickListener {
+            val intent = Intent(this@ProfileActivity, UpdateProfileActivity::class.java)
+            startActivity(intent)
+        }
 
         imagebutton_facebbok.setOnClickListener {
             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(facebook))
