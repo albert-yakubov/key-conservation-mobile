@@ -20,7 +20,7 @@ public class User extends Auditable
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long userid;
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String profilepicture;
 
     @Column(nullable = false,
@@ -35,9 +35,14 @@ public class User extends Auditable
             unique = true)
     @Email
     private String primaryemail;
+    @Column(nullable = false,
+    updatable = false)
     private String firstname;
+    @Column(nullable = false,
+    updatable = false)
     private String lastname;
-
+    @Column(nullable = false,
+    updatable = false)
     private Boolean position;
     @Column(nullable = true)
     private String mini_bio;
@@ -52,9 +57,9 @@ public class User extends Auditable
     @Column(nullable = true)
     private String location;
     @Column(nullable = true)
-    private Double latitude;
+    private Double uLatitude;
     @Column(nullable = true)
-    private Double longitude;
+    private Double uLongitude;
 
     @Column(nullable = true)
     private String about_us;
@@ -80,7 +85,7 @@ public class User extends Auditable
     private List<Campaigns> campaigns = new ArrayList<>();
     public User(){}
 
-    public User(long userid, String profilepicture, String username, String password, @Email String primaryemail, Boolean position, String firstname, String lastname, List<UserRoles> userroles, String mini_bio, String species, String facebook, String instagram, String twitter, String location, Double latitude, Double longitude, String about_us, String issues, List<Useremail> useremails, List<Campaigns> campaigns) {
+    public User(long userid, String profilepicture, String username, String password, @Email String primaryemail, Boolean position, String firstname, String lastname, List<UserRoles> userroles, String mini_bio, String species, String facebook, String instagram, String twitter, String location, Double uLatitude, Double uLongitude, String about_us, String issues, List<Useremail> useremails, List<Campaigns> campaigns) {
         this.userid = userid;
         this.profilepicture = profilepicture;
         setUsername(username);
@@ -93,8 +98,8 @@ public class User extends Auditable
         this.instagram = instagram;
         this.twitter = twitter;
         this.location = location;
-        this.latitude = latitude;
-        this.longitude = longitude;
+        this.uLatitude = uLatitude;
+        this.uLongitude = uLongitude;
         this.about_us = about_us;
         this.issues = issues;
         this.useremails = useremails;
@@ -215,20 +220,20 @@ public class User extends Auditable
         this.lastname = lastname;
     }
 
-    public Double getLatitude() {
-        return latitude;
+    public Double getULatitude() {
+        return uLatitude;
     }
 
-    public void setLatitude(Double latitude) {
-        this.latitude = latitude;
+    public void setULatitude(Double latitude) {
+        this.uLatitude = latitude;
     }
 
-    public Double getLongitude() {
-        return longitude;
+    public Double getULongitude() {
+        return uLongitude;
     }
 
-    public void setLongitude(Double longitude) {
-        this.longitude = longitude;
+    public void setULongitude(Double longitude) {
+        this.uLongitude = longitude;
     }
 
     public long getUserid()

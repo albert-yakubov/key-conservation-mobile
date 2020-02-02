@@ -9,10 +9,10 @@ import android.location.LocationManager
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -20,12 +20,11 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import com.stepasha.keyconservation.adapter.RecyclerViewAdapter
-import com.stepasha.keyconservation.model.CampResults
+import com.squareup.picasso.Picasso
 import com.stepasha.keyconservation.model.Campaign
+import com.stepasha.keyconservation.model.User
 import com.stepasha.keyconservation.retrofit.ServiceBuilder
-import kotlinx.android.synthetic.main.activity_create_post.*
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_profile.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -51,6 +50,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         Companion.checkPermission(this)
         //then load pokemons
         loadCampaign()
+        loadUser()
         load()
     }
     //static for location access
@@ -234,16 +234,84 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         })
 
     }
+    //load pokemons in the list (As many as you want)
+    private fun loadUser(){
+        val call: Call<MutableList<User>> = ServiceBuilder.create().getAllUsers()
+
+        call.enqueue(object: Callback<MutableList<User>> {
+            override fun onFailure(call: Call<MutableList<User>>, t: Throwable) {
+                Log.i("_root_ide_package_.com.stepasha.keyconservation.model.Users ", "onFailure ${t.message.toString()}")
+            }
+
+            override fun onResponse(call: Call<MutableList<User>>, response: Response<MutableList<User>>) {
+                if(response.isSuccessful){
+
+
+                    val userList = response.body()
+                    users = userList
+                    // for list of pokemons
+                    for(i in 0 until users!!.size ) {
+                        var newUser = users!![i]
+                        //if not caught
+                        val userLoc =
+                            LatLng(newUser.ulatitude ?:0.0, newUser.ulongitute?:0.0)
+
+                        val mapUsername = newUser.username ?:""
+                        val mapUserDescription = newUser.mini_bio ?:""
+
+                        mMap.addMarker(
+                            MarkerOptions()
+                                .position(userLoc)
+                                .title(mapUsername)
+                                .snippet(mapUserDescription)
+                                .visible(true)
+                                .icon(BitmapDescriptorFactory.fromResource(R.drawable.gcheck))
+                        )
+//if you are within 2 ft of pokemon he is yours
+                        /*if(location!!.distanceTo((newCampaign.location))<2){
+
+                                newCampaign.isCatched = true
+                                // mark the pokemon caught
+                                listCampaigns[i]= newCampaign
+                                //increase tho points
+                                playerPower += newCampaign.power!!
+
+                                Toast.makeText(applicationContext,
+                                    "You have caught up a new pockemon, your new power is $playerPower",Toast.LENGTH_LONG).show()
+
+                            }*/
+
+                    }
+
+
+
+
+
+
+
+
+
+                }
+                else{
+                    Log.i("Properties ", "OnResponseFailure ${response.errorBody()}")
+                }
+            }
+
+        })
+
+    }
 
     private fun load(){
 
                 campaigns
+                users
 
     }
     //check permissions on older versions
     companion object {
 
         var campaigns: MutableList<Campaign>? = null
+        var users: MutableList<User>? =null
 
 
         fun checkPermission(mapsActivity: MapsActivity){

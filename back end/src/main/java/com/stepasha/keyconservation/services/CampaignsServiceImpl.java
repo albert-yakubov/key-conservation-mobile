@@ -58,7 +58,7 @@ public class CampaignsServiceImpl implements CampaignsService {
         if (currentCampaign.getBanner_image() != null) {
             currentCampaign.setBanner_image(campaigns.getBanner_image());
         }
-        if (currentCampaign.getLocation() != null) {
+        if (currentCampaign.getLocation()!= null) {
             currentCampaign.setLocation(campaigns.getLocation());
         }
         if (currentCampaign.getLatitude()!= null) {
@@ -67,16 +67,16 @@ public class CampaignsServiceImpl implements CampaignsService {
         if (currentCampaign.getLongitude()!= null) {
             currentCampaign.setLongitude(campaigns.getLongitude());
         }
-        if (currentCampaign.getCreated_at() != null) {
+        if (currentCampaign.getCreated_at()!= null) {
             currentCampaign.setCreated_at(campaigns.getCreated_at());
         }
         if (currentCampaign.getEvent_image() != null) {
             currentCampaign.setEvent_image(campaigns.getEvent_image());
         }
-        if (currentCampaign.getEvent_name() != null) {
+        if (currentCampaign.getEvent_name()!= null) {
             currentCampaign.setEvent_name(campaigns.getEvent_name());
         }
-        if (currentCampaign.getEvent_description() != null) {
+        if (currentCampaign.getEvent_description()!= null) {
             currentCampaign.setEvent_description(campaigns.getEvent_description());
         }
 

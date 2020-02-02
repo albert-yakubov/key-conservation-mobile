@@ -5,10 +5,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface LoginServiceSql{
 
@@ -17,9 +14,7 @@ interface LoginServiceSql{
     //fun getAllProperties(@Header("Authorization") authToken: String): Call<Properties>
     fun getAllCampaigns() : Call<MutableList<Campaign>>
 
-    @GET("campaigns/campaigns")
-    //fun getAllProperties(@Header("Authorization") authToken: String): Call<Properties>
-    fun getAllCampaignMaps() : Call<MutableList<CampResults>>
+
 
     @GET("users/users")
     //fun getAllUsers(@Header("Authorization") authToken: String): Call<Properties>
@@ -27,6 +22,9 @@ interface LoginServiceSql{
 
     @GET("users/user/{userId}")
     fun getUserById(@Path("userId") userId: Long) : Call<User>
+
+    @PUT("users/user/{id}")
+    fun updateUserById(@Path("id") id: Long, @Body updateUser: UpdateUser) : Call<Void>
 
 
 
