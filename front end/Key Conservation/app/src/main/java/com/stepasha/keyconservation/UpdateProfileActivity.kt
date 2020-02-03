@@ -32,6 +32,7 @@ class UpdateProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_update_profile)
+
         getUserById()
 
         imagebutton_update_profile.setOnClickListener {
@@ -53,7 +54,7 @@ class UpdateProfileActivity : AppCompatActivity() {
 
 
     fun updateUserById(){
-        val call: Call<Void> = ServiceBuilder.create().updateUserById(LoginActivity.userid, UpdateUser(LoginActivity.userid, minibio, species, facebook, instagram, twitter, location, ulatitude, "$ulongitude".toDouble(), aboutUs, issues))
+        val call: Call<Void> = ServiceBuilder.create().updateUserById(LoginActivity.userid, UpdateUser(LoginActivity.userid, minibio, species, facebook, instagram, twitter, location, ulatitude, ulongitude, aboutUs, issues))
 
         call.enqueue(object: Callback<Void> {
             override fun onFailure(call: Call<Void>, t: Throwable) {

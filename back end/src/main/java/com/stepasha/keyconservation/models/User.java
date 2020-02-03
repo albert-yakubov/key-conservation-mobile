@@ -57,9 +57,9 @@ public class User extends Auditable
     @Column(nullable = true)
     private String location;
     @Column(nullable = true)
-    private Double uLatitude;
+    private Double ulatitude;
     @Column(nullable = true)
-    private Double uLongitude;
+    private Double ulongitude;
 
     @Column(nullable = true)
     private String about_us;
@@ -85,7 +85,7 @@ public class User extends Auditable
     private List<Campaigns> campaigns = new ArrayList<>();
     public User(){}
 
-    public User(long userid, String profilepicture, String username, String password, @Email String primaryemail, Boolean position, String firstname, String lastname, List<UserRoles> userroles, String mini_bio, String species, String facebook, String instagram, String twitter, String location, Double uLatitude, Double uLongitude, String about_us, String issues, List<Useremail> useremails, List<Campaigns> campaigns) {
+    public User(long userid, String profilepicture, String username, String password, @Email String primaryemail, Boolean position, String firstname, String lastname, List<UserRoles> userroles, String mini_bio, String species, String facebook, String instagram, String twitter, String location, Double ulatitude, Double ulongitude, String about_us, String issues, List<Useremail> useremails, List<Campaigns> campaigns) {
         this.userid = userid;
         this.profilepicture = profilepicture;
         setUsername(username);
@@ -98,8 +98,8 @@ public class User extends Auditable
         this.instagram = instagram;
         this.twitter = twitter;
         this.location = location;
-        this.uLatitude = uLatitude;
-        this.uLongitude = uLongitude;
+        this.ulatitude = ulatitude;
+        this.ulongitude = ulongitude;
         this.about_us = about_us;
         this.issues = issues;
         this.useremails = useremails;
@@ -221,19 +221,19 @@ public class User extends Auditable
     }
 
     public Double getULatitude() {
-        return uLatitude;
+        return ulatitude;
     }
 
     public void setULatitude(Double latitude) {
-        this.uLatitude = latitude;
+        this.ulatitude = latitude;
     }
 
     public Double getULongitude() {
-        return uLongitude;
+        return ulongitude;
     }
 
     public void setULongitude(Double longitude) {
-        this.uLongitude = longitude;
+        this.ulongitude = longitude;
     }
 
     public long getUserid()
