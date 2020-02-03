@@ -33,8 +33,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     //initialize maps
     private lateinit var mMap: GoogleMap
 
-    val lat = 0.0
-    val lon = 0.0
+    val lat: Double? = 0.0
+    val lon: Double?  = 0.0
     var campaign: MutableList<Campaign>? = null
 
 
