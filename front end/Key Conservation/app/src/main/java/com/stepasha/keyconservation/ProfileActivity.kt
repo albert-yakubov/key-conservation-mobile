@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_profile.*
 import kotlinx.android.synthetic.main.activity_profile.view_minibio
 import kotlinx.android.synthetic.main.activity_update_profile.*
+import kotlinx.android.synthetic.main.item_view.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -28,6 +29,9 @@ class ProfileActivity : AppCompatActivity() {
     var twitter = ""
     var instagram = ""
     var primaryemail = ""
+    var ulatitude: Double= 0.0
+    var ulongitude: Double= 0.0
+
 
 
 
@@ -35,6 +39,7 @@ class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
+
 
         view_buttonUpdate.setOnClickListener {
             val intent = Intent(this@ProfileActivity, UpdateProfileActivity::class.java)
@@ -74,6 +79,12 @@ class ProfileActivity : AppCompatActivity() {
                     twitter = response.body()?.twitter ?: ""
                     instagram = response.body()?.instagram ?: ""
                     primaryemail = response.body()?.primaryemail ?: ""
+                    ulatitude = LoginActivity.ulatitude
+                    view_lat.setText(ulatitude.toString())
+                    ulongitude = LoginActivity.ulongitude
+                    view_lon.setText(ulongitude.toString())
+                    view_location.text = response.body()?.ulongitude.toString()
+
 
 
                     val profilePictureSfx = response.body()?.profilepicture ?: ""
@@ -88,6 +99,10 @@ class ProfileActivity : AppCompatActivity() {
 
                     }
                     view_minibio?.text = response.body()?.mini_bio ?: ""
+                    view_species?.text = response.body()?.species ?:""
+                    view_issues?.text = response.body()?.issues ?:""
+                    view_aboutus?.text = response.body()?.about_us ?: ""
+                    view_username?.text = response.body()?.username ?: ""
                     Log.i("mini bio", response.body()!!.mini_bio ?: "")
                     //code goes here
                 }

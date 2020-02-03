@@ -27,7 +27,7 @@ data class User(
     var twitter: String? = null,
     var location: String? = null,
     var ulatitude: Double? = null,
-    var ulongitute: Double? = null,
+    var ulongitude: Double? = null,
     var about_us: String? = null,
     var issues: String? = null
 
@@ -36,7 +36,7 @@ data class User(
 
 ):Serializable
 class UpdateUser(
-    var userid: Long? = null,
+
     var mini_bio: String? = null,
     var species: String? = null,
     var facebook: String? = null,
@@ -44,7 +44,7 @@ class UpdateUser(
     var twitter: String? = null,
     var location: String? = null,
     var ulatitude: Double? = null,
-    var ulongitute: Double? = null,
+    var ulongitude: Double? = null,
     var about_us: String? = null,
     var issues: String? = null
 
@@ -55,5 +55,5 @@ class UpdateUser(
 
 
 
-data class Result(val username: String? = null, val position: Boolean? = null, val userid: Long? = null)
-data class UserResult(val result: Result, val position: Boolean? = null, val  userid: Long? = null)
+data class Result(val username: String? = null, val position: Boolean? = null, val userid: Long? = null, val ulatitude: Double? = null, val ulongitude: Double? = null)
+data class UserResult(val result: Result, val position: Boolean? = null, val  userid: Long? = null,  val ulatitude: Double? = null, val ulongitude: Double? = null)

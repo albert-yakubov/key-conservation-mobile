@@ -56,10 +56,10 @@ public class User extends Auditable
     private String twitter;
     @Column(nullable = true)
     private String location;
-    @Column(nullable = true)
-    private Double uLatitude;
-    @Column(nullable = true)
-    private Double uLongitude;
+    @Column(nullable = false)
+    private Double ulatitude;
+    @Column(nullable = false)
+    private Double ulongitude;
 
     @Column(nullable = true)
     private String about_us;
@@ -85,7 +85,7 @@ public class User extends Auditable
     private List<Campaigns> campaigns = new ArrayList<>();
     public User(){}
 
-    public User(long userid, String profilepicture, String username, String password, @Email String primaryemail, Boolean position, String firstname, String lastname, List<UserRoles> userroles, String mini_bio, String species, String facebook, String instagram, String twitter, String location, Double uLatitude, Double uLongitude, String about_us, String issues, List<Useremail> useremails, List<Campaigns> campaigns) {
+    public User(long userid, String profilepicture, String username, String password, @Email String primaryemail, Boolean position, String firstname, String lastname, List<UserRoles> userroles, String mini_bio, String species, String facebook, String instagram, String twitter, String location, Double ulatitude, Double ulongitude, String about_us, String issues, List<Useremail> useremails, List<Campaigns> campaigns) {
         this.userid = userid;
         this.profilepicture = profilepicture;
         setUsername(username);
@@ -98,8 +98,8 @@ public class User extends Auditable
         this.instagram = instagram;
         this.twitter = twitter;
         this.location = location;
-        this.uLatitude = uLatitude;
-        this.uLongitude = uLongitude;
+        this.ulatitude = ulatitude;
+        this.ulongitude = ulongitude;
         this.about_us = about_us;
         this.issues = issues;
         this.useremails = useremails;
@@ -132,6 +132,22 @@ public class User extends Auditable
 
     public String getFacebook() {
         return facebook;
+    }
+
+    public Double getUlatitude() {
+        return ulatitude;
+    }
+
+    public void setUlatitude(Double ulatitude) {
+        this.ulatitude = ulatitude;
+    }
+
+    public Double getUlongitude() {
+        return ulongitude;
+    }
+
+    public void setUlongitude(Double ulongitude) {
+        this.ulongitude = ulongitude;
     }
 
     public void setFacebook(String facebook) {
@@ -220,21 +236,8 @@ public class User extends Auditable
         this.lastname = lastname;
     }
 
-    public Double getULatitude() {
-        return uLatitude;
-    }
 
-    public void setULatitude(Double latitude) {
-        this.uLatitude = latitude;
-    }
 
-    public Double getULongitude() {
-        return uLongitude;
-    }
-
-    public void setULongitude(Double longitude) {
-        this.uLongitude = longitude;
-    }
 
     public long getUserid()
     {
