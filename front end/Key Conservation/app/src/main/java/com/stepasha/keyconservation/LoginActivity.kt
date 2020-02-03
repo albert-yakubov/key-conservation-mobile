@@ -19,6 +19,8 @@ companion object{
     var successfulLogin: Boolean = false
     var admins : Boolean = false
     var userid: Long = 12314546
+    var ulatitude: Double = 0.0
+    var ulongitude: Double = 0.0
 
 }
 
@@ -113,6 +115,8 @@ companion object{
 
                     admins = response.body()?.position ?: false
                     userid = response.body()?.userid ?: 1231234
+                    ulatitude = response.body()?.ulatitude ?: 0.0
+                    ulongitude = response.body()?.ulongitude ?: 0.0
                     Log.i("Login", "Success ${response.body()}")
         
                     Toast.makeText(this@LoginActivity, "Welcome $username", Toast.LENGTH_LONG).show()

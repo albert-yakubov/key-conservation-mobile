@@ -1,0 +1,195 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 67108864 bytes for Failed to commit area from 0x00000000c1400000 to 0x00000000c5400000 of length 67108864.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (t:/workspace/open/src/hotspot/os/windows/os_windows.cpp:3274), pid=9808, tid=10688
+#
+# JRE version:  (11.0.5+10) (build )
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (11.0.5+10-LTS, mixed mode, aot, sharing, tiered, compressed oops, g1 gc, windows-amd64)
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -Dmaven.multiModuleProjectDirectory=C:\Users\Owner\Desktop\Labs Stuff\key conservation mobile\key-conservation-mobile\back end -Dmaven.home=C:\Program Files\JetBrains\IntelliJ IDEA 2019.3.1\plugins\maven\lib\maven3 -Dclassworlds.conf=C:\Program Files\JetBrains\IntelliJ IDEA 2019.3.1\plugins\maven\lib\maven3\bin\m2.conf -Dmaven.ext.class.path=C:\Program Files\JetBrains\IntelliJ IDEA 2019.3.1\plugins\maven\lib\maven-event-listener.jar -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2019.3.1\lib\idea_rt.jar=55522:C:\Program Files\JetBrains\IntelliJ IDEA 2019.3.1\bin -Dfile.encoding=UTF-8 org.codehaus.classworlds.Launcher -Didea.version2019.3.1 -DskipTests=true heroku:deploy
+
+Host: Intel(R) Core(TM) i5-3470 CPU @ 3.20GHz, 4 cores, 3G,  Windows 10 , 64 bit Build 17763 (10.0.17763.475)
+Time: Mon Feb  3 13:48:37 2020 Mountain Standard Time elapsed time: 0 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000013835afb800):  JavaThread "Unknown thread" [_thread_in_vm, id=10688, stack(0x00000032b2a00000,0x00000032b2b00000)]
+
+Stack: [0x00000032b2a00000,0x00000032b2b00000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x63611a]
+V  [jvm.dll+0x77426f]
+V  [jvm.dll+0x77591a]
+V  [jvm.dll+0x775fd3]
+V  [jvm.dll+0x25e608]
+V  [jvm.dll+0x6335ca]
+V  [jvm.dll+0x627f85]
+V  [jvm.dll+0x314ecc]
+V  [jvm.dll+0x314d52]
+V  [jvm.dll+0x31a5c6]
+V  [jvm.dll+0x3666bf]
+V  [jvm.dll+0x3660e0]
+V  [jvm.dll+0x2f1c48]
+V  [jvm.dll+0x2f2db6]
+V  [jvm.dll+0x74d437]
+V  [jvm.dll+0x74ebaf]
+V  [jvm.dll+0x3734f9]
+V  [jvm.dll+0x733ae9]
+V  [jvm.dll+0x3e2e1d]
+V  [jvm.dll+0x3e51e1]
+C  [java.exe+0x3607]
+C  [java.exe+0x178dc]
+C  [KERNEL32.DLL+0x17974]
+C  [ntdll.dll+0x6a271]
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x00000138359f5160, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+
+Other Threads:
+  0x0000013835b12000 GCTaskThread "GC Thread#0" [stack: 0x00000032b2b00000,0x00000032b2c00000] [id=11540]
+  0x0000013835b2f000 ConcurrentGCThread "G1 Main Marker" [stack: 0x00000032b2c00000,0x00000032b2d00000] [id=16280]
+  0x0000013835b30800 ConcurrentGCThread "G1 Conc#0" [stack: 0x00000032b2d00000,0x00000032b2e00000] [id=10884]
+
+[error occurred during error reporting (printing all threads), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007fff57520617]
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x0000013835afb450] Heap_lock - owner thread: 0x0000013835afb800
+
+Heap address: 0x00000000c1400000, size: 1004 MB, Compressed Oops mode: Non-zero based: 0x00000000c1400000
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (0 events):
+No events
+
+
+Dynamic libraries:
+0x00007ff667ae0000 - 0x00007ff667b27000 	C:\Program Files\Java\jdk-11.0.5\bin\java.exe
+0x00007fff9aff0000 - 0x00007fff9b1dd000 	C:\Windows\SYSTEM32\ntdll.dll
+0x00007fff9a0c0000 - 0x00007fff9a173000 	C:\Windows\System32\KERNEL32.DLL
+0x00007fff977b0000 - 0x00007fff97a43000 	C:\Windows\System32\KERNELBASE.dll
+0x00007fff9a9e0000 - 0x00007fff9aa83000 	C:\Windows\System32\ADVAPI32.dll
+0x00007fff98360000 - 0x00007fff983fe000 	C:\Windows\System32\msvcrt.dll
+0x00007fff9a940000 - 0x00007fff9a9de000 	C:\Windows\System32\sechost.dll
+0x00007fff9a260000 - 0x00007fff9a382000 	C:\Windows\System32\RPCRT4.dll
+0x00007fff9a7a0000 - 0x00007fff9a937000 	C:\Windows\System32\USER32.dll
+0x00007fff97670000 - 0x00007fff97690000 	C:\Windows\System32\win32u.dll
+0x00007fff9a390000 - 0x00007fff9a3b9000 	C:\Windows\System32\GDI32.dll
+0x00007fff971c0000 - 0x00007fff97359000 	C:\Windows\System32\gdi32full.dll
+0x00007fff97710000 - 0x00007fff977b0000 	C:\Windows\System32\msvcp_win.dll
+0x00007fff97570000 - 0x00007fff9766a000 	C:\Windows\System32\ucrtbase.dll
+0x00007fff853e0000 - 0x00007fff853ea000 	C:\Windows\SYSTEM32\VERSION.dll
+0x00007fff89990000 - 0x00007fff89c09000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.17763.973_none_05b245900721eb81\COMCTL32.dll
+0x00007fff9ab00000 - 0x00007fff9ae2c000 	C:\Windows\System32\combase.dll
+0x00007fff97690000 - 0x00007fff9770e000 	C:\Windows\System32\bcryptPrimitives.dll
+0x00007fff9af70000 - 0x00007fff9af9e000 	C:\Windows\System32\IMM32.DLL
+0x00007fff82830000 - 0x00007fff82846000 	C:\Program Files\Java\jdk-11.0.5\bin\vcruntime140.dll
+0x00007fff70ae0000 - 0x00007fff70b8a000 	C:\Program Files\Java\jdk-11.0.5\bin\msvcp140.dll
+0x00007fff57220000 - 0x00007fff57d48000 	C:\Program Files\Java\jdk-11.0.5\bin\server\jvm.dll
+0x00007fff9af60000 - 0x00007fff9af68000 	C:\Windows\System32\PSAPI.DLL
+0x00007fff84f10000 - 0x00007fff84f19000 	C:\Windows\SYSTEM32\WSOCK32.dll
+0x00007fff94cd0000 - 0x00007fff94cf4000 	C:\Windows\SYSTEM32\WINMM.dll
+0x00007fff9aa90000 - 0x00007fff9aafd000 	C:\Windows\System32\WS2_32.dll
+0x00007fff94ca0000 - 0x00007fff94ccd000 	C:\Windows\SYSTEM32\winmmbase.dll
+0x00007fff97a50000 - 0x00007fff97a9a000 	C:\Windows\System32\cfgmgr32.dll
+0x00007fff97070000 - 0x00007fff97081000 	C:\Windows\System32\kernel.appcore.dll
+0x00007fff827a0000 - 0x00007fff827b1000 	C:\Program Files\Java\jdk-11.0.5\bin\verify.dll
+0x00007fff84d20000 - 0x00007fff84f0d000 	C:\Windows\SYSTEM32\DBGHELP.DLL
+0x00007fff84cb0000 - 0x00007fff84cda000 	C:\Windows\SYSTEM32\dbgcore.DLL
+0x00007fff7c130000 - 0x00007fff7c159000 	C:\Program Files\Java\jdk-11.0.5\bin\java.dll
+0x00007fff77f50000 - 0x00007fff77f7f000 	C:\Program Files\Java\jdk-11.0.5\bin\instrument.dll
+0x00007fff7bfe0000 - 0x00007fff7bff6000 	C:\Program Files\Java\jdk-11.0.5\bin\zip.dll
+0x00007fff8df50000 - 0x00007fff8df5a000 	C:\Program Files\Java\jdk-11.0.5\bin\jimage.dll
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;C:\Program Files\Java\jdk-11.0.5\bin;C:\Windows\SYSTEM32;C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.17763.973_none_05b245900721eb81;C:\Program Files\Java\jdk-11.0.5\bin\server
+
+VM Arguments:
+jvm_args: -Dmaven.multiModuleProjectDirectory=C:\Users\Owner\Desktop\Labs Stuff\key conservation mobile\key-conservation-mobile\back end -Dmaven.home=C:\Program Files\JetBrains\IntelliJ IDEA 2019.3.1\plugins\maven\lib\maven3 -Dclassworlds.conf=C:\Program Files\JetBrains\IntelliJ IDEA 2019.3.1\plugins\maven\lib\maven3\bin\m2.conf -Dmaven.ext.class.path=C:\Program Files\JetBrains\IntelliJ IDEA 2019.3.1\plugins\maven\lib\maven-event-listener.jar -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2019.3.1\lib\idea_rt.jar=55522:C:\Program Files\JetBrains\IntelliJ IDEA 2019.3.1\bin -Dfile.encoding=UTF-8 
+java_command: org.codehaus.classworlds.Launcher -Didea.version2019.3.1 -DskipTests=true heroku:deploy
+java_class_path (initial): C:\Program Files\JetBrains\IntelliJ IDEA 2019.3.1\plugins\maven\lib\maven3\boot\plexus-classworlds-2.6.0.jar
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 3                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 1                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 4                                         {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 1048576                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 67108864                                  {product} {ergonomic}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 1052770304                                {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 1048576                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 5830732                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122913754                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122913754                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+     bool UseCompressedClassPointers               = true                                 {lp64_product} {ergonomic}
+     bool UseCompressedOops                        = true                                 {lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags
+ #1: stderr all=off uptime,level,tags
+
+Environment Variables:
+PATH=C:\Python27\;C:\Python27\Scripts;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Java\jdk1.7.0_25\bin;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Users\Owner\AppData\Local\Microsoft\WindowsApps;C:\Users\Owner\AppData\Local\GitHubDesktop\bin;C:\Program Files\heroku\bin;C:\Program Files\JetBrains\IntelliJ IDEA 2019.3.1\bin;;C:\Users\Owner\AppData\Roaming\npm;C:\Users\Owner\AppData\Local\Programs\Microsoft VS Code\bin
+USERNAME=Owner
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 58 Stepping 9, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 10 , 64 bit Build 17763 (10.0.17763.475)
+
+CPU:total 4 (initial active 4) (4 cores per cpu, 1 threads per core) family 6 model 58 stepping 9, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, aes, clmul, erms, tsc, tscinvbit, tscinv
+
+Memory: 4k page, system-wide physical 4014M (336M free)
+TotalPageFile size 16302M (AvailPageFile size 63M)
+current process WorkingSet (physical memory assigned to process): 9M, peak: 9M
+current process commit charge ("private bytes"): 51M, peak: 115M
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (11.0.5+10-LTS) for windows-amd64 JRE (11.0.5+10-LTS), built on Oct  6 2019 12:37:14 by "mach5one" with MS VC++ 15.5 (VS2017)
+
+END.

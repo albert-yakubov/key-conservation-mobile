@@ -56,9 +56,9 @@ public class User extends Auditable
     private String twitter;
     @Column(nullable = true)
     private String location;
-    @Column(nullable = true)
+    @Column(nullable = false)
     private Double ulatitude;
-    @Column(nullable = true)
+    @Column(nullable = false)
     private Double ulongitude;
 
     @Column(nullable = true)
@@ -132,6 +132,22 @@ public class User extends Auditable
 
     public String getFacebook() {
         return facebook;
+    }
+
+    public Double getUlatitude() {
+        return ulatitude;
+    }
+
+    public void setUlatitude(Double ulatitude) {
+        this.ulatitude = ulatitude;
+    }
+
+    public Double getUlongitude() {
+        return ulongitude;
+    }
+
+    public void setUlongitude(Double ulongitude) {
+        this.ulongitude = ulongitude;
     }
 
     public void setFacebook(String facebook) {
@@ -220,21 +236,8 @@ public class User extends Auditable
         this.lastname = lastname;
     }
 
-    public Double getULatitude() {
-        return ulatitude;
-    }
 
-    public void setULatitude(Double latitude) {
-        this.ulatitude = latitude;
-    }
 
-    public Double getULongitude() {
-        return ulongitude;
-    }
-
-    public void setULongitude(Double longitude) {
-        this.ulongitude = longitude;
-    }
 
     public long getUserid()
     {

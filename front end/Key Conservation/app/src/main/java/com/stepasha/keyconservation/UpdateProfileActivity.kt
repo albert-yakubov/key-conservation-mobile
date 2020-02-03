@@ -21,8 +21,8 @@ class UpdateProfileActivity : AppCompatActivity() {
       var instagram: String= ""
      var twitter : String= ""
       var location :String= ""
-     var ulatitude: Double= 0.0
-    var ulongitude: Double= 0.0
+     var ulatitude: Double = 0.0
+     var ulongitude: Double = 0.0
      var aboutUs: String=""
      var issues: String=""
 
@@ -36,16 +36,6 @@ class UpdateProfileActivity : AppCompatActivity() {
         getUserById()
 
         imagebutton_update_profile.setOnClickListener {
-            minibio = edittext_minibio?.text.toString()
-            species = edittext_species?.text.toString()
-            facebook = edittext_facebook?.text.toString()
-            instagram = edittext_instagram?.text.toString()
-            twitter = edittext_twitter?.text.toString()
-            location = edittext_location?.text.toString()
-            ulatitude = edittext_lat?.text.toString().toDouble()
-            ulongitude = edittext_lon?.text.toString().toDouble()
-            aboutUs = edittext_about_us?.text.toString()
-            issues = edittext_issues?.text.toString()
 
 
             updateUserById()
@@ -54,7 +44,16 @@ class UpdateProfileActivity : AppCompatActivity() {
 
 
     fun updateUserById(){
-        val call: Call<Void> = ServiceBuilder.create().updateUserById(LoginActivity.userid, UpdateUser(LoginActivity.userid, minibio, species, facebook, instagram, twitter, location, ulatitude, ulongitude, aboutUs, issues))
+        val call: Call<Void> = ServiceBuilder.create().updateUserById(LoginActivity.userid, UpdateUser(minibio,
+            species,
+            facebook,
+            instagram,
+            twitter,
+            location,
+            LoginActivity.ulatitude,
+            LoginActivity.ulongitude,
+            aboutUs,
+            issues))
 
         call.enqueue(object: Callback<Void> {
             override fun onFailure(call: Call<Void>, t: Throwable) {
@@ -69,8 +68,8 @@ class UpdateProfileActivity : AppCompatActivity() {
                     instagram = edittext_instagram?.text.toString()
                     twitter = edittext_twitter?.text.toString()
                     location = edittext_location?.text.toString()
-                    ulatitude = edittext_lat?.text.toString().toDouble()
-                    ulongitude = edittext_lon?.text.toString().toDouble()
+                    ulatitude = LoginActivity.ulatitude
+                    ulongitude = LoginActivity.ulongitude
                     aboutUs = edittext_about_us?.text.toString()
                     issues = edittext_issues?.text.toString()
 
@@ -82,7 +81,7 @@ class UpdateProfileActivity : AppCompatActivity() {
 
                 }
                 else{
-                    Log.i("User ", "OnResponseFailure ${response.errorBody()}")
+                    Log.i("User ", "OnResponseFailure ${response.errorBody().toString()}")
                 }
 
             }
@@ -112,9 +111,10 @@ class UpdateProfileActivity : AppCompatActivity() {
                     edittext_twitter.setText(twitter)
                     location = response.body()?.location ?: ""
                     edittext_location.setText(location)
-                    ulatitude = response.body()?.ulatitude ?: 0.0
+                    ulatitude = LoginActivity.ulatitude
                     edittext_lat.setText(ulatitude.toString())
-                    ulongitude = response.body()?.ulongitute ?: -104.91650000000358
+
+                    ulongitude = LoginActivity.ulongitude
                     edittext_lon.setText(ulongitude.toString())
                     aboutUs = response.body()?.about_us ?: ""
                     edittext_minibio.setText(minibio)

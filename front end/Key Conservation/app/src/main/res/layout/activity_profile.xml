@@ -146,7 +146,7 @@
             android:layout_marginEnd="229dp"
             android:text="@string/location" />
 
-        <TextView
+        <EditText
             android:id="@+id/view_lat"
             android:layout_width="107dp"
             android:layout_height="46dp"
@@ -157,7 +157,7 @@
             android:layout_marginEnd="118dp"
             android:text="LAT" />
 
-        <TextView
+        <EditText
             android:id="@+id/view_lon"
             android:layout_width="105dp"
             android:layout_height="46dp"

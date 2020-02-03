@@ -29,8 +29,8 @@ class ProfileActivity : AppCompatActivity() {
     var twitter = ""
     var instagram = ""
     var primaryemail = ""
-    var ulatitude: Double = 0.0
-    var ulongitude: Double = 0.0
+    var ulatitude: Double= 0.0
+    var ulongitude: Double= 0.0
 
 
 
@@ -79,14 +79,11 @@ class ProfileActivity : AppCompatActivity() {
                     twitter = response.body()?.twitter ?: ""
                     instagram = response.body()?.instagram ?: ""
                     primaryemail = response.body()?.primaryemail ?: ""
-
-                   ulatitude = response.body()?.ulatitude ?: 0.0
-
-                   view_lat?.setText(ulatitude.toString())
-                   ulongitude = response.body()?.ulongitute ?: 0.0
-
-                   view_lon?.setText("$ulongitude")
-
+                    ulatitude = LoginActivity.ulatitude
+                    view_lat.setText(ulatitude.toString())
+                    ulongitude = LoginActivity.ulongitude
+                    view_lon.setText(ulongitude.toString())
+                    view_location.text = response.body()?.ulongitude.toString()
 
 
 

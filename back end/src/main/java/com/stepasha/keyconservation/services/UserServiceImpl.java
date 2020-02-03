@@ -101,8 +101,8 @@ public class UserServiceImpl implements UserService
         newUser.setInstagram(user.getInstagram());
         newUser.setTwitter(user.getTwitter());
         newUser.setLocation(user.getLocation());
-        newUser.setULatitude(user.getULatitude());
-        newUser.setULongitude(user.getULongitude());
+        newUser.setUlatitude(user.getUlatitude());
+        newUser.setUlongitude(user.getUlongitude());
         newUser.setAbout_us(user.getAbout_us());
         newUser.setIssues(user.getIssues());
 
@@ -185,11 +185,11 @@ public class UserServiceImpl implements UserService
         if (currentUser.getLocation()!= null) {
             currentUser.setLocation(user.getLocation());
         }
-        if (currentUser.getULatitude()!= null) {
-            currentUser.setULatitude(user.getULatitude());
+        if (currentUser.getUlatitude()!= null) {
+            currentUser.setUlatitude(user.getUlatitude());
         }
-        if (currentUser.getULongitude()!= null) {
-            currentUser.setULongitude(user.getULongitude());
+        if (currentUser.getUlongitude()!= null) {
+            currentUser.setUlongitude(user.getUlongitude());
         }
         if (currentUser.getAbout_us()!= null) {
             currentUser.setAbout_us(user.getAbout_us());

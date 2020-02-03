@@ -33,8 +33,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     //initialize maps
     private lateinit var mMap: GoogleMap
 
-    val lat: Double? = 0.0
-    val lon: Double?  = 0.0
+    var ulatitude: Double= 0.0
+    var ulongitude: Double= 0.0
     var campaign: MutableList<Campaign>? = null
 
 
@@ -254,7 +254,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                         var newUser = users!![i]
                         //if not caught
                         val userLoc =
-                            LatLng(newUser.ulatitude ?:0.0, newUser.ulongitute?:0.0)
+                            LatLng(newUser.ulatitude ?:0.0, newUser.ulongitude?:0.0)
 
                         val mapUsername = newUser.username ?:""
                         val mapUserDescription = newUser.mini_bio ?:""
