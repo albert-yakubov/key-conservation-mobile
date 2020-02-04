@@ -2,6 +2,7 @@ package com.stepasha.keyconservation
 
 import android.Manifest
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationListener
@@ -23,8 +24,9 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.squareup.picasso.Picasso
 import com.stepasha.keyconservation.model.Campaign
 import com.stepasha.keyconservation.model.User
+import com.stepasha.keyconservation.model.UserResult
 import com.stepasha.keyconservation.retrofit.ServiceBuilder
-import kotlinx.android.synthetic.main.activity_profile.*
+import kotlinx.android.synthetic.main.activity_connect.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -36,6 +38,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     var ulatitude: Double= 0.0
     var ulongitude: Double= 0.0
     var campaign: MutableList<Campaign>? = null
+
+    var facebook = ""
+    var twitter = ""
+    var instagram = ""
+    var primaryemail = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -254,10 +261,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                         var newUser = users!![i]
                         //if not caught
                         val userLoc =
-                            LatLng(newUser.ulatitude ?:0.0, newUser.ulongitude?:0.0)
+                            LatLng(newUser.ulatitude ?: 0.0, newUser.ulongitude ?: 0.0)
+                        val userId = newUser.userid ?: 1
+                        userid = userId
 
-                        val mapUsername = newUser.username ?:""
-                        val mapUserDescription = newUser.mini_bio ?:""
+
+                        val mapUsername = newUser.username ?: ""
+                        mapUsern = mapUsername
+                        val mapUserDescription = newUser.mini_bio ?: ""
 
                         mMap.addMarker(
                             MarkerOptions()
@@ -267,11 +278,21 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                                 .visible(true)
                                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.gcheck))
                         )
+
+                        mMap.setOnInfoWindowClickListener {
+                            getUserInfo()
+
+
+
+                        }
+
+
+
 //if you are within 2 ft of pokemon he is yours
                         /*if(location!!.distanceTo((newCampaign.location))<2){
 
                                 newCampaign.isCatched = true
-                                // mark the pokemon caught
+                               // mark the pokemon caught
                                 listCampaigns[i]= newCampaign
                                 //increase tho points
                                 playerPower += newCampaign.power!!
@@ -312,6 +333,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         var campaigns: MutableList<Campaign>? = null
         var users: MutableList<User>? =null
+         var userid : Long = 12134556456
+        var mapUsern = ""
 
 
         fun checkPermission(mapsActivity: MapsActivity){
@@ -335,5 +358,41 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         }
     }
+    fun jump(): Boolean{
+        val  intent = Intent(this, ConnectActivity::class.java)
+        startActivity(intent)
+        return true
+    }
+
+    fun getUserInfo(){
+        val call: Call<UserResult> = ServiceBuilder.create().getUser(mapUsern)
+        call.enqueue(object: Callback<UserResult> {
+            override fun onFailure(call: Call<UserResult>, t: Throwable) {
+                Log.i("Login:", "OnFailure ${t.message.toString()}")
+                Toast.makeText(this@MapsActivity, "Invalid Login Info", Toast.LENGTH_LONG).show()
+            }
+
+            override fun onResponse(call: Call<UserResult>, response: Response<UserResult>) {
+                if(response.isSuccessful) {
+
+                    userid = response.body()?.userid ?: 222124527827247
+                    mapUsern = response.body()?.username?: ""
+
+                }
+                else{
+                    Log.i("Login", "Failure ${response.errorBody().toString()}")
+                    Toast.makeText(this@MapsActivity, "Invalid Login Info", Toast.LENGTH_LONG).show()
+
+                }
+
+                val intent = Intent(this@MapsActivity, ConnectActivity::class.java)
+                startActivity(intent)
+
+            }
+
+        })
+    }
+
+
 }
 

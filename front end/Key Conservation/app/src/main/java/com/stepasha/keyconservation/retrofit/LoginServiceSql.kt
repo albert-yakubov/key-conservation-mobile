@@ -39,6 +39,10 @@ interface LoginServiceSql{
 
     fun getUser(@Path("userName")username: String): Call<UserResult>
 
+    @GET("users/user/name/{userName}")
+
+    fun getUser2(@Path("userName")username: String): Call<User>
+
     companion object {
 
         const val BASE_URL = "https://key-conservation-mobile.herokuapp.com/"
