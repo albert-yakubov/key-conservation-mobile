@@ -56,4 +56,4 @@ class UpdateUser(
 
 
 data class Result(val username: String? = null, val position: Boolean? = null, val userid: Long? = null, val ulatitude: Double? = null, val ulongitude: Double? = null)
-data class UserResult(val result: Result, val position: Boolean? = null, val  userid: Long? = null,  val ulatitude: Double? = null, val ulongitude: Double? = null)
+data class UserResult(val username: String? = null, val result: Result, val position: Boolean? = null, val  userid: Long? = null,  val ulatitude: Double? = null, val ulongitude: Double? = null)

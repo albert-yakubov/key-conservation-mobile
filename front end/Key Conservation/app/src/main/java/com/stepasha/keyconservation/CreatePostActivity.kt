@@ -2,37 +2,35 @@ package com.stepasha.keyconservation
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.app.ProgressDialog
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
-import android.os.AsyncTask
 import android.os.Bundle
-import android.provider.MediaStore
-import android.util.Base64
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.stepasha.keyconservation.model.ImageData
+import com.cloudinary.android.MediaManager
 import com.stepasha.keyconservation.model.NewCampaign
-import com.stepasha.keyconservation.retrofit.LoginServiceSql.Companion.BASE_URL
 import com.stepasha.keyconservation.retrofit.ServiceBuilder
 import kotlinx.android.synthetic.main.activity_create_post.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.*
-import java.net.HttpURLConnection
-import java.net.URL
-import java.net.URLEncoder
-import javax.net.ssl.HttpsURLConnection
-import javax.net.ssl.HttpsURLConnection.*
+import java.io.File
+import java.net.URI
 
 
 class CreatePostActivity : AppCompatActivity() {
+//    val mmm = MediaManager.init(this)
+ //   var requestId = MediaManager.get().upload("imageFile.jpg").dispatch()
+    val photoFile: File? = null
     companion object {
+        var mCurrentPhotoPath = ""
         public val IMG_CODE = 6
+        const val IMAGE_DIR_NAME = "MYNAME"
+
     }
 
     private var imageFilePath = ""
@@ -120,6 +118,21 @@ class CreatePostActivity : AppCompatActivity() {
             }
 
         })
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+         if (resultCode == IMG_CODE && resultCode == Activity.RESULT_OK){
+         val bitmap: Bitmap = BitmapFactory.decodeFile(photoFile?.absolutePath)
+                    view_image.setImageBitmap(bitmap)
+                if (photoFile != null) {
+                    val uri: Uri = Uri.fromFile(photoFile)
+                    view_event_image.setText(uri.toString())
+                }else{
+                    Toast.makeText(this, "no image", Toast.LENGTH_LONG).show()
+                }
+
+            }
     }
 
 
