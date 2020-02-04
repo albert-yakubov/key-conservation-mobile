@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.google.android.exoplayer2.DefaultRenderersFactory
 import com.google.android.exoplayer2.ExoPlayerFactory
 import com.squareup.picasso.Picasso
@@ -55,24 +56,25 @@ class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
         //     val currentCampaignAuthor = users?.get(position)
 
         // If the url link is longer than 10, then get the image from the url. Else use a default image.
-        //   val bannerImageSfx = currentCampaign?.banner_image.toString()
-        //   if ((currentCampaign?.banner_image.toString().endsWith("jpeg")) ||
-        //       (currentCampaign?.banner_image.toString().endsWith("jpg")) ||
-        //       (currentCampaign?.banner_image.toString().endsWith("png")) ||
-        //       (currentCampaign?.banner_image.toString().contains("auto"))
-        //   ) {
-        //       Picasso.get().load(currentCampaign?.banner_image).into(holder.bannerImage)
-        //   }
+           val bannerImageSfx = currentCampaign?.banner_image.toString()
+           if ((currentCampaign?.banner_image.toString().endsWith("jpeg")) ||
+               (currentCampaign?.banner_image.toString().endsWith("jpg")) ||
+               (currentCampaign?.banner_image.toString().endsWith("png")) ||
+               (currentCampaign?.banner_image.toString().contains("auto"))
+           ) {
+               Picasso.get().load(currentCampaign?.banner_image).into(holder.bannerImage)
+           }
 
         val eventPictireSfx = currentCampaign?.event_image.toString()
         val uri: Uri = Uri.parse(eventPictireSfx)
-        if ((currentCampaign?.event_image.toString().endsWith("jpeg")) ||
-            (currentCampaign?.event_image.toString().endsWith("png")) ||
-            (currentCampaign?.event_image.toString().endsWith("jpg")) ||
-            (currentCampaign?.event_image.toString().contains("auto"))
-        ) {
-            Picasso.get().load(currentCampaign?.event_image).into(holder.bannerImage)
-        }
+        Glide.with(context).load(uri).into(holder.bannerImage)
+            //if ((currentCampaign?.event_image.toString().endsWith("jpeg")) ||
+        //    (currentCampaign?.event_image.toString().endsWith("png")) ||
+        //    (currentCampaign?.event_image.toString().endsWith("jpg")) ||
+        //    (currentCampaign?.event_image.toString().contains("auto"))
+        //) {
+        //    Picasso.get().load(currentCampaign?.event_image).into(holder.bannerImage)
+                    //}
         //holder.username?.text = currentCampaignAuthor?.username
         holder.location?.text = currentCampaign?.location
         holder.lat?.text = currentCampaign?.latitude.toString()
@@ -80,14 +82,14 @@ class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
         holder.eventName?.text = currentCampaign?.event_name
         holder.eventDescription?.text = currentCampaign?.event_description
         holder.eventDate?.text = currentCampaign?.created_at.toString()
-        holder.bannerImage?.visibility = View.VISIBLE
-        holder.bannerImage?.setOnClickListener {
 
-        holder.bannerImage.visibility = View.INVISIBLE
+    //    holder.bannerImage?.setOnClickListener {
 
-            holder.myVideo?.setVideoURI(uri)
-            holder.myVideo?.start()
-        }
+      //  holder.bannerImage.visibility = View.INVISIBLE
+
+       //     holder.myVideo?.setVideoURI(uri)
+      //      holder.myVideo?.start()
+      //  }
     }
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val deleteButton: ImageButton = itemView.imageButton
@@ -95,7 +97,7 @@ class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
         val lat: TextView? = itemView.textview_lat
         val lon: TextView? = itemView.textview_lon
         val bannerImage: ImageView? = itemView.imageView_eventimage
-        val myVideo: VideoView? = itemView.view_myvideo
+      //  val myVideo: VideoView? = itemView.view_myvideo
         val eventName: TextView? = itemView.textview_eventname
         val eventDescription: TextView? = itemView.textview_eventdescription
         val eventDate: TextView? = itemView.textview_eventdate

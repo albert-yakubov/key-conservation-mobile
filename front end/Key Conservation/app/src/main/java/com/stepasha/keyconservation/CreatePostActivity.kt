@@ -149,7 +149,7 @@ class CreatePostActivity : AppCompatActivity() {
                     override fun onSuccess(requestId: String, resultData: Map<*, *>) {
                         val publicId:String = resultData["url"] as String
                         mCurrentPhotoPath = publicId
-                        view_event_image.setText(mCurrentPhotoPath)
+                        view_event_image.setText(mCurrentPhotoPath.replace("http://", "https://"))
                         Toast.makeText(this@CreatePostActivity, "Upload successful", Toast.LENGTH_LONG).show()
 
                     }
