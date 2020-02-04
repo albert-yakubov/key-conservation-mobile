@@ -1,7 +1,9 @@
 package com.stepasha.keyconservation.adapter
 
+import android.app.AlertDialog
 import android.content.Context
 import android.net.Uri
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +18,11 @@ import com.stepasha.keyconservation.R
 
 import com.stepasha.keyconservation.model.Campaign
 import com.stepasha.keyconservation.model.User
+import com.stepasha.keyconservation.retrofit.ServiceBuilder
 import kotlinx.android.synthetic.main.item_view.view.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import kotlin.collections.ArrayList
 
 class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
@@ -83,6 +89,29 @@ class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
         holder.eventDescription?.text = currentCampaign?.event_description
         holder.eventDate?.text = currentCampaign?.created_at.toString()
 
+        holder.deleteButton.setOnClickListener {
+            val builder = AlertDialog.Builder(context)
+            builder.setTitle("Delete Confirmation")
+            builder.setMessage("Are you sure you want to delete this property?")
+            builder.setPositiveButton("YES") { dialogInterface, _ ->
+                holder.cardViewDeleteOnLongPress(position)
+                if (currentCampaign != null) {
+                    deleteCampaign(currentCampaign.eventid!!)
+                }
+                Toast.makeText(
+                    context,
+                    "Property has been successfully deleted",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+            builder.setNegativeButton("NO"){ dialogInterface, _ ->
+                dialogInterface.dismiss()
+            }
+            builder.show()
+        }
+
+
+
     //    holder.bannerImage?.setOnClickListener {
 
       //  holder.bannerImage.visibility = View.INVISIBLE
@@ -103,37 +132,41 @@ class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
         val eventDate: TextView? = itemView.textview_eventdate
 
 
+        fun cardViewDeleteOnLongPress(itemPosition: Int) {
+            campaigns?.removeAt(itemPosition)
+            updateCampaign(campaigns)
+        }
 
-        //   fun cardViewDeleteOnLongPress(itemPosition: Int) {
-        //       maps?.removeAt(itemPosition)
-        //       updateMap(maps)
-        //   }
+
     }
 
-    fun updateCampaign(newList: ArrayList<Campaign>?) {
+    fun updateCampaign(newList: MutableList<Campaign>?) {
         campaigns = newList
         notifyDataSetChanged()
     }
 
-    //fun deleteProperty(id: Int){
-    //    val call: Call<Void> = ServiceBuilder.create().deleteProperty(LoginActivity.token, id)
-    //    call.enqueue(object: Callback<Void> {
-    //        override fun onFailure(call: Call<Void>, t: Throwable) {
-    //            Log.i("Add Property", "OnFailure ${t.message}")
-    //        }
+
+    fun deleteCampaign(eventid: Long){
+        val call: Call<Void> = ServiceBuilder.create().deleteCampaign(eventid)
+        call.enqueue(object: Callback<Void> {
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                Log.i("Add Property", "OnFailure ${t.message}")
+            }
 //
-    //        override fun onResponse(call: Call<Void>, response: Response<Void>) {
-    //            if(response.isSuccessful){
-    //                Log.i("Delete Property", "OnResponseSuccess ${response.message()}")
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                if(response.isSuccessful){
+
+
+                    Log.i("Delete Property", "OnResponseSuccess ${response.message()}")
 //
-    //            }
-    //            else{
-    //                Log.i("Add Property", "OnResponseFailure ${response.errorBody()}")
-    //            }
-    //        }
+                }
+                else{
+                    Log.i("Add Property", "OnResponseFailure ${response.errorBody()}")
+                }
+            }
 //
-    //    })
-    //}
+        })
+    }
 
 
 }

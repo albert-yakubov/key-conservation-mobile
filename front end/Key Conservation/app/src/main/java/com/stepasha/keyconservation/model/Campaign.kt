@@ -4,6 +4,7 @@ import java.io.Serializable
 import java.util.*
 
 data class Campaign(
+    val eventid: Long? = null,
 
     val banner_image: String? = null,
 

@@ -39,6 +39,9 @@ interface LoginServiceSql{
 
     fun getUser(@Path("userName")username: String): Call<UserResult>
 
+    @DELETE("campaigns/campaign/{eventid}")
+    fun deleteCampaign(@Path("eventid") eventid: Long) : Call<Void>
+
     @GET("users/user/name/{userName}")
 
     fun getUser2(@Path("userName")username: String): Call<User>
