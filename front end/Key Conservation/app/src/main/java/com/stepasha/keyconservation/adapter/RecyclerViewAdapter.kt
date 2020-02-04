@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.exoplayer2.DefaultRenderersFactory
+import com.google.android.exoplayer2.ExoPlayerFactory
 import com.squareup.picasso.Picasso
 import com.stepasha.keyconservation.LoginActivity
 import com.stepasha.keyconservation.R
@@ -65,8 +67,8 @@ class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
         val eventPictireSfx = currentCampaign?.event_image.toString()
         val uri: Uri = Uri.parse(eventPictireSfx)
         if ((currentCampaign?.event_image.toString().endsWith("jpeg")) ||
-            (currentCampaign?.event_image.toString().endsWith("jpg")) ||
             (currentCampaign?.event_image.toString().endsWith("png")) ||
+            (currentCampaign?.event_image.toString().endsWith("jpg")) ||
             (currentCampaign?.event_image.toString().contains("auto"))
         ) {
             Picasso.get().load(currentCampaign?.event_image).into(holder.bannerImage)
@@ -78,10 +80,10 @@ class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
         holder.eventName?.text = currentCampaign?.event_name
         holder.eventDescription?.text = currentCampaign?.event_description
         holder.eventDate?.text = currentCampaign?.created_at.toString()
-
+        holder.bannerImage?.visibility = View.VISIBLE
         holder.bannerImage?.setOnClickListener {
 
-        holder.bannerImage.visibility = View.GONE
+        holder.bannerImage.visibility = View.INVISIBLE
 
             holder.myVideo?.setVideoURI(uri)
             holder.myVideo?.start()
