@@ -1,17 +1,19 @@
 package com.stepasha.keyconservation
 
 import android.annotation.SuppressLint
-import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.cloudinary.android.MediaManager
+import com.cloudinary.android.callback.ErrorInfo
+import com.cloudinary.android.callback.UploadCallback
 import com.stepasha.keyconservation.model.NewCampaign
 import com.stepasha.keyconservation.retrofit.ServiceBuilder
 import kotlinx.android.synthetic.main.activity_create_post.*
@@ -19,21 +21,25 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.io.File
-import java.net.URI
+import java.io.IOException
 
 
 class CreatePostActivity : AppCompatActivity() {
-//    val mmm = MediaManager.init(this)
- //   var requestId = MediaManager.get().upload("imageFile.jpg").dispatch()
+
+
+
+
+
     val photoFile: File? = null
     companion object {
         var mCurrentPhotoPath = ""
         public val IMG_CODE = 6
+        var TAG = ""
         const val IMAGE_DIR_NAME = "MYNAME"
 
     }
 
-    private var imageFilePath = ""
+    var imageUrl = ""
     lateinit var title: String
     lateinit var banner_image: String
     lateinit var location: String
@@ -47,6 +53,8 @@ class CreatePostActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_post)
+
+        TAG = localClassName
 
 
 
@@ -121,23 +129,56 @@ class CreatePostActivity : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-         if (resultCode == IMG_CODE && resultCode == Activity.RESULT_OK){
-         val bitmap: Bitmap = BitmapFactory.decodeFile(photoFile?.absolutePath)
-                    view_image.setImageBitmap(bitmap)
-                if (photoFile != null) {
-                    val uri: Uri = Uri.fromFile(photoFile)
-                    view_event_image.setText(uri.toString())
-                }else{
-                    Toast.makeText(this, "no image", Toast.LENGTH_LONG).show()
-                }
+        if (requestCode == IMG_CODE && resultCode == RESULT_OK && data != null && data.data != null) {
+            val uri = data.data
+            var requestId: String = MediaManager.get()
+                .upload(uri)
+                .option("resource_type", "image")
+                .option("connect_timeout", 10000)
+                .option("read_timeout", 10000)
+                .unsigned("xyqfim3e")
+                .callback(object : UploadCallback {
+                    override fun onStart(requestId: String) {
+                        Log.d(TAG, "onStart")
+                    }
 
+                    override fun onProgress(requestId: String, bytes: Long, totalBytes: Long) {
+
+                    }
+
+                    override fun onSuccess(requestId: String, resultData: Map<*, *>) {
+                        val publicId:String = resultData["url"] as String
+                        mCurrentPhotoPath = publicId
+                        view_event_image.setText(mCurrentPhotoPath.replace("http://", "https://"))
+                        Toast.makeText(this@CreatePostActivity, "Upload successful", Toast.LENGTH_LONG).show()
+
+                    }
+
+                    override fun onError(requestId: String, error: ErrorInfo) {
+                        Log.d(TAG,error.description)
+
+                        Toast.makeText(this@CreatePostActivity,"Upload was not successful",Toast.LENGTH_LONG).show()
+                    }
+
+                    override fun onReschedule(requestId: String, error: ErrorInfo) {
+                        Log.d(TAG, "onReschedule")
+                    }
+                })
+                .dispatch()
+
+
+            try {
+                val bitmap: Bitmap = MediaStore.Images.Media.getBitmap(contentResolver, uri)
+                // Log.d(TAG, String.valueOf(bitmap));
+                val imageView: ImageView = findViewById<ImageView>(R.id.view_image)
+                imageView.setImageBitmap(bitmap)
+
+
+            } catch (e: IOException) {
+                e.printStackTrace()
             }
+            super.onActivityResult(requestCode, resultCode, data)
+        }
     }
-
-
-
-
-
 
 }
