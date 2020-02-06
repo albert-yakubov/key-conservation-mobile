@@ -10,30 +10,21 @@ import javax.persistence.Column;
 @Loggable
 public class UserMinimum
 {
-
-    private String profilepicture;
-    private String username;
-    private String password;
-    private String primaryemail;
-    private String firstname;
-    private String lastname;
-    private String location;
-
-    private Boolean position;
-
-    private String mini_bio;
-
-    private String species;
-
-    private String facebook;
-
-    private String instagram;
-
-    private String twitter;
-
-    private String about_us;
-
-    private String issues;
+        private String profilepicture;
+     private String username;
+     private String password;
+     private String primaryemail;
+     private String firstname;
+     private String lastname;
+     private String location;
+     private Boolean position;
+     private String mini_bio;
+     private String species;
+     private String facebook;
+     private String instagram;
+     private String twitter;
+     private String about_us;
+     private String issues;
 
 
     public String getProfilepicture() {

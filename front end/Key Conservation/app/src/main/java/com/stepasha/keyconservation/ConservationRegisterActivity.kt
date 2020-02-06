@@ -17,6 +17,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
+import androidx.exifinterface.media.ExifInterface
 import com.cloudinary.android.MediaManager
 import com.cloudinary.android.callback.ErrorInfo
 import com.cloudinary.android.callback.UploadCallback
@@ -28,13 +29,13 @@ import com.google.android.gms.maps.model.LatLng
 import com.stepasha.keyconservation.model.Neweruser
 import com.stepasha.keyconservation.model.RegisterResponse
 import com.stepasha.keyconservation.retrofit.ServiceBuilder
-import kotlinx.android.synthetic.main.activity_register.*
+import kotlinx.android.synthetic.main.activity_conservation_register.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.io.IOException
 
-class RegisterActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener {
+class ConservationRegisterActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener {
 
     companion object{
         var token = ""
@@ -79,7 +80,7 @@ class RegisterActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallback
     lateinit var username: String
     lateinit var primaryemail: String
     lateinit var password: String
-    var position: Boolean = false
+    var position: Boolean = true
 
     //for the rest of the string calls
     var miniBio = ""
@@ -91,6 +92,9 @@ class RegisterActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallback
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
+    //    mLatitudeTextView = text_input_lat3!!.editText?.text.toString()
+     //   mLongitudeTextView = text_input_lon2!!.editText?.text.toString()
+
         TAG = localClassName
         image_input_upload_image2.setOnClickListener {
             val intent = Intent(Intent.ACTION_GET_CONTENT)
@@ -100,8 +104,7 @@ class RegisterActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallback
 
             }
         }
-        mLatitudeTextView = text_input_lat.editText?.text.toString()
-        mLongitudeTextView = text_input_lon.editText?.text.toString()
+
         //set callbacks on connection to API
         mGoogleApiClient = GoogleApiClient.Builder(this)
             .addConnectionCallbacks(this)
@@ -328,11 +331,12 @@ class RegisterActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallback
         val msg = "Updated Location: " +
                 location.latitude.toString() + "," +
                 location.longitude.toString()
-        mLatitudeTextView = location.latitude.toString()
-        mLongitudeTextView = location.longitude.toString()
+
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
         // You can now create a LatLng Object for use with maps
         val latLng = LatLng(location.latitude, location.longitude)
+        mLatitudeTextView = location.latitude.toString()
+        mLongitudeTextView = location.longitude.toString()
     }
     //location request is being used here for location updates
     private fun startLocationUpdates() {
@@ -408,11 +412,11 @@ class RegisterActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallback
                     override fun onSuccess(requestId: String, resultData: Map<*, *>) {
                         val publicId:String = resultData["url"] as String
                         mCurrentPhotoPath = publicId.replace("http://", "https://")
-                        Toast.makeText(this@RegisterActivity, "Upload successful", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@ConservationRegisterActivity, "Upload successful", Toast.LENGTH_LONG).show()
                     }
                     override fun onError(requestId: String, error: ErrorInfo) {
                         Log.d(TAG,error.description)
-                        Toast.makeText(this@RegisterActivity,"Upload was not successful",Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@ConservationRegisterActivity,"Upload was not successful",Toast.LENGTH_LONG).show()
                     }
                     override fun onReschedule(requestId: String, error: ErrorInfo) {
                         Log.d(TAG, "onReschedule")
@@ -431,7 +435,8 @@ class RegisterActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallback
         }
     }
     private fun createUserr(){
-        val call: Call<RegisterResponse> = ServiceBuilder.create().createUser(Neweruser( mCurrentPhotoPath,
+        val call: Call<RegisterResponse> = ServiceBuilder.create().createUser(
+            Neweruser( mCurrentPhotoPath,
             username,
             password,
             primaryemail,
@@ -441,8 +446,9 @@ class RegisterActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallback
             miniBio,
             species,
             location,
-            mLatitudeTextView.toString().toDouble(),
-            mLongitudeTextView.toString().toDouble()))
+            mLatitudeTextView.toDouble(),
+            mLongitudeTextView.toDouble())
+        )
 
         call.enqueue(object: Callback<RegisterResponse> {
             override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
@@ -452,8 +458,6 @@ class RegisterActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallback
             override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
                 token = response.body()?.token ?: ""
                 Log.i("onRespone", token)
-                val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
-                startActivity(intent)
             }
         })
     }

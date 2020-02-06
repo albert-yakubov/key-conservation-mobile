@@ -41,7 +41,7 @@ companion object{
             getUser()
         }
         btn_register.setOnClickListener {
-            val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
+            val intent = Intent(this@LoginActivity, LoginScreenActivity::class.java)
             startActivity(intent)
 
         }

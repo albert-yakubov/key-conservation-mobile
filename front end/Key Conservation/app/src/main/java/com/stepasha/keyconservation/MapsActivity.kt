@@ -20,6 +20,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.squareup.picasso.Picasso
 import com.stepasha.keyconservation.model.Campaign
@@ -31,18 +32,12 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
+class MapsActivity : AppCompatActivity(), OnMapReadyCallback
+{
     //initialize maps
     private lateinit var mMap: GoogleMap
 
-    var ulatitude: Double= 0.0
-    var ulongitude: Double= 0.0
-    var campaign: MutableList<Campaign>? = null
-
-    var facebook = ""
-    var twitter = ""
-    var instagram = ""
-    var primaryemail = ""
+    var username = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -201,12 +196,16 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                         var newCampaign = campaigns!![i]
                         //if not caught
                         val campaignLoc =
-                            LatLng(newCampaign.latitude!!, newCampaign.longitude!!)
+                            LatLng(newCampaign.latitude ?: 0.0, newCampaign.longitude ?: 0.0)
+
+                        val campTitle = newCampaign.event_name ?: ""
+
+                        val campDesc = newCampaign.event_description ?: ""
                         mMap.addMarker(
                             MarkerOptions()
                                 .position(campaignLoc)
-                                .title("Campaign")
-                                .snippet("Campaign Snippet")
+                                .title(campTitle)
+                                .snippet(campDesc)
                                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.gcheck))
                         )
 //if you are within 2 ft of pokemon he is yours
@@ -241,6 +240,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         })
 
     }
+
     //load pokemons in the list (As many as you want)
     private fun loadUser(){
         val call: Call<MutableList<User>> = ServiceBuilder.create().getAllUsers()
@@ -262,29 +262,26 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                         //if not caught
                         val userLoc =
                             LatLng(newUser.ulatitude ?: 0.0, newUser.ulongitude ?: 0.0)
-                        val userId = newUser.userid ?: 1
-                        userid = userId
+
+                        ID = newUser.userid ?: 777
+
 
 
                         val mapUsername = newUser.username ?: ""
+
                         mapUsern = mapUsername
                         val mapUserDescription = newUser.mini_bio ?: ""
 
                         mMap.addMarker(
-                            MarkerOptions()
-                                .position(userLoc)
-                                .title(mapUsername)
-                                .snippet(mapUserDescription)
-                                .visible(true)
-                                .icon(BitmapDescriptorFactory.fromResource(R.drawable.gcheck))
-                        )
-
-                        mMap.setOnInfoWindowClickListener {
-                            getUserInfo()
+                                MarkerOptions()
+                                    .position(userLoc)
+                                    .title(mapUsername)
+                                    .snippet(mapUserDescription)
+                                    .visible(true)
+                                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.gcheck))
+                            )
 
 
-
-                        }
 
 
 
@@ -300,18 +297,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
                                 Toast.makeText(applicationContext,
                                     "You have caught up a new pockemon, your new power is $playerPower",Toast.LENGTH_LONG).show()
 
-                            }*/
-
+                       }*/
                     }
-
-
-
-
-
-
-
-
-
                 }
                 else{
                     Log.i("Properties ", "OnResponseFailure ${response.errorBody()}")
@@ -330,11 +317,12 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     }
     //check permissions on older versions
     companion object {
-
+        const val TAGUSER = ""
         var campaigns: MutableList<Campaign>? = null
         var users: MutableList<User>? =null
-         var userid : Long = 12134556456
+        var ID : Long = 12134556456
         var mapUsern = ""
+
 
 
         fun checkPermission(mapsActivity: MapsActivity){
@@ -359,39 +347,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
     fun jump(): Boolean{
-        val  intent = Intent(this, ConnectActivity::class.java)
-        startActivity(intent)
+
         return true
     }
 
-    fun getUserInfo(){
-        val call: Call<UserResult> = ServiceBuilder.create().getUser(mapUsern)
-        call.enqueue(object: Callback<UserResult> {
-            override fun onFailure(call: Call<UserResult>, t: Throwable) {
-                Log.i("Login:", "OnFailure ${t.message.toString()}")
-                Toast.makeText(this@MapsActivity, "Invalid Login Info", Toast.LENGTH_LONG).show()
-            }
 
-            override fun onResponse(call: Call<UserResult>, response: Response<UserResult>) {
-                if(response.isSuccessful) {
-
-                    userid = response.body()?.userid ?: 222124527827247
-                    mapUsern = response.body()?.username?: ""
-
-                }
-                else{
-                    Log.i("Login", "Failure ${response.errorBody().toString()}")
-                    Toast.makeText(this@MapsActivity, "Invalid Login Info", Toast.LENGTH_LONG).show()
-
-                }
-
-                val intent = Intent(this@MapsActivity, ConnectActivity::class.java)
-                startActivity(intent)
-
-            }
-
-        })
-    }
 
 
 }

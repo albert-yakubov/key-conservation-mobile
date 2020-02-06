@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context=".RegisterActivity">
+    tools:context=".ConservationRegisterActivity">
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/text_input_lat"
+        android:id="@+id/text_input_lat3"
         android:layout_width="123dp"
         android:layout_height="53dp"
         android:layout_margin="16dp"
@@ -29,7 +29,7 @@
             android:layout_height="match_parent"
             android:hint="lat"
             android:inputType="numberDecimal"
-
+            android:visibility="invisible"
             app:layout_constraintBottom_toTopOf="@+id/btn_register_create2"
             app:layout_constraintEnd_toStartOf="@+id/text_input_lon"
             app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +37,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/text_input_lon"
+        android:id="@+id/text_input_lon2"
         android:layout_width="123dp"
         android:layout_height="53dp"
         android:layout_margin="16dp"
@@ -55,6 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="lon"
+            android:visibility="invisible"
             android:inputType="numberDecimal" />
 
     </com.google.android.material.textfield.TextInputLayout>

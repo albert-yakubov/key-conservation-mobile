@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.stepasha.keyconservation.adapter.RecyclerViewAdapter
@@ -25,6 +26,12 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         navigation.setOnNavigationItemSelectedListener(this)
+
+        if (!LoginActivity.admins){
+            view_floatingbutton.visibility = View.GONE
+        }else if(LoginActivity.admins){
+            view_floatingbutton.visibility = View.VISIBLE
+        }
 
         view_floatingbutton.setOnClickListener {
             val intent = Intent(this, CreatePostActivity::class.java)

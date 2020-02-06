@@ -32,6 +32,16 @@ class UpdateProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_update_profile)
+        minibio = edittext_minibio?.text.toString()
+        species = edittext_species?.text.toString()
+        facebook = edittext_facebook?.text.toString()
+        instagram = edittext_instagram?.text.toString()
+        twitter = edittext_twitter?.text.toString()
+        location = edittext_location?.text.toString()
+        ulatitude = LoginActivity.ulatitude
+        ulongitude = LoginActivity.ulongitude
+        aboutUs = edittext_about_us?.text.toString()
+        issues = edittext_issues?.text.toString()
 
         getUserById()
 
@@ -62,18 +72,18 @@ class UpdateProfileActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if(response.isSuccessful){
-                    minibio = edittext_minibio?.text.toString()
-                    species = edittext_species?.text.toString()
-                    facebook = edittext_facebook?.text.toString()
-                    instagram = edittext_instagram?.text.toString()
-                    twitter = edittext_twitter?.text.toString()
-                    location = edittext_location?.text.toString()
-                    ulatitude = LoginActivity.ulatitude
-                    ulongitude = LoginActivity.ulongitude
-                    aboutUs = edittext_about_us?.text.toString()
-                    issues = edittext_issues?.text.toString()
+                  minibio = edittext_minibio?.text.toString()
+                  species = edittext_species?.text.toString()
+                  facebook = edittext_facebook?.text.toString()
+                  instagram = edittext_instagram?.text.toString()
+                  twitter = edittext_twitter?.text.toString()
+                  location = edittext_location?.text.toString()
+                  ulatitude = LoginActivity.ulatitude
+                  ulongitude = LoginActivity.ulongitude
+                  aboutUs = edittext_about_us?.text.toString()
+                  issues = edittext_issues?.text.toString()
 
-                 //   UpdateUser(userid, minibio, species,facebook,instagram,twitter,location,latitude,longitude)
+                    //   UpdateUser(userid, minibio, species,facebook,instagram,twitter,location,latitude,longitude)
                     //code goes here
                     Toast.makeText(this@UpdateProfileActivity, "Addded", Toast.LENGTH_LONG).show()
                     val intent = Intent(this@UpdateProfileActivity, MainActivity::class.java)

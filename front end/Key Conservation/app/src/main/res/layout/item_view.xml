@@ -133,21 +133,10 @@
                 android:src="@drawable/delete_icon"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.302"
+                app:layout_constraintHorizontal_bias="0.842"
                 app:layout_constraintStart_toEndOf="@+id/textview_eventdate"
                 app:layout_constraintTop_toBottomOf="@+id/imageView_bannerimage"
                 app:layout_constraintVertical_bias="0.882" />
-
-            <Switch
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/flag_for_review"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.692"
-                app:layout_constraintStart_toEndOf="@+id/imageButton"
-                app:layout_constraintTop_toBottomOf="@+id/imageView_bannerimage"
-                app:layout_constraintVertical_bias="0.846" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

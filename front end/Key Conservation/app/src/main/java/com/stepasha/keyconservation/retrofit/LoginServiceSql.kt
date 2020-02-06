@@ -28,8 +28,8 @@ interface LoginServiceSql{
 
 
 
-    @POST("createnewuser")
-    fun createUser(@Body newUser: NewUser): Call<RegisterResponse>
+    @POST("users/user")
+    fun createUser(@Body newUser: Neweruser): Call<RegisterResponse>
 
     @POST("campaigns/campaign")
     //  fun createProperty(@Header("Authorization") authToken: String, @Body newProperty: NewProperty): Call<Void>
@@ -43,7 +43,6 @@ interface LoginServiceSql{
     fun deleteCampaign(@Path("eventid") eventid: Long) : Call<Void>
 
     @GET("users/user/name/{userName}")
-
     fun getUser2(@Path("userName")username: String): Call<User>
 
     companion object {

@@ -8,18 +8,17 @@ import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
 import com.squareup.picasso.Picasso
+import com.stepasha.keyconservation.MapsActivity.Companion.TAGUSER
 import com.stepasha.keyconservation.model.User
-import com.stepasha.keyconservation.model.UserResult
 import com.stepasha.keyconservation.retrofit.ServiceBuilder
 import kotlinx.android.synthetic.main.activity_connect.*
-import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class ConnectActivity : AppCompatActivity() {
-
-    var userid = MapsActivity.userid
+    var username: String = ""
+    var userid: Long = 1
     var minibio: String = ""
     var species:String= ""
     var facebook: String= ""
@@ -38,6 +37,7 @@ class ConnectActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_connect)
+
 
 
 
@@ -60,9 +60,12 @@ class ConnectActivity : AppCompatActivity() {
         getUserById()
 
     }
-    fun getUserById(){
 
-        val call: Call<User> = ServiceBuilder.create().getUserById(userid)
+
+    fun getUserById(){
+        val receivedUser = intent.getStringExtra(TAGUSER)
+        username = receivedUser
+        val call: Call<User> = ServiceBuilder.create().getUser2(username)
 
         call.enqueue(object: Callback<User> {
             override fun onFailure(call: Call<User>, t: Throwable) {
@@ -76,7 +79,11 @@ class ConnectActivity : AppCompatActivity() {
                     twitter = response.body()?.twitter ?: ""
                     instagram = response.body()?.instagram ?: ""
                     primaryemail = response.body()?.primaryemail ?: ""
+                    ulatitude = response.body()?.ulatitude ?: 0.0
 
+                    ulongitude = response.body()?.ulongitude ?: 0.0
+
+                    view_location2.text = response.body()?.ulongitude.toString()
 
 
 
@@ -136,6 +143,9 @@ class ConnectActivity : AppCompatActivity() {
             Toast.makeText(this, e.message, Toast.LENGTH_LONG).show()
         }
 
+    }
+    companion object{
+        const val TAG = "TAG"
     }
 
 }
