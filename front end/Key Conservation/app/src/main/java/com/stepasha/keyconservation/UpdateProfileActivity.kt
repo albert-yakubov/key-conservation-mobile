@@ -18,13 +18,25 @@ class UpdateProfileActivity : AppCompatActivity() {
       var minibio: String = ""
       var species:String= ""
      var facebook: String= ""
-      var instagram: String= ""
-     var twitter : String= ""
+      var instagram = "instagram"
+     var twitter = "twitter"
       var location :String= ""
      var ulatitude: Double = 0.0
      var ulongitude: Double = 0.0
-     var aboutUs: String=""
-     var issues: String=""
+     var aboutUs= "About Us"
+     var issues = "Issues"
+
+
+    var minibio2 = "I am not so nice"
+    var species2= "Cats"
+    var facebook2 = "facebook.com"
+    var instagram2 = "instagram"
+    var twitter2 = "twitter"
+    var location2 = "Denver"
+    var ulatitude2: Double = 0.0
+    var ulongitude2: Double = 0.0
+    var aboutUs2= "About Us"
+    var issues2 = "Issues"
 
 
 
@@ -32,38 +44,40 @@ class UpdateProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_update_profile)
-        minibio = edittext_minibio?.text.toString()
-        species = edittext_species?.text.toString()
-        facebook = edittext_facebook?.text.toString()
-        instagram = edittext_instagram?.text.toString()
-        twitter = edittext_twitter?.text.toString()
-        location = edittext_location?.text.toString()
-        ulatitude = LoginActivity.ulatitude
-        ulongitude = LoginActivity.ulongitude
-        aboutUs = edittext_about_us?.text.toString()
-        issues = edittext_issues?.text.toString()
+        minibio2 = edittext_minibio?.text.toString()
+        species2 = edittext_species?.text.toString()
+        facebook2 = edittext_facebook?.text.toString()
+        instagram2 = edittext_instagram?.text.toString()
+        twitter2 = edittext_twitter?.text.toString()
+        location2 = edittext_location?.text.toString()
+        ulatitude2 = LoginActivity.ulatitude
+        ulongitude2 = LoginActivity.ulongitude
+        aboutUs2 = edittext_about_us?.text.toString()
+        issues2 = edittext_issues?.text.toString()
 
         getUserById()
 
         imagebutton_update_profile.setOnClickListener {
 
-
+            minibio2 = edittext_minibio?.text.toString()
+            species2 = edittext_species?.text.toString()
+            facebook2 = edittext_facebook?.text.toString()
+            instagram2 = edittext_instagram?.text.toString()
+            twitter2 = edittext_twitter?.text.toString()
+            location2 = edittext_location?.text.toString()
+            ulatitude2 = LoginActivity.ulatitude
+            ulongitude2 = LoginActivity.ulongitude
+            aboutUs2 = edittext_about_us?.text.toString()
+            issues2 = edittext_issues?.text.toString()
             updateUserById()
         }
     }
 
 
     fun updateUserById(){
-        val call: Call<Void> = ServiceBuilder.create().updateUserById(LoginActivity.userid, UpdateUser(minibio,
-            species,
-            facebook,
-            instagram,
-            twitter,
-            location,
-            LoginActivity.ulatitude,
-            LoginActivity.ulongitude,
-            aboutUs,
-            issues))
+        val call: Call<Void> = ServiceBuilder.create().updateUserById(LoginActivity.userid, UpdateUser(minibio2,
+        species2, facebook2, instagram2, twitter2, location2, ulatitude2, ulongitude2, aboutUs2, issues2)
+        )
 
         call.enqueue(object: Callback<Void> {
             override fun onFailure(call: Call<Void>, t: Throwable) {
@@ -72,21 +86,13 @@ class UpdateProfileActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if(response.isSuccessful){
-                  minibio = edittext_minibio?.text.toString()
-                  species = edittext_species?.text.toString()
-                  facebook = edittext_facebook?.text.toString()
-                  instagram = edittext_instagram?.text.toString()
-                  twitter = edittext_twitter?.text.toString()
-                  location = edittext_location?.text.toString()
-                  ulatitude = LoginActivity.ulatitude
-                  ulongitude = LoginActivity.ulongitude
-                  aboutUs = edittext_about_us?.text.toString()
-                  issues = edittext_issues?.text.toString()
+
+
 
                     //   UpdateUser(userid, minibio, species,facebook,instagram,twitter,location,latitude,longitude)
                     //code goes here
                     Toast.makeText(this@UpdateProfileActivity, "Addded", Toast.LENGTH_LONG).show()
-                    val intent = Intent(this@UpdateProfileActivity, MainActivity::class.java)
+                    val intent = Intent(this@UpdateProfileActivity, ProfileActivity::class.java)
                     startActivity(intent)
 
                 }
@@ -123,11 +129,10 @@ class UpdateProfileActivity : AppCompatActivity() {
                     edittext_location.setText(location)
                     ulatitude = LoginActivity.ulatitude
                     edittext_lat.setText(ulatitude.toString())
-
                     ulongitude = LoginActivity.ulongitude
                     edittext_lon.setText(ulongitude.toString())
                     aboutUs = response.body()?.about_us ?: ""
-                    edittext_minibio.setText(minibio)
+                    edittext_about_us.setText(minibio)
                     issues = response.body()?.issues ?: ""
                     edittext_issues.setText(issues)
                     Log.i("mini bio", response.body()!!.mini_bio ?: "")

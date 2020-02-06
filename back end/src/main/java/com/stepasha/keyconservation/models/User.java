@@ -44,26 +44,25 @@ public class User extends Auditable
     @Column(nullable = false,
     updatable = false)
     private Boolean position;
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String mini_bio;
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String species;
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String facebook;
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String instagram;
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String twitter;
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String location;
-    @Column(nullable = true)
+    @Column(nullable = false)
     private Double ulatitude;
-    @Column(nullable = true)
+    @Column(nullable = false)
     private Double ulongitude;
-
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String about_us;
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String issues;
 
 
