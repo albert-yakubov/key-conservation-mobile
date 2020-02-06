@@ -20,7 +20,7 @@ public class User extends Auditable
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long userid;
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String profilepicture;
 
     @Column(nullable = false,
@@ -56,9 +56,9 @@ public class User extends Auditable
     private String twitter;
     @Column(nullable = true)
     private String location;
-    @Column(nullable = false)
+    @Column(nullable = true)
     private Double ulatitude;
-    @Column(nullable = false)
+    @Column(nullable = true)
     private Double ulongitude;
 
     @Column(nullable = true)

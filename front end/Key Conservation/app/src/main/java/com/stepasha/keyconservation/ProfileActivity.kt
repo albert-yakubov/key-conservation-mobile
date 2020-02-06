@@ -5,6 +5,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -39,8 +40,24 @@ class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
+        view_lat.visibility = View.GONE
+        view_lon.visibility = View.GONE
 
 
+        if (!LoginActivity.admins){
+           view_buttonUpdate.visibility = View.GONE
+
+
+
+        }else if(LoginActivity.admins){
+            view_buttonUpdate.visibility = View.VISIBLE
+            species.visibility = View.VISIBLE
+            view_species.visibility = View.VISIBLE
+            Issues.visibility = View.VISIBLE
+            view_issues.visibility = View.VISIBLE
+            About_Us.visibility = View.VISIBLE
+            view_aboutus.visibility = View.VISIBLE
+        }
         view_buttonUpdate.setOnClickListener {
             val intent = Intent(this@ProfileActivity, UpdateProfileActivity::class.java)
             startActivity(intent)

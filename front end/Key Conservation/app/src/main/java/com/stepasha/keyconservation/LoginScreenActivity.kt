@@ -12,7 +12,11 @@ class LoginScreenActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login_screen)
 
         view_iWanttoHelpButton.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
+        view_iNeedHelpButton.setOnClickListener {
+            val intent = Intent(this, ConservationRegisterActivity::class.java)
             startActivity(intent)
         }
     }

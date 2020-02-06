@@ -126,7 +126,6 @@ class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
         val lat: TextView? = itemView.textview_lat
         val lon: TextView? = itemView.textview_lon
         val bannerImage: ImageView? = itemView.imageView_eventimage
-
         val eventName: TextView? = itemView.textview_eventname
         val eventDescription: TextView? = itemView.textview_eventdescription
         val eventDate: TextView? = itemView.textview_eventdate
