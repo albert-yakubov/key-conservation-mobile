@@ -31,8 +31,11 @@ data class NewCampaign(
     var banner_image: String,
 
     var location: String,
+    var latitude: Double,
 
-    var created_at: Long,
+    var longitude: Double,
+
+    var created_at: String,
 
     var event_image: String,
 

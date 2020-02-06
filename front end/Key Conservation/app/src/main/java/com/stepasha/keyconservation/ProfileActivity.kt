@@ -51,12 +51,7 @@ class ProfileActivity : AppCompatActivity() {
 
         }else if(LoginActivity.admins){
             view_buttonUpdate.visibility = View.VISIBLE
-            species.visibility = View.VISIBLE
-            view_species.visibility = View.VISIBLE
-            Issues.visibility = View.VISIBLE
-            view_issues.visibility = View.VISIBLE
-            About_Us.visibility = View.VISIBLE
-            view_aboutus.visibility = View.VISIBLE
+
         }
         view_buttonUpdate.setOnClickListener {
             val intent = Intent(this@ProfileActivity, UpdateProfileActivity::class.java)

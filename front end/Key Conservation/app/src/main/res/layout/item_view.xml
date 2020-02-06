@@ -60,7 +60,7 @@
                 app:layout_constraintVertical_bias="0.046"
                 tools:layout_editor_absoluteX="0dp" >
 
-                <!--<VideoView
+                <VideoView
 
                     android:id="@+id/view_myvideo"
                     android:layout_width="match_parent"
@@ -71,7 +71,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textview_location"
                     app:layout_constraintVertical_bias="0.046"
-                    tools:layout_editor_absoluteX="0dp" />-->
+                    tools:layout_editor_absoluteX="0dp" />
                 <ImageView
                     android:id="@+id/imageView_eventimage"
                     android:layout_width="match_parent"
@@ -79,7 +79,7 @@
                     android:adjustViewBounds="true"
                     android:contentDescription="@string/banner_image"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/bongo"
+                    android:src="@drawable/play_image"
                     android:visibility="visible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textview_location"
@@ -115,8 +115,8 @@
             <TextView
 
                 android:id="@+id/textview_eventdate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="218dp"
+                android:layout_height="25dp"
                 android:layout_marginBottom="16dp"
                 android:text="@string/post_date"
                 app:layout_constraintBottom_toBottomOf="parent"
