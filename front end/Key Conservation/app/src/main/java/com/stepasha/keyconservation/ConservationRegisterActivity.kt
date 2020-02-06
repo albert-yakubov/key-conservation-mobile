@@ -83,10 +83,14 @@ class ConservationRegisterActivity : AppCompatActivity(), GoogleApiClient.Connec
     var position: Boolean = true
 
     //for the rest of the string calls
-    var miniBio = ""
-    var species = ""
+    var miniBio = "Great Organizer"
+    var species = "Cats"
+    var issues = "issues"
     var location = ""
-
+    var aboutUs = "About Us"
+    var facebook = "facebook"
+    var twitter = "twitter"
+    var instagram = "instagram"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -436,19 +440,23 @@ class ConservationRegisterActivity : AppCompatActivity(), GoogleApiClient.Connec
     }
     private fun createUserr(){
         val call: Call<RegisterResponse> = ServiceBuilder.create().createUser(
-            Neweruser( mCurrentPhotoPath,
-            username,
-            password,
-            primaryemail,
-            firstname,
-            lastname,
-            position,
-            miniBio,
-            species,
-            location,
-            mLatitudeTextView.toDouble(),
-            mLongitudeTextView.toDouble())
-        )
+            Neweruser(mCurrentPhotoPath,
+                username,
+                password,
+                primaryemail,
+                facebook,
+                twitter,
+                instagram,
+                firstname,
+                lastname,
+                position,
+                miniBio,
+                species,
+                issues,
+                aboutUs,
+                location,
+                mLatitudeTextView.toString().toDouble(),
+                mLongitudeTextView.toString().toDouble()))
 
         call.enqueue(object: Callback<RegisterResponse> {
             override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {

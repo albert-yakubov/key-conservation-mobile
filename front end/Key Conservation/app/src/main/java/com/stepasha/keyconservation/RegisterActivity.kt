@@ -82,9 +82,16 @@ class RegisterActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallback
     var position: Boolean = false
 
     //for the rest of the string calls
-    var miniBio = ""
-    var species = ""
+    var miniBio = "Great Organizer!"
+    var species = "Cats"
+    var issues = "issues"
     var location = ""
+    var aboutUs = "About Us"
+    var facebook = "facebook"
+    var twitter = "twitter"
+    var instagram = "instagram"
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -435,11 +442,16 @@ class RegisterActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallback
             username,
             password,
             primaryemail,
+            facebook,
+            twitter,
+            instagram,
             firstname,
             lastname,
             position,
             miniBio,
             species,
+            issues,
+            aboutUs,
             location,
             mLatitudeTextView.toString().toDouble(),
             mLongitudeTextView.toString().toDouble()))
