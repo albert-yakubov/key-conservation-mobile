@@ -23,4 +23,11 @@
     <string name="mini_bio">Mini Bio</string>
     <string name="species_and_habitats">Species and habitats</string>
     <string name="title_activity_maps">Map</string>
+
+        <string name="play">Play</string>
+        <string name="pause">Pause</string>
+        <string name="paused">Paused…</string>
+        <string name="playing">Playing…</string>
+
+
 </resources>

@@ -89,6 +89,18 @@ class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
         holder.eventDescription?.text = currentCampaign?.event_description
         holder.eventDate?.text = currentCampaign?.created_at.toString()
 
+        holder.bannerImage?.setOnClickListener {
+            holder.bannerImage.visibility = View.GONE
+            holder.myVideo?.visibility = View.VISIBLE
+            holder.myVideo?.setVideoURI(uri)
+            holder.myVideo?.start()
+        }
+        holder.myVideo?.setOnClickListener {
+            holder.myVideo.stopPlayback()
+            holder.myVideo.visibility = View.GONE
+            holder.bannerImage?.visibility = View.VISIBLE
+        }
+
         holder.deleteButton.setOnClickListener {
             val builder = AlertDialog.Builder(context)
             builder.setTitle("Delete Confirmation")
@@ -112,19 +124,14 @@ class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
 
 
 
-    //    holder.bannerImage?.setOnClickListener {
 
-      //  holder.bannerImage.visibility = View.INVISIBLE
-
-       //     holder.myVideo?.setVideoURI(uri)
-      //      holder.myVideo?.start()
-      //  }
     }
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val deleteButton: ImageButton = itemView.imageButton
         val location: TextView? = itemView.textview_location
         val lat: TextView? = itemView.textview_lat
         val lon: TextView? = itemView.textview_lon
+        val myVideo: VideoView? = itemView.view_myvideo
         val bannerImage: ImageView? = itemView.imageView_eventimage
         val eventName: TextView? = itemView.textview_eventname
         val eventDescription: TextView? = itemView.textview_eventdescription
