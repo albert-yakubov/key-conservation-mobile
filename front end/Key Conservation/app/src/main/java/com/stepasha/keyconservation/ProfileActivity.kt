@@ -95,7 +95,7 @@ class ProfileActivity : AppCompatActivity() {
                     view_lat.setText(ulatitude.toString())
                     ulongitude = LoginActivity.ulongitude
                     view_lon.setText(ulongitude.toString())
-                    view_location.text = response.body()?.ulongitude.toString()
+                    view_location.text = response.body()?.location.toString()
 
 
 
