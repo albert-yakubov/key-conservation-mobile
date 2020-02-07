@@ -1,5 +1,6 @@
 package com.stepasha.keyconservation
 
+import com.stepasha.keyconservation.model.UpdateUser
 import com.stepasha.keyconservation.model.User
 import org.junit.Assert
 import org.junit.Before
@@ -33,7 +34,8 @@ public class UserUnitTest {
     private val ALLOWED_LOCATION = "Denver"
     private val ALLOWED_ABOUTUS = "Greener Earth"
     private val ALLOWED_ISSUES = "Global Warming"
-
+    private val ALLOWED_LAT = 39.00452
+    private val ALLOWED_LON = -120.004654
 
 
     //creates tests based on mock annotations
@@ -70,6 +72,64 @@ public class UserUnitTest {
         // Then
         Assert.assertNotNull(postActivity)
     }
+    //test if activity 2 loads
+    @Test
+    fun UPDATEuSER_ShouldNOT_be_Null() {
+        // Given
+        val updateUser = UpdateUser()
+        // When
+        // Then
+        Assert.assertNotNull(updateUser)
+    }
+    //test if activity 2 loads
+    @Test
+    fun Connect_ShouldNOT_be_Null() {
+        // Given
+        val connectActivity = ConnectActivity()
+        // When
+        // Then
+        Assert.assertNotNull(connectActivity)
+    }
+    //test if activity 2 loads
+    @Test
+    fun conserveRegister_ShouldNOT_be_Null() {
+        // Given
+        val conservationRegisterActivity = ConservationRegisterActivity()
+        // When
+        // Then
+        Assert.assertNotNull(conservationRegisterActivity)
+    }
+    //test if activity 2 loads
+    @Test
+    fun loginScreen_ShouldNOT_be_Null() {
+        // Given
+        val loginScreenActivity = LoginScreenActivity()
+        // When
+        // Then
+        Assert.assertNotNull(loginScreenActivity)
+    }
+    //test if activity 2 loads
+    @Test
+    fun profile_ShouldNOT_be_Null() {
+        // Given
+        val profileActivity = ProfileActivity()
+        // When
+        // Then
+        Assert.assertNotNull(profileActivity)
+    }
+    //test if activity 2 loads
+    @Test
+    fun Maps_ShouldNOT_be_Null() {
+        // Given
+        val mapsActivity = MapsActivity()
+        // When
+        // Then
+        Assert.assertNotNull(mapsActivity)
+    }
+
+
+
+
 
 
     //test if fragment loads
@@ -414,5 +474,59 @@ public class UserUnitTest {
         junit.framework.Assert.assertEquals(testMinibio, userModel.mini_bio, ALLOWED_MINIBIO)
 
     }
+
+    @Test
+    fun latitudeTest() {
+//serves as key or a double sided scale
+        val testLat = "39.00452"
+        userModel = User(1,
+            1, "Note",
+            "stepasha2006",
+            "password",
+            "gmail@gmail.com",
+            "Albert",
+            "Yakubov",
+            true,
+            "I am nice",
+            "cats",
+            "facebook",
+            "instagram",
+            "twitter",
+            "Denver",
+            39.00452,
+            -120.004654,
+            "Greener Earth",
+            "Global Warming")
+
+        junit.framework.Assert.assertEquals(testLat, userModel.ulatitude, ALLOWED_LAT)
+
+    }
+    @Test
+    fun longitudeTest() {
+//serves as key or a double sided scale
+        val testLon = "-120.004654"
+        userModel = User(1,
+            1, "Note",
+            "stepasha2006",
+            "password",
+            "gmail@gmail.com",
+            "Albert",
+            "Yakubov",
+            true,
+            "I am nice",
+            "cats",
+            "facebook",
+            "instagram",
+            "twitter",
+            "Denver",
+            39.00452,
+            -120.004654,
+            "Greener Earth",
+            "Global Warming")
+
+        junit.framework.Assert.assertEquals(testLon, userModel.ulongitude, ALLOWED_LON)
+
+    }
+
 
 }

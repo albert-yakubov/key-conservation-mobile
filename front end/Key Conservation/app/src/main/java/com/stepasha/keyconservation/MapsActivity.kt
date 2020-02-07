@@ -206,7 +206,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback
                                 .position(campaignLoc)
                                 .title(campTitle)
                                 .snippet(campDesc)
-                                .icon(BitmapDescriptorFactory.fromResource(R.drawable.gcheck))
+                                .icon(BitmapDescriptorFactory.fromResource(R.drawable.camp_icon))
                         )
 //if you are within 2 ft of pokemon he is yours
                         /*if(location!!.distanceTo((newCampaign.location))<2){
@@ -278,7 +278,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback
                                     .title(mapUsername)
                                     .snippet(mapUserDescription)
                                     .visible(true)
-                                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.gcheck))
+                                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.user_icon))
                             )
 
 
