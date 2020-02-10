@@ -88,6 +88,7 @@ class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
         holder.eventName?.text = currentCampaign?.event_name
         holder.eventDescription?.text = currentCampaign?.event_description
         holder.eventDate?.text = currentCampaign?.created_at.toString()
+        holder.username?.text = currentCampaign?.username.toString()
 
         holder.bannerImage?.setOnClickListener {
             holder.bannerImage.visibility = View.GONE
@@ -136,6 +137,7 @@ class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
         val eventName: TextView? = itemView.textview_eventname
         val eventDescription: TextView? = itemView.textview_eventdescription
         val eventDate: TextView? = itemView.textview_eventdate
+        val username: TextView? = itemView.textview_username
 
 
         fun cardViewDeleteOnLongPress(itemPosition: Int) {

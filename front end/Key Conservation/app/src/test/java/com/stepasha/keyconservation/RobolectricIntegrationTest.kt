@@ -25,13 +25,6 @@ public class RobolectricIntegrationTest() {
             .get()
     }
     @Test
-    @Throws(java.lang.Exception::class)
-    fun shouldNotBeNull() {
-        assertNotNull(activity)
-    }
-
-
-    @Test
 
     fun creatingPost_ShouldNOT_be_Null() {
         // Given
@@ -40,5 +33,13 @@ public class RobolectricIntegrationTest() {
         // Then
         assertNotNull(postActivity)
     }
+    @Test
+  //  @Throws(java.lang.Exception::class)
+    fun shouldNotBeNull() {
+        assertNotNull(activity)
+    }
+
+
+
 
 }

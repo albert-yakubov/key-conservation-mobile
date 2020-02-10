@@ -63,9 +63,9 @@ class ConnectActivity : AppCompatActivity() {
 
 
     fun getUserById(){
-        val receivedUser = intent.getStringExtra(TAGUSER)
-        username = receivedUser
-        val call: Call<User> = ServiceBuilder.create().getUser2(username)
+      //  val receivedUser = intent.getStringExtra(TAGUSER)
+    //    username = receivedUser
+        val call: Call<User> = ServiceBuilder.create().getUser2(MapsActivity.mapUsern)
 
         call.enqueue(object: Callback<User> {
             override fun onFailure(call: Call<User>, t: Throwable) {
@@ -83,7 +83,7 @@ class ConnectActivity : AppCompatActivity() {
 
                     ulongitude = response.body()?.ulongitude ?: 0.0
 
-                    view_location2.text = response.body()?.ulongitude.toString()
+                    view_location2.text = response.body()?.location.toString()
 
 
 

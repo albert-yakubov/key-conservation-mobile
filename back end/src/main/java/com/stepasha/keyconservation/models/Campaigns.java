@@ -1,9 +1,12 @@
 package com.stepasha.keyconservation.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.stepasha.keyconservation.logging.Loggable;
+import net.bytebuddy.asm.Advice;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Loggable
@@ -31,9 +34,8 @@ public class Campaigns extends Auditable{
     @Column(nullable = true)
     private String event_description;
 
-    @ManyToOne
-    @JoinColumn(name = "users",
-            nullable = true)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "USERID")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private User user;
 
