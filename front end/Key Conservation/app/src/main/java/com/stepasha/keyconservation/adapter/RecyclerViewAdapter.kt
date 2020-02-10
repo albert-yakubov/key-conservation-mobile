@@ -88,7 +88,7 @@ class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
         holder.eventName?.text = currentCampaign?.event_name
         holder.eventDescription?.text = currentCampaign?.event_description
         holder.eventDate?.text = currentCampaign?.created_at.toString()
-        holder.username?.text = currentCampaign?.username.toString()
+        holder.username?.text = currentCampaign?.user?.username.toString()
 
         holder.bannerImage?.setOnClickListener {
             holder.bannerImage.visibility = View.GONE

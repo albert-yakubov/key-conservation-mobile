@@ -26,7 +26,7 @@ public class Campaigns extends Auditable{
     @Column(nullable = true)
     private Float longitude;
     @Column(nullable = true)
-    private Date created_at;
+    private String  created_at;
     @Column(nullable = true)
     private String event_image;
     @Column(nullable = true)
@@ -41,7 +41,7 @@ public class Campaigns extends Auditable{
 
     public Campaigns(){}
 
-    public Campaigns(long id, String title, String banner_image, String location, Float latitude, Float longitude, Date created_at, String event_image, String event_name, String event_description, User user) {
+    public Campaigns(long id, String title, String banner_image, String location, Float latitude, Float longitude, String created_at, String event_image, String event_name, String event_description, User user) {
         this.id = id;
         this.title = title;
         this.banner_image = banner_image;
@@ -111,11 +111,11 @@ public class Campaigns extends Auditable{
         this.location = location;
     }
 
-    public Date getCreated_at() {
+    public String getCreated_at() {
         return created_at;
     }
 
-    public void setCreated_at(Date created_at) {
+    public void setCreated_at(String created_at) {
         this.created_at = created_at;
     }
 

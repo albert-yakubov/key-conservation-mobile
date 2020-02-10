@@ -107,7 +107,7 @@ companion object{
         call.enqueue(object: Callback<UserResult> {
             override fun onFailure(call: Call<UserResult>, t: Throwable) {
                 Log.i("Login:", "OnFailure ${t.message.toString()}")
-                Toast.makeText(this@LoginActivity, "Invalid Login Info", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@LoginActivity, "Connection Timed Out! Try Again!", Toast.LENGTH_LONG).show()
             }
 
             override fun onResponse(call: Call<UserResult>, response: Response<UserResult>) {
@@ -125,7 +125,7 @@ companion object{
                 }
                 else{
                     Log.i("Login", "Failure ${response.errorBody().toString()}")
-                    Toast.makeText(this@LoginActivity, "Invalid Login Info", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@LoginActivity, "Invalid Login info!", Toast.LENGTH_LONG).show()
 
                     successfulLogin = false
                 }

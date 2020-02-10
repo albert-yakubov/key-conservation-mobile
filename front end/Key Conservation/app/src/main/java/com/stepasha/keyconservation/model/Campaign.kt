@@ -22,7 +22,7 @@ data class Campaign(
 
     val event_description: String? = null,
 
-    val username: CampUser? = null
+    val user: CampUser
 
 
 ) : Serializable
