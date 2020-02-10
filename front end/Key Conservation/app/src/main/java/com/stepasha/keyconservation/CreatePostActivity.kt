@@ -26,6 +26,8 @@ import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.model.LatLng
+import com.stepasha.keyconservation.model.CampUser
+import com.stepasha.keyconservation.model.NewCampUser
 import com.stepasha.keyconservation.model.NewCampaign
 import com.stepasha.keyconservation.retrofit.ServiceBuilder
 import kotlinx.android.synthetic.main.activity_create_post.*
@@ -151,7 +153,8 @@ class CreatePostActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallba
                 created_at,
                 event_image,
                 event_name,
-                event_description
+                event_description,
+                NewCampUser(LoginActivity.userid)
             )
         )
         call.enqueue(object : Callback<Void> {
@@ -171,7 +174,9 @@ class CreatePostActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallba
                         created_at,
                         event_image,
                         event_name,
-                        event_description
+                        event_description,
+                        NewCampUser(LoginActivity.userid)
+
                     )
                     //     LoginActivity.properties?.plus(nProperty)
                     pb_add_property?.visibility = View.GONE

@@ -16,17 +16,45 @@
             android:layout_height="500dp">
 
 
+            <ImageButton
+                android:id="@+id/textview_profilepicture"
+                android:layout_width="48dp"
+                android:layout_height="45dp"
+                android:layout_alignParentBottom="true"
+                android:layout_toStartOf="@+id/imagebutton_facebbok"
+                app:layout_constraintBottom_toBottomOf="@+id/textview_status"
+                app:layout_constraintEnd_toStartOf="@+id/textview_username"
+                app:layout_constraintHorizontal_bias="0.205"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.275" />
+
             <TextView
                 android:id="@+id/textview_location"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="196dp"
+                android:layout_width="70dp"
+                android:layout_height="19dp"
+                android:layout_marginTop="28dp"
                 android:text="@string/location"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.993"
+                app:layout_constraintHorizontal_bias="0.466"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textview_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="80dp"
+                android:background="@color/orange"
+                android:gravity="center"
+                android:text="status"
+                android:textSize="25sp"
+                app:layout_constraintBottom_toTopOf="@+id/imageView_bannerimage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0" />
 
             <TextView
                 android:id="@+id/textview_username"
@@ -34,12 +62,13 @@
                 android:layout_height="25dp"
                 android:layout_marginEnd="256dp"
                 android:text="@string/username"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/imageView_bannerimage"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.363"
+                app:layout_constraintHorizontal_bias="0.817"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.307" />
+                app:layout_constraintVertical_bias="0.205" />
 
             <TextView
                 android:id="@+id/textview_lat"
@@ -48,10 +77,10 @@
                 android:text="40.2212"
                 app:layout_constraintBottom_toTopOf="@+id/imageView_bannerimage"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.268"
+                app:layout_constraintHorizontal_bias="0.15"
                 app:layout_constraintStart_toEndOf="@+id/textview_location"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.312" />
+                app:layout_constraintVertical_bias="0.343" />
 
             <TextView
                 android:id="@+id/textview_lon"
@@ -60,10 +89,10 @@
                 android:text="-105.2212"
                 app:layout_constraintBottom_toTopOf="@+id/imageView_bannerimage"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.932"
+                app:layout_constraintHorizontal_bias="0.864"
                 app:layout_constraintStart_toEndOf="@+id/textview_location"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.312" />
+                app:layout_constraintVertical_bias="0.333" />
 
             <FrameLayout
                 android:id="@+id/imageView_bannerimage"
@@ -103,6 +132,8 @@
 
 
             <TextView
+                android:textStyle="bold"
+                android:textColor="@color/wine"
                 android:id="@+id/textview_eventname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -113,17 +144,17 @@
                 app:layout_constraintHorizontal_bias="0.049"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView_bannerimage"
-                app:layout_constraintVertical_bias="0.764" />
+                app:layout_constraintVertical_bias="0.678" />
 
             <TextView
                 android:id="@+id/textview_eventdescription"
                 android:layout_width="306dp"
                 android:layout_height="78dp"
-                android:layout_marginBottom="96dp"
+                android:layout_marginBottom="64dp"
                 android:text="@string/event_description"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.304"
+                app:layout_constraintHorizontal_bias="0.247"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
@@ -135,10 +166,10 @@
                 android:text="@string/post_date"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.181"
+                app:layout_constraintHorizontal_bias="0.165"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textview_eventdescription"
-                app:layout_constraintVertical_bias="0.218" />
+                app:layout_constraintVertical_bias="0.672" />
 
             <ImageButton
                 android:id="@+id/imageButton"
@@ -150,7 +181,7 @@
                 app:layout_constraintHorizontal_bias="0.868"
                 app:layout_constraintStart_toEndOf="@+id/textview_eventdate"
                 app:layout_constraintTop_toBottomOf="@+id/imageView_bannerimage"
-                app:layout_constraintVertical_bias="0.67" />
+                app:layout_constraintVertical_bias="0.882" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
