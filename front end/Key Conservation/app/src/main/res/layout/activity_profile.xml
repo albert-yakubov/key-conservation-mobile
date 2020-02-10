@@ -37,7 +37,7 @@
         app:layout_constraintVertical_bias="0.012"
         tools:layout_editor_absoluteX="0dp">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/view_profilepicture"
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -46,7 +46,7 @@
             android:layout_marginBottom="10dp"
             android:layout_toStartOf="@+id/imagebutton_facebbok">
 
-        </ImageView>
+        </de.hdodenhof.circleimageview.CircleImageView>
 
         <TextView
             android:id="@+id/textConnect"

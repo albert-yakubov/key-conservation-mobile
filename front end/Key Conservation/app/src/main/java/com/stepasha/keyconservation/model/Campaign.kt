@@ -20,7 +20,9 @@ data class Campaign(
 
     val event_name: String? = null,
 
-    val event_description: String? = null
+    val event_description: String? = null,
+
+    val username: CampUser? = null
 
 
 ) : Serializable
@@ -45,6 +47,8 @@ data class NewCampaign(
 
 
 ) : Serializable
+
+data class CampUser(var userid: Long, var username: String):Serializable
 
 data class CampResult(val latitude: Double? = null, val longitude: Double? = null)
 data class CampResults(val result: CampResult, val latitude: Double? = null, val longitude: Double? = null)

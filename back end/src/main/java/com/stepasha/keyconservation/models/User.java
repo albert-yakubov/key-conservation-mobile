@@ -18,9 +18,10 @@ import java.util.List;
 public class User extends Auditable
 {
     @Id
+
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long userid;
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String profilepicture;
 
     @Column(nullable = false,

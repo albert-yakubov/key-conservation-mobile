@@ -95,7 +95,7 @@ class CreatePostActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallba
 
         val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 
-        val date : String = sdf.format(Date())
+        val date : String = sdf.format(Date().toString())
         view_created_at.editText?.setText(date)
 
         TAG = localClassName

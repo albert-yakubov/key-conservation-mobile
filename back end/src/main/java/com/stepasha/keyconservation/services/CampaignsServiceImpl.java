@@ -44,6 +44,7 @@ public class CampaignsServiceImpl implements CampaignsService {
         newCampaigns.setEvent_image(campaigns.getEvent_image());
         newCampaigns.setEvent_name(campaigns.getEvent_name());
         newCampaigns.setEvent_description(campaigns.getEvent_description());
+        newCampaigns.setUser(campaigns.getUser());
 
 
         return campaignsRepository.save(newCampaigns);
@@ -78,6 +79,9 @@ public class CampaignsServiceImpl implements CampaignsService {
         }
         if (currentCampaign.getEvent_description()!= null) {
             currentCampaign.setEvent_description(campaigns.getEvent_description());
+        }
+        if(currentCampaign.getUser() != null){
+            currentCampaign.setUser(campaigns.getUser());
         }
 
 

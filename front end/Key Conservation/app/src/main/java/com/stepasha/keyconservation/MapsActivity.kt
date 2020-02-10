@@ -10,7 +10,6 @@ import android.location.LocationManager
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -22,20 +21,23 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
-import com.squareup.picasso.Picasso
 import com.stepasha.keyconservation.model.Campaign
 import com.stepasha.keyconservation.model.User
-import com.stepasha.keyconservation.model.UserResult
 import com.stepasha.keyconservation.retrofit.ServiceBuilder
-import kotlinx.android.synthetic.main.activity_connect.*
+import kotlinx.android.synthetic.main.activity_maps.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MapsActivity : AppCompatActivity(), OnMapReadyCallback
+class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWindowLongClickListener
 {
     //initialize maps
     private lateinit var mMap: GoogleMap
+
+
+
+
+
 
     var username = ""
 
@@ -101,6 +103,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback
     override fun onMapReady(googleMap: GoogleMap) {
 
         mMap = googleMap
+        mMap.setOnInfoWindowLongClickListener(this)
+        mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
+        mMap.uiSettings.isZoomControlsEnabled = true
+        mMap.uiSettings.isZoomGesturesEnabled = true
+        mMap.uiSettings.isCompassEnabled = true
 
     }
 
@@ -264,23 +271,22 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback
                             LatLng(newUser.ulatitude ?: 0.0, newUser.ulongitude ?: 0.0)
 
                         ID = newUser.userid ?: 777
+                        val image = newUser.profilepicture ?: ""
+
 
 
 
                         val mapUsername = newUser.username ?: ""
 
-                        mapUsern = mapUsername
                         val mapUserDescription = newUser.mini_bio ?: ""
 
-                        mMap.addMarker(
+                      mMap.addMarker(
                                 MarkerOptions()
                                     .position(userLoc)
                                     .title(mapUsername)
                                     .snippet(mapUserDescription)
                                     .visible(true)
-                                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.user_icon))
-                            )
-
+                                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.profile_icon)))
 
 
 
@@ -293,7 +299,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback
                                 listCampaigns[i]= newCampaign
                                 //increase tho points
                                 playerPower += newCampaign.power!!
-
                                 Toast.makeText(applicationContext,
                                     "You have caught up a new pockemon, your new power is $playerPower",Toast.LENGTH_LONG).show()
 
@@ -346,11 +351,15 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback
 
         }
     }
-    fun jump(): Boolean{
 
-        return true
+
+    override fun onInfoWindowLongClick(p0: Marker?) {
+        if (p0 != null) {
+            mapUsern = (p0.title)
+            val intent = Intent(this, ConnectActivity::class.java)
+            startActivity(intent)
+        }
     }
-
 
 
 
