@@ -2,6 +2,7 @@ package com.stepasha.keyconservation.adapter
 
 import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import android.net.Uri
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,12 +14,15 @@ import com.bumptech.glide.Glide
 import com.google.android.exoplayer2.DefaultRenderersFactory
 import com.google.android.exoplayer2.ExoPlayerFactory
 import com.squareup.picasso.Picasso
+import com.stepasha.keyconservation.ConnectActivity
 import com.stepasha.keyconservation.LoginActivity
+import com.stepasha.keyconservation.MapsActivity
 import com.stepasha.keyconservation.R
 
 import com.stepasha.keyconservation.model.Campaign
 import com.stepasha.keyconservation.model.User
 import com.stepasha.keyconservation.retrofit.ServiceBuilder
+import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.item_view.view.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -26,7 +30,7 @@ import retrofit2.Response
 import kotlin.collections.ArrayList
 
 class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
-    RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
+    RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>()  {
 
     private var users: MutableList<User>? = null
 
@@ -88,7 +92,23 @@ class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
         holder.eventName?.text = currentCampaign?.event_name
         holder.eventDescription?.text = currentCampaign?.event_description
         holder.eventDate?.text = currentCampaign?.created_at.toString()
-        holder.username?.text = currentCampaign?.username.toString()
+        holder.username?.text = currentCampaign?.user?.username.toString()
+        holder.status?.text = currentCampaign?.banner_image.toString()
+        val profilePic = currentCampaign?.user?.profilepicture.toString()
+        if ((currentCampaign?.user?.profilepicture.toString().endsWith("jpeg")) ||
+            (currentCampaign?.user?.profilepicture.toString().endsWith("jpg")) ||
+            (currentCampaign?.user?.profilepicture.toString().endsWith("png")) ||
+            (currentCampaign?.user?.profilepicture.toString().contains("auto"))
+        ) {
+            Picasso.get().load(currentCampaign?.user?.profilepicture).into(holder.profilepicture)
+        }
+        holder.profilepicture?.setOnClickListener {
+          MapsActivity.mapUsern = currentCampaign?.user?.username ?: ""
+            val intent = Intent(context, ConnectActivity::class.java)
+            context?.startActivity(intent)
+
+        }
+
 
         holder.bannerImage?.setOnClickListener {
             holder.bannerImage.visibility = View.GONE
@@ -138,6 +158,8 @@ class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
         val eventDescription: TextView? = itemView.textview_eventdescription
         val eventDate: TextView? = itemView.textview_eventdate
         val username: TextView? = itemView.textview_username
+        val profilepicture : ImageButton? = itemView.textview_profilepicture
+        val status: TextView? = itemView.textview_status
 
 
         fun cardViewDeleteOnLongPress(itemPosition: Int) {
@@ -175,6 +197,8 @@ class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
 //
         })
     }
+
+
 
 
 }

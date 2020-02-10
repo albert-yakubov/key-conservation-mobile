@@ -29,7 +29,7 @@
         app:layout_constraintVertical_bias="0.012"
         tools:layout_editor_absoluteX="0dp">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/view_profilepicture2"
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -38,7 +38,7 @@
             android:layout_marginBottom="10dp"
             android:layout_toStartOf="@+id/imagebutton_facebbok2">
 
-        </ImageView>
+        </de.hdodenhof.circleimageview.CircleImageView>
 
         <TextView
             android:id="@+id/textConnect"
@@ -144,7 +144,7 @@
             android:layout_height="46dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-
+            android:visibility="invisible"
             android:layout_marginStart="182dp"
             android:layout_marginEnd="118dp"
             android:text="LAT" />
@@ -155,7 +155,7 @@
             android:layout_height="46dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
-
+            android:visibility="invisible"
             android:layout_marginStart="291dp"
             android:layout_marginEnd="11dp"
             android:text="LON" />

@@ -26,6 +26,8 @@ import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.model.LatLng
+import com.stepasha.keyconservation.model.CampUser
+import com.stepasha.keyconservation.model.NewCampUser
 import com.stepasha.keyconservation.model.NewCampaign
 import com.stepasha.keyconservation.retrofit.ServiceBuilder
 import kotlinx.android.synthetic.main.activity_create_post.*
@@ -36,6 +38,8 @@ import retrofit2.Response
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 
@@ -86,7 +90,7 @@ class CreatePostActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallba
     lateinit var event_description: String
     //encode image to base64 string
 
-    @SuppressLint("WrongThread")
+    @SuppressLint("WrongThread", "SimpleDateFormat")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_post)
@@ -95,8 +99,10 @@ class CreatePostActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallba
 
         val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 
-        val date : String = sdf.format(Date().toString())
-        view_created_at.editText?.setText(date)
+        val date  = LocalDateTime.now()
+        val format = DateTimeFormatter.ofPattern("yyyyMMdd")
+        val giveMeTime = date.format(format).toString()
+        view_created_at.editText?.setText(giveMeTime)
 
         TAG = localClassName
 
@@ -126,7 +132,7 @@ class CreatePostActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallba
                 title = view_textTitle.editText?.text.toString()
                 banner_image = view_status.editText?.text.toString()
                 location = view_textLocation.editText?.text.toString()
-                created_at = date
+                created_at = giveMeTime
                 event_image = view_event_image_layout.editText?.text.toString()
                 event_name = view_event_name.editText?.text.toString()
                 event_description = view_event_description.editText?.text.toString()
@@ -147,7 +153,8 @@ class CreatePostActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallba
                 created_at,
                 event_image,
                 event_name,
-                event_description
+                event_description,
+                NewCampUser(LoginActivity.userid)
             )
         )
         call.enqueue(object : Callback<Void> {
@@ -167,7 +174,9 @@ class CreatePostActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallba
                         created_at,
                         event_image,
                         event_name,
-                        event_description
+                        event_description,
+                        NewCampUser(LoginActivity.userid)
+
                     )
                     //     LoginActivity.properties?.plus(nProperty)
                     pb_add_property?.visibility = View.GONE
