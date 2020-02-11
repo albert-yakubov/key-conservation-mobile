@@ -1,16 +1,24 @@
 package com.stepasha.keyconservation
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
 import android.widget.Toast
+import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -24,7 +32,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.stepasha.keyconservation.model.Campaign
 import com.stepasha.keyconservation.model.User
 import com.stepasha.keyconservation.retrofit.ServiceBuilder
-import kotlinx.android.synthetic.main.activity_maps.*
+import de.hdodenhof.circleimageview.CircleImageView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -35,10 +43,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
     private lateinit var mMap: GoogleMap
 
 
-
-
-
-
+ var profilepic = ""
     var username = ""
 
 
@@ -109,6 +114,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
         mMap.uiSettings.isZoomGesturesEnabled = true
         mMap.uiSettings.isCompassEnabled = true
 
+
     }
 
     var location:Location?=null
@@ -142,6 +148,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
 
     inner class MyThread : Thread() {
         init {
+
             oldLocation = Location("Start")
             oldLocation!!.longitude = 0.0
             oldLocation!!.latitude = 0.0
@@ -286,7 +293,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
                                     .title(mapUsername)
                                     .snippet(mapUserDescription)
                                     .visible(true)
-                                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.profile_icon)))
+                                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.user_icon)))
+
 
 
 
@@ -314,6 +322,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
 
     }
 
+
     private fun load(){
 
                 campaigns
@@ -327,7 +336,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
         var users: MutableList<User>? =null
         var ID : Long = 12134556456
         var mapUsern = ""
-
 
 
         fun checkPermission(mapsActivity: MapsActivity){
@@ -360,6 +368,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
             startActivity(intent)
         }
     }
+
+
+
 
 
 

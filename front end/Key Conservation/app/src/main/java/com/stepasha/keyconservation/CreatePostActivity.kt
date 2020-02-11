@@ -13,8 +13,7 @@ import android.provider.MediaStore
 import android.provider.Settings
 import android.util.Log
 import android.view.View
-import android.widget.ImageView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -43,7 +42,7 @@ import java.time.format.DateTimeFormatter
 import java.util.*
 
 
-class CreatePostActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener {
+class CreatePostActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener , AdapterView.OnItemSelectedListener{
 
 
 
@@ -53,9 +52,15 @@ class CreatePostActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallba
         public val IMG_CODE = 6
         var TAG = ""
         var TAGS = ""
+        var selectedSpinnerItem = ""
         const val IMAGE_DIR_NAME = "MYNAME"
 
     }
+    //spinner
+    val listOfItemsForSpinner = arrayOf("NEW", "UPDATE", "URGENT")
+    var spinner: Spinner? = null
+    var textView_msg:TextView? = null
+
     //location:
     private var mLatitudeTextView = ""
     private var mLongitudeTextView = ""
@@ -94,8 +99,20 @@ class CreatePostActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallba
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_post)
+        //spinner
+        textView_msg = this.spinnertext_status
 
-        //initiating date within saving the post
+        spinner = this.spinner_status
+        spinner!!.setOnItemSelectedListener(this)
+        val aa = ArrayAdapter(this, android.R.layout.simple_spinner_item, listOfItemsForSpinner)
+        // Set layout to use when the list of choices appear
+        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        // Set Adapter to Spinner
+        spinner_status!!.adapter = aa
+
+
+
+    //initiating date within saving the post
 
         val sdf = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 
@@ -130,7 +147,7 @@ class CreatePostActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallba
 
             btn_property_add.setOnClickListener {
                 title = view_textTitle.editText?.text.toString()
-                banner_image = view_status.editText?.text.toString()
+                banner_image = spinnertext_status?.text.toString()
                 location = view_textLocation.editText?.text.toString()
                 created_at = giveMeTime
                 event_image = view_event_image_layout.editText?.text.toString()
@@ -193,6 +210,15 @@ class CreatePostActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallba
             }
 
         })
+    }
+    override fun onItemSelected(arg0: AdapterView<*>, arg1: View, position: Int, id: Long) {
+        // use position to know the selected item
+        spinnertext_status!!.text = listOfItemsForSpinner[position]
+
+
+    }
+    override fun onNothingSelected(arg0: AdapterView<*>) {
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -367,5 +393,6 @@ class CreatePostActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallba
             showAlert()
         return isLocationEnabled
     }
+
 
 }
