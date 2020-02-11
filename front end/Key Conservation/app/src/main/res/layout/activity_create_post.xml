@@ -102,7 +102,7 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
+    <FrameLayout
         android:id="@+id/view_status"
         android:layout_width="379dp"
         android:layout_height="44dp"
@@ -113,13 +113,19 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/view_textTitle">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <Spinner
+            android:id="@+id/spinner_status"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/is_this_an_update_urgent_or_new_post"
-            android:inputType="text" />
+            android:hint="@string/is_this_an_update_urgent_or_new_post" />
+        <TextView
+            android:visibility="invisible"
+            android:id="@+id/spinnertext_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/is_this_an_update_urgent_or_new_post" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+    </FrameLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/view_textLocation"

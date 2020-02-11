@@ -1,12 +1,14 @@
 package com.stepasha.keyconservation
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.stepasha.keyconservation.adapter.RecyclerViewAdapter
 import com.stepasha.keyconservation.model.Campaign
@@ -16,8 +18,8 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
+class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
     companion object{
         var campaign: MutableList<Campaign>? = null
     }
@@ -26,6 +28,9 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         navigation.setOnNavigationItemSelectedListener(this)
+
+
+
 
         if (!LoginActivity.admins){
             view_floatingbutton.visibility = View.GONE
@@ -58,8 +63,15 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
                     campaign = list
 
                     vRecycle?.apply {
+                        vRecycle.itemAnimator = DefaultItemAnimator()
                         layoutManager = LinearLayoutManager(this@MainActivity)
+                        (layoutManager as LinearLayoutManager).isSmoothScrollbarEnabled = true
+                        (layoutManager as LinearLayoutManager).stackFromEnd = true
+                        (layoutManager as LinearLayoutManager).supportsPredictiveItemAnimations()
+
+
                         adapter = RecyclerViewAdapter(campaign)
+
 
                     }
                 }

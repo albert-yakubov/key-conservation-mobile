@@ -1,9 +1,15 @@
 package com.stepasha.keyconservation.retrofit
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.io.IOException
+import java.io.InputStream
+import java.net.HttpURLConnection
+import java.net.URL
 import java.util.concurrent.TimeUnit
 
 class ServiceBuilder {
@@ -48,6 +54,9 @@ class ServiceBuilder {
             return retrofit.create(LoginServiceSql::class.java)
 
         }
+
     }
+
+
 
 }
