@@ -132,7 +132,7 @@ class UpdateProfileActivity : AppCompatActivity() {
                     ulongitude = LoginActivity.ulongitude
                     edittext_lon.setText(ulongitude.toString())
                     aboutUs = response.body()?.about_us ?: ""
-                    edittext_about_us.setText(minibio)
+                    edittext_about_us.setText(aboutUs)
                     issues = response.body()?.issues ?: ""
                     edittext_issues.setText(issues)
                     Log.i("mini bio", response.body()!!.mini_bio ?: "")
