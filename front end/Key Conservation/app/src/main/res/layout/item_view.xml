@@ -17,8 +17,9 @@
             android:layout_height="500dp">
 
 
-            <ImageButton
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/textview_profilepicture"
+
                 android:layout_width="48dp"
                 android:layout_height="45dp"
                 android:layout_alignParentBottom="true"
@@ -32,13 +33,13 @@
 
             <TextView
                 android:id="@+id/textview_location"
-                android:layout_width="70dp"
-                android:layout_height="19dp"
-                android:layout_marginTop="28dp"
+                android:layout_width="104dp"
+                android:layout_height="18dp"
+                android:layout_marginTop="44dp"
                 android:text="@string/location"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.466"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_bias="0.247"
+                app:layout_constraintStart_toEndOf="@+id/textview_profilepicture"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -78,22 +79,21 @@
                 android:text="40.2212"
                 app:layout_constraintBottom_toTopOf="@+id/imageView_bannerimage"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.15"
-                app:layout_constraintStart_toEndOf="@+id/textview_location"
+                app:layout_constraintStart_toEndOf="@+id/textview_username"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.343" />
+                app:layout_constraintVertical_bias="0.175" />
 
             <TextView
                 android:id="@+id/textview_lon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="-105.2212"
-                app:layout_constraintBottom_toTopOf="@+id/imageView_bannerimage"
+                app:layout_constraintBottom_toTopOf="@+id/textview_status"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.864"
-                app:layout_constraintStart_toEndOf="@+id/textview_location"
+                app:layout_constraintHorizontal_bias="0.448"
+                app:layout_constraintStart_toEndOf="@+id/textview_lat"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.333" />
+                app:layout_constraintVertical_bias="0.28" />
 
             <FrameLayout
                 android:id="@+id/imageView_bannerimage"

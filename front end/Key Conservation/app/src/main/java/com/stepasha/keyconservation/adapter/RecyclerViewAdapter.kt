@@ -56,11 +56,14 @@ class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
 
 
         val currentCampaign = campaigns?.get(position)
-        if (!LoginActivity.admins){
-            holder.deleteButton.visibility = View.GONE
-        }else if(LoginActivity.admins){
-            holder.deleteButton.visibility =View.VISIBLE
-        }
+
+
+
+      //  if (!LoginActivity.admins){
+      //      holder.deleteButton.visibility = View.GONE
+      //  }else if(LoginActivity.admins){
+      //      holder.deleteButton.visibility =View.VISIBLE
+      //  }
 
 
         //     val currentCampaignAuthor = users?.get(position)
@@ -93,6 +96,11 @@ class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
         holder.eventDescription?.text = currentCampaign?.event_description
         holder.eventDate?.text = currentCampaign?.created_at.toString()
         holder.username?.text = currentCampaign?.user?.username.toString()
+        if (LoginActivity.username4D == currentCampaign?.user?.username.toString()){
+            holder.deleteButton.visibility = View.VISIBLE
+        }else if(LoginActivity.username4D != currentCampaign?.user?.username.toString()){
+            holder.deleteButton.visibility =View.GONE
+        }
         holder.status?.text = currentCampaign?.banner_image.toString()
         val profilePic = currentCampaign?.user?.profilepicture.toString()
         if ((currentCampaign?.user?.profilepicture.toString().endsWith("jpeg")) ||
@@ -102,6 +110,7 @@ class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
         ) {
             Picasso.get().load(currentCampaign?.user?.profilepicture).into(holder.profilepicture)
         }
+
         holder.profilepicture?.setOnClickListener {
           MapsActivity.mapUsern = currentCampaign?.user?.username ?: ""
             val intent = Intent(context, ConnectActivity::class.java)
@@ -120,6 +129,7 @@ class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
             holder.myVideo.stopPlayback()
             holder.myVideo.visibility = View.GONE
             holder.bannerImage?.visibility = View.VISIBLE
+
         }
 
         holder.deleteButton.setOnClickListener {
@@ -158,7 +168,7 @@ class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
         val eventDescription: TextView? = itemView.textview_eventdescription
         val eventDate: TextView? = itemView.textview_eventdate
         val username: TextView? = itemView.textview_username
-        val profilepicture : ImageButton? = itemView.textview_profilepicture
+        val profilepicture : CircleImageView? = itemView.textview_profilepicture
         val status: TextView? = itemView.textview_status
 
 

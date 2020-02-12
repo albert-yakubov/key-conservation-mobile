@@ -30,7 +30,7 @@
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="198dp"
+        android:layout_height="185dp"
         android:background="@color/white"
         android:padding="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -70,13 +70,14 @@
     <RelativeLayout
         android:id="@+id/relativeLayout3"
         android:layout_width="match_parent"
-        android:layout_height="419dp"
+        android:layout_height="310dp"
         android:background="@color/white"
         android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
 
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
-        tools:layout_editor_absoluteX="3dp">
+        app:layout_constraintVertical_bias="0.878"
+        tools:layout_editor_absoluteX="-6dp">
 
 
         <EditText
@@ -84,58 +85,59 @@
             android:layout_width="135dp"
             android:layout_height="67dp"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="344dp"
+            android:layout_marginBottom="225dp"
             android:hint="location" />
 
         <EditText
-            android:visibility="invisible"
             android:id="@+id/edittext_lat"
             android:layout_width="107dp"
             android:layout_height="52dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="17dp"
-            android:layout_marginEnd="147dp"
-            android:layout_marginBottom="342dp"
-            android:hint="latitude"/>
+            android:layout_marginTop="62dp"
+            android:layout_marginEnd="151dp"
+            android:layout_marginBottom="313dp"
+            android:hint="latitude"
+            android:visibility="invisible" />
+
 
         <EditText
-            android:visibility="invisible"
             android:id="@+id/edittext_lon"
             android:layout_width="128dp"
             android:layout_height="68dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginTop="18dp"
-            android:layout_marginEnd="13dp"
-            android:layout_marginBottom="341dp"
-            android:hint="longitude" />
-
+            android:layout_marginTop="69dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="306dp"
+            android:hint="longitude"
+            android:visibility="invisible" />
 
         <EditText
             android:id="@+id/edittext_species"
-            android:layout_width="394dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/species"
-            android:layout_alignParentStart="true"
+            android:layout_width="225dp"
+            android:layout_height="74dp"
+            android:layout_above="@+id/edittext_minibio"
 
+            android:layout_below="@+id/species"
+            android:layout_alignBottom="@+id/edittext_lat"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="7dp"
+            android:layout_marginStart="44dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="34dp"
-            android:layout_marginBottom="220dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="-88dp"
+            android:layout_toEndOf="@+id/edittext_location"
             android:hint="@string/species_and_habitats" />
 
         <EditText
             android:id="@+id/edittext_minibio"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_width="396dp"
+            android:layout_height="63dp"
 
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="291dp"
+            android:layout_above="@+id/edittext_about_us"
+            android:layout_marginBottom="13dp"
             android:hint="@string/mini_bio" />
 
         <EditText
@@ -143,8 +145,8 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
 
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="156dp"
+            android:layout_above="@+id/edittext_issues"
+            android:layout_marginBottom="14dp"
             android:hint="About Us" />
 
         <EditText
@@ -153,7 +155,7 @@
             android:layout_height="50dp"
 
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="95dp"
+            android:layout_marginBottom="14dp"
             android:hint="Issues" />
     </RelativeLayout>
 

@@ -430,6 +430,8 @@ class RegisterActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallback
                 val bitmap: Bitmap = MediaStore.Images.Media.getBitmap(contentResolver, uri)
                 // Log.d(TAG, String.valueOf(bitmap));
                 val imageView: ImageView = findViewById<ImageView>(R.id.image_input_upload_image2)
+                imageView.adjustViewBounds = true
+                imageView.scaleType = ImageView.ScaleType.FIT_CENTER
                 imageView.setImageBitmap(bitmap)
             } catch (e: IOException) {
                 e.printStackTrace()
