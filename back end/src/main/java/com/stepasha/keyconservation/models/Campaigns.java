@@ -30,7 +30,7 @@ public class Campaigns extends Auditable{
     @Column(nullable = true)
     private String event_image;
     @Column(nullable = true)
-    private String eventname;
+    private String event_name;
     @Column(nullable = true)
     private String event_description;
 
@@ -41,7 +41,7 @@ public class Campaigns extends Auditable{
 
     public Campaigns(){}
 
-    public Campaigns(long id, String title, String banner_image, String location, Float latitude, Float longitude, String created_at, String event_image, String eventname, String event_description, User user) {
+    public Campaigns(long id, String title, String banner_image, String location, Float latitude, Float longitude, String created_at, String event_image, String event_name, String event_description, User user) {
         this.id = id;
         this.title = title;
         this.banner_image = banner_image;
@@ -50,7 +50,7 @@ public class Campaigns extends Auditable{
         this.longitude = longitude;
         this.created_at = created_at;
         this.event_image = event_image;
-        this.eventname = eventname;
+        this.event_name = event_name;
         this.event_description = event_description;
         this.user = user;
     }
@@ -128,11 +128,11 @@ public class Campaigns extends Auditable{
     }
 
     public String getEvent_name() {
-        return eventname;
+        return event_name;
     }
 
     public void setEvent_name(String event_name) {
-        this.eventname = event_name;
+        this.event_name = event_name;
     }
 
     public String getEvent_description() {

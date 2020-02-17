@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/cl_activity_main_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -10,15 +10,10 @@
 
     tools:context=".MainActivity">
 
-
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/view_floatingbutton"
         android:layout_width="79dp"
         android:layout_height="57dp"
-        android:layout_alignBottom="@+id/vRecycle"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="33dp"
         android:background="@drawable/add_icon"
         android:backgroundTint="@color/colorPrimaryDark"
         app:layout_constraintBottom_toTopOf="@+id/navigation"
@@ -32,46 +27,11 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="54dp"
-        android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
         app:layout_constraintBottom_toTopOf="parent">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/searchButton"
-                android:layout_width="84dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="17dp"
-                android:layout_marginEnd="4dp"
-                android:layout_toEndOf="@+id/enterText"
-                android:text="Search"
-
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.007" />
-
-            <EditText
-                android:id="@+id/enterText"
-                android:layout_width="300dp"
-                android:layout_height="44dp"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="6dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginBottom="102dp"
-                android:background="@color/white"
-                android:hint="@string/tap_for_title_or_hold_for_event"
-                app:layout_constraintEnd_toStartOf="@+id/searchButton"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
-        </RelativeLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -79,14 +39,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/vRecycle"
         android:layout_width="match_parent"
-        android:layout_height="602dp"
-        android:layout_above="@+id/navigation"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="54dp"
-        android:layout_marginBottom="19dp"
-        app:layout_constraintBottom_toTopOf="@+id/navigation"
-        app:layout_constraintVertical_bias="0.976"
-        tools:layout_editor_absoluteX="-10dp" />
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toBottomOf="@+id/app_bar"
+        tools:layout_editor_absoluteX="32dp" />
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -111,4 +67,4 @@
 
 
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

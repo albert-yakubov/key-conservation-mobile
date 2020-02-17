@@ -5,36 +5,21 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.stepasha.keyconservation.Util.AppController
 import com.stepasha.keyconservation.adapter.RecyclerViewAdapter
 import com.stepasha.keyconservation.model.Campaign
-import com.stepasha.keyconservation.retrofit.LoginServiceSql
 import com.stepasha.keyconservation.retrofit.ServiceBuilder
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import javax.inject.Inject
 
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
-
-
-    private lateinit var disposable: Disposable
-
-    private lateinit var disposable2: Disposable
-
-    @Inject
-    lateinit var foundUserService: LoginServiceSql
     companion object{
         var campaign: MutableList<Campaign>? = null
     }
@@ -44,51 +29,8 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         setContentView(R.layout.activity_main)
         navigation.setOnNavigationItemSelectedListener(this)
 
-        (application as AppController).appComponent.inject(this)
-        searchButton.setOnClickListener {
-            val searchedFor = enterText.text.toString()
-            if (searchedFor.isNotEmpty() && searchedFor.contains(searchedFor)) {
 
-                disposable = foundUserService.getFoundUser(searchedFor)
 
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe({ title   ->
-                        if (title.isNotEmpty() ) {
-                            vRecycle.adapter = RecyclerViewAdapter(title)
-                        } else {
-                            Toast.makeText(this, "title not found", Toast.LENGTH_SHORT).show()
-                        }
-                    }, { t ->
-                        Log.i("Retrofit - ", "$t", t)
-                    })
-            }else {
-                Toast.makeText(this, "Please enter something in search", Toast.LENGTH_SHORT).show()
-            }
-        }
-        searchButton.setOnLongClickListener {
-            val searchedFor = enterText.text.toString()
-            if (searchedFor.isNotEmpty() && searchedFor.contains(searchedFor)) {
-
-                disposable2 = foundUserService.getEventName(searchedFor)
-
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe({ eventname   ->
-                        if (title.isNotEmpty() ) {
-                            vRecycle.adapter = RecyclerViewAdapter(eventname)
-                        } else {
-                            Toast.makeText(this, "event not found", Toast.LENGTH_SHORT).show()
-                        }
-                    }, { t ->
-                        Log.i("Retrofit - ", "$t", t)
-                    })
-            }else {
-                Toast.makeText(this, "Please enter something in search", Toast.LENGTH_SHORT).show()
-            }
-           return@setOnLongClickListener true
-
-        }
 
         if (!LoginActivity.admins){
             view_floatingbutton.visibility = View.GONE

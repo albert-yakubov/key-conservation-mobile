@@ -1,7 +1,6 @@
 package com.stepasha.keyconservation.retrofit
 
 import com.stepasha.keyconservation.model.*
-import io.reactivex.Observable
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -46,12 +45,6 @@ interface LoginServiceSql{
     @GET("users/user/name/{userName}")
     fun getUser2(@Path("userName")username: String): Call<User>
 
-
-
-    @GET("campaigns/campaign/title/like/{title}")
-    fun getFoundUser(@Path("title") title: String): Observable<MutableList<Campaign>>
-    @GET("campaigns/campaign/event_name/like/{eventname}")
-    fun getEventName(@Path("eventname") eventname: String): Observable<MutableList<Campaign>>
     companion object {
 
         const val BASE_URL = "https://key-conservation-mobile.herokuapp.com/"

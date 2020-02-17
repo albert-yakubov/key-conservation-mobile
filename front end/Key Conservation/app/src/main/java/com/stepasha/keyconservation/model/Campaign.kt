@@ -5,7 +5,7 @@ import java.util.*
 
 data class Campaign(
     val eventid: Long? = null,
-    val title: String? = null,
+
     val banner_image: String? = null,
 
     val location: String? = null,

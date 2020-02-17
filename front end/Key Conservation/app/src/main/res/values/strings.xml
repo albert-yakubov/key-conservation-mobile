@@ -24,14 +24,10 @@
     <string name="species_and_habitats">Species and habitats</string>
     <string name="title_activity_maps">Map</string>
 
-    <string name="play">Play</string>
-    <string name="pause">Pause</string>
-    <string name="paused">Paused…</string>
-    <string name="playing">Playing…</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="tap_for_title_or_hold_for_event">tap for title, or hold for event</string>
+        <string name="play">Play</string>
+        <string name="pause">Pause</string>
+        <string name="paused">Paused…</string>
+        <string name="playing">Playing…</string>
 
 
 </resources>
