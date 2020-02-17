@@ -379,11 +379,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
             } catch (e: IOException) {
                 e.printStackTrace()
             }
-            val address = addressList!![0]
-            val latLng = LatLng(address.latitude, address.longitude)
+            val address = addressList?.get(0)
+            val latLng = LatLng(address?.latitude ?: 0.0, address?.longitude ?: 0.0)
             mMap.addMarker(MarkerOptions().position(latLng).title(location))
             mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng))
-            Toast.makeText(applicationContext, address.latitude.toString() + " " + address.longitude, Toast.LENGTH_LONG).show()
+            Toast.makeText(applicationContext, address?.latitude.toString() + " " + address?.longitude, Toast.LENGTH_LONG).show()
         }
     }
 
