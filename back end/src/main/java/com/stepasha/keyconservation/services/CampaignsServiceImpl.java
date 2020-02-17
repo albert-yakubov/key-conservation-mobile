@@ -3,6 +3,7 @@ package com.stepasha.keyconservation.services;
 import com.stepasha.keyconservation.models.Campaigns;
 import com.stepasha.keyconservation.repos.CampaignsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -95,4 +96,16 @@ public class CampaignsServiceImpl implements CampaignsService {
         }
 
     }
+
+    @Override
+    public List<Campaigns> findByTitleContaining(String title) {
+        return campaignsRepository.findByTitleContainingIgnoreCase(title);
+    }
+
+    @Override
+    public List<Campaigns> findByEventnameContaining(String eventname) {
+        return campaignsRepository.findByEventnameContainingIgnoreCase(eventname);
+    }
+
+
 }

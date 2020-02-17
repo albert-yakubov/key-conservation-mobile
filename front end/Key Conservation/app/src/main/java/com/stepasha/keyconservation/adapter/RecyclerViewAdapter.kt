@@ -11,8 +11,6 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.google.android.exoplayer2.DefaultRenderersFactory
-import com.google.android.exoplayer2.ExoPlayerFactory
 import com.squareup.picasso.Picasso
 import com.stepasha.keyconservation.ConnectActivity
 import com.stepasha.keyconservation.LoginActivity
@@ -27,7 +25,6 @@ import kotlinx.android.synthetic.main.item_view.view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import kotlin.collections.ArrayList
 
 class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
     RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>()  {
@@ -96,6 +93,7 @@ class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
         holder.eventDescription?.text = currentCampaign?.event_description
         holder.eventDate?.text = currentCampaign?.created_at.toString()
         holder.username?.text = currentCampaign?.user?.username.toString()
+        holder.title?.text = currentCampaign?.title.toString()
         if (LoginActivity.username4D == currentCampaign?.user?.username.toString()){
             holder.deleteButton.visibility = View.VISIBLE
         }else if(LoginActivity.username4D != currentCampaign?.user?.username.toString()){
@@ -170,6 +168,7 @@ class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
         val username: TextView? = itemView.textview_username
         val profilepicture : CircleImageView? = itemView.textview_profilepicture
         val status: TextView? = itemView.textview_status
+        val title: TextView? = itemView.textview_title
 
 
         fun cardViewDeleteOnLongPress(itemPosition: Int) {
