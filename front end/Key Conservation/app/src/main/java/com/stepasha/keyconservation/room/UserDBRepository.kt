@@ -14,10 +14,6 @@ class UserDBRepository(val context: Context) : UserRepoInterface {
     private val apiFactory = apiFactory()
 
 
-    override fun apiFactory(): LoginServiceSql {
-        return super.apiFactory()
-    }
-
     // Room
     override fun getUserData(id: Int): LiveData<User> {
         return database.userDao().getUserData(id)

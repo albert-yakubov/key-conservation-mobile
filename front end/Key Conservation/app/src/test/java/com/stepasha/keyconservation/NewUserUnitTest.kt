@@ -11,7 +11,7 @@ import org.junit.runners.JUnit4
 import org.robolectric.android.controller.ActivityController
 
 @RunWith(JUnit4::class)
-public class NewUserUnitTest {
+class NewUserUnitTest {
 
     /*   val testUsername = "stepasha2006"
         newUserModel = Neweruser(

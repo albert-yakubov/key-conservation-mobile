@@ -46,7 +46,7 @@ class CreatePostActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallba
     val photoFile: File? = null
     companion object {
         var mCurrentPhotoPath = ""
-        public val IMG_CODE = 6
+        val IMG_CODE = 6
         var TAG = ""
         var TAGS = ""
         var selectedSpinnerItem = ""
@@ -100,7 +100,7 @@ class CreatePostActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallba
         textView_msg = this.spinnertext_status
 
         spinner = this.spinner_status
-        spinner!!.setOnItemSelectedListener(this)
+        spinner!!.onItemSelectedListener = this
         val aa = ArrayAdapter(this, android.R.layout.simple_spinner_item, listOfItemsForSpinner)
         // Set layout to use when the list of choices appear
         aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)

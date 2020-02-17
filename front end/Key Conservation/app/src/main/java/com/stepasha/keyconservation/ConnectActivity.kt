@@ -2,13 +2,12 @@ package com.stepasha.keyconservation
 
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.squareup.picasso.Picasso
-import com.stepasha.keyconservation.MapsActivity.Companion.TAGUSER
 import com.stepasha.keyconservation.model.User
 import com.stepasha.keyconservation.retrofit.ServiceBuilder
 import kotlinx.android.synthetic.main.activity_connect.*
@@ -20,18 +19,16 @@ class ConnectActivity : AppCompatActivity() {
     var username: String = ""
     var userid: Long = 1
     var minibio: String = ""
-    var species:String= ""
-    var facebook: String= ""
-    var instagram: String= ""
-    var primaryemail: String=""
-    var twitter : String= ""
-    var location :String= ""
+    var species: String = ""
+    var facebook: String = ""
+    var instagram: String = ""
+    var primaryemail: String = ""
+    var twitter: String = ""
+    var location: String = ""
     var ulatitude: Double = 0.0
     var ulongitude: Double = 0.0
-    var aboutUs: String=""
-    var issues: String=""
-
-
+    var aboutUs: String = ""
+    var issues: String = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,18 +59,18 @@ class ConnectActivity : AppCompatActivity() {
     }
 
 
-    fun getUserById(){
-      //  val receivedUser = intent.getStringExtra(TAGUSER)
-    //    username = receivedUser
+    fun getUserById() {
+        //  val receivedUser = intent.getStringExtra(TAGUSER)
+        //    username = receivedUser
         val call: Call<User> = ServiceBuilder.create().getUser2(MapsActivity.mapUsern)
 
-        call.enqueue(object: Callback<User> {
+        call.enqueue(object : Callback<User> {
             override fun onFailure(call: Call<User>, t: Throwable) {
                 Log.i("User ", "onFailure ${t.message.toString()}")
             }
 
             override fun onResponse(call: Call<User>, response: Response<User>) {
-                if(response.isSuccessful){
+                if (response.isSuccessful) {
 
                     facebook = response.body()?.facebook ?: ""
                     twitter = response.body()?.twitter ?: ""
@@ -86,27 +83,26 @@ class ConnectActivity : AppCompatActivity() {
                     view_location2.text = response.body()?.location.toString()
 
 
-
                     val profilePictureSfx = response.body()?.profilepicture ?: ""
 
                     val profilePicture: ImageView? = view_profilepicture2
-                    if((profilePictureSfx.endsWith("jpeg")) ||
+                    if ((profilePictureSfx.endsWith("jpeg")) ||
                         (profilePictureSfx.endsWith("jpg")) ||
                         (profilePictureSfx.endsWith("png")) ||
-                        (profilePictureSfx.contains("auto"))){
+                        (profilePictureSfx.contains("auto"))
+                    ) {
                         Picasso.get().load(profilePictureSfx).into(profilePicture)
                         Log.i("profile pic", profilePictureSfx)
 
                     }
                     view_minibio2?.text = response.body()?.mini_bio ?: ""
-                    view_species2?.text = response.body()?.species ?:""
-                    view_issues2?.text = response.body()?.issues ?:""
+                    view_species2?.text = response.body()?.species ?: ""
+                    view_issues2?.text = response.body()?.issues ?: ""
                     view_aboutus2?.text = response.body()?.about_us ?: ""
                     view_username2?.text = response.body()?.username ?: ""
                     Log.i("mini bio", response.body()!!.mini_bio ?: "")
                     //code goes here
-                }
-                else{
+                } else {
                     Log.i("User ", "OnResponseFailure ${response.errorBody()}")
                 }
 
@@ -136,15 +132,15 @@ class ConnectActivity : AppCompatActivity() {
         try {
             //start email intent
             startActivity(Intent.createChooser(mIntent, "Choose Email Client..."))
-        }
-        catch (e: Exception){
+        } catch (e: Exception) {
             //if any thing goes wrong for example no email client application or any exception
             //get and show exception message
             Toast.makeText(this, e.message, Toast.LENGTH_LONG).show()
         }
 
     }
-    companion object{
+
+    companion object {
         const val TAG = "TAG"
     }
 

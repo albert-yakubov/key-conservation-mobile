@@ -42,7 +42,7 @@ class ConservationRegisterActivity : AppCompatActivity(), GoogleApiClient.Connec
         var TAG = ""
         var TAGS =""
         var mCurrentPhotoPath = ""
-        public val IMG_CODE = 6
+        val IMG_CODE = 6
     }
     //location:
     private var mLatitudeTextView = ""

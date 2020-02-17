@@ -381,8 +381,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
             }
             val address = addressList!![0]
             val latLng = LatLng(address.latitude, address.longitude)
-            mMap!!.addMarker(MarkerOptions().position(latLng).title(location))
-            mMap!!.animateCamera(CameraUpdateFactory.newLatLng(latLng))
+            mMap.addMarker(MarkerOptions().position(latLng).title(location))
+            mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng))
             Toast.makeText(applicationContext, address.latitude.toString() + " " + address.longitude, Toast.LENGTH_LONG).show()
         }
     }

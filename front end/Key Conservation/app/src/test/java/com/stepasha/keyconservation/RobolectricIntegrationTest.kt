@@ -13,7 +13,7 @@ import org.robolectric.annotation.Config
 
 @RunWith(RobolectricTestRunner::class)
 @Config(manifest=Config.NONE)
-public class RobolectricIntegrationTest() {
+class RobolectricIntegrationTest {
     lateinit var activity: MainActivity
 
     @Before

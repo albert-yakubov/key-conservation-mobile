@@ -10,7 +10,7 @@ import org.junit.runners.JUnit4
 import org.robolectric.android.controller.ActivityController
 
 @RunWith(JUnit4::class)
-public class UserUnitTest {
+class UserUnitTest {
 
 
     // ActivityController is a Robolectric class that drives the Activity lifecycle

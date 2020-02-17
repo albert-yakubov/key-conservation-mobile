@@ -4,7 +4,7 @@ import android.app.Application
 import com.cloudinary.android.MediaManager
 import com.stepasha.keyconservation.dagger.DaggerNetworkComponent
 
-public class AppController : Application() {
+class AppController : Application() {
 
     val appComponent by lazy {
         DaggerNetworkComponent
