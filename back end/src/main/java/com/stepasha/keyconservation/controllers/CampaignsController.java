@@ -2,6 +2,7 @@ package com.stepasha.keyconservation.controllers;
 
 import com.stepasha.keyconservation.models.Campaigns;
 import com.stepasha.keyconservation.models.ErrorDetail;
+import com.stepasha.keyconservation.models.User;
 import com.stepasha.keyconservation.services.CampaignsService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -10,6 +11,8 @@ import io.swagger.annotations.ApiResponses;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -82,6 +85,34 @@ public class CampaignsController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    // http://localhost:0122/users/user/name/like/da?sort=username
+    @GetMapping(value = "/campaign/title/like/{title}",
+            produces = {"application/json"})
+    public ResponseEntity<?> getEventTitleLike(
+            @PathVariable
+                    String title,
+            @PageableDefault(page = 0,
+                    size = 5)
+                    Pageable pageable)
+    {
+        List<Campaigns> campaigns = campaignsService.findByTitleContaining(title);
+        return new ResponseEntity<>(campaigns,
+                HttpStatus.OK);
+    }
+    // http://localhost:0122/users/user/name/like/da?sort=username
+    @GetMapping(value = "/campaign/event_name/like/{eventname}",
+            produces = {"application/json"})
+    public ResponseEntity<?> getEventNameLike(
+            @PathVariable
+                    String eventname,
+            @PageableDefault(page = 0,
+                    size = 5)
+                    Pageable pageable)
+    {
+        List<Campaigns> campaigns = campaignsService.findByEventnameContaining(eventname);
+        return new ResponseEntity<>(campaigns,
+                HttpStatus.OK);
+    }
 
 
 

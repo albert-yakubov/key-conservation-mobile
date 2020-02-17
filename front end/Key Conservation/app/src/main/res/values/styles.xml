@@ -19,7 +19,7 @@
 
 
 
-    <style name="AppThemeTransparent" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppThemeTransparent" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>

@@ -25,12 +25,10 @@ import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.model.LatLng
-import com.stepasha.keyconservation.model.CampUser
 import com.stepasha.keyconservation.model.NewCampUser
 import com.stepasha.keyconservation.model.NewCampaign
 import com.stepasha.keyconservation.retrofit.ServiceBuilder
 import kotlinx.android.synthetic.main.activity_create_post.*
-import kotlinx.android.synthetic.main.item_view.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -39,7 +37,6 @@ import java.io.IOException
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import java.util.*
 
 
 class CreatePostActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, com.google.android.gms.location.LocationListener , AdapterView.OnItemSelectedListener{
@@ -91,7 +88,7 @@ class CreatePostActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallba
     lateinit var location: String
     lateinit var created_at: String
     lateinit var event_image: String
-    lateinit var event_name: String
+    lateinit var eventname: String
     lateinit var event_description: String
     //encode image to base64 string
 
@@ -151,7 +148,7 @@ class CreatePostActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallba
                 location = view_textLocation.editText?.text.toString()
                 created_at = giveMeTime
                 event_image = view_event_image_layout.editText?.text.toString()
-                event_name = view_event_name.editText?.text.toString()
+                eventname = view_event_name.editText?.text.toString()
                 event_description = view_event_description.editText?.text.toString()
                 createPost()
             }
@@ -169,7 +166,7 @@ class CreatePostActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallba
                 mLongitudeTextView.toDouble(),
                 created_at,
                 event_image,
-                event_name,
+                eventname,
                 event_description,
                 NewCampUser(LoginActivity.userid)
             )
@@ -190,7 +187,7 @@ class CreatePostActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallba
                         mLongitudeTextView.toDouble(),
                         created_at,
                         event_image,
-                        event_name,
+                        eventname,
                         event_description,
                         NewCampUser(LoginActivity.userid)
 
