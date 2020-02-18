@@ -46,33 +46,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
         mapSearchButton.setOnClickListener {
-            fun searchLocation() {
-
-                var location: String = editText.text.toString()
-                var addressList: List<Address>? = null
-
-                if (location == "") {
-                    Toast.makeText(applicationContext, "provide location", Toast.LENGTH_SHORT)
-                        .show()
-                } else {
-                    val geoCoder = Geocoder(this)
-                    try {
-                        addressList = geoCoder.getFromLocationName(location, 4)
-
-                    } catch (e: IOException) {
-                        e.printStackTrace()
-                    }
-                    val address = addressList!![1]
-                    val latLng = LatLng(address.latitude, address.longitude)
-                    mMap.addMarker(MarkerOptions().position(latLng).title(location))
-                    mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng))
-                    Toast.makeText(
-                        applicationContext,
-                        address.latitude.toString() + " " + address.longitude,
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-            }
+            SearchLocation()
         }
 
 
@@ -398,6 +372,33 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
             mapUsern = (p0.title)
             val intent = Intent(this, ConnectActivity::class.java)
             startActivity(intent)
+        }
+    }
+    fun SearchLocation() {
+
+        var location: String = editText?.text.toString()
+        var addressList: List<Address>? = null
+
+        if (location == "") {
+            Toast.makeText(applicationContext, "provide location", Toast.LENGTH_SHORT)
+                .show()
+        } else {
+            val geoCoder = Geocoder(this)
+            try {
+                addressList = geoCoder.getFromLocationName(location, 4)
+
+            } catch (e: IOException) {
+                e.printStackTrace()
+            }
+            val address = addressList!![0]
+            val latLng = LatLng(address.latitude, address.longitude)
+            mMap.addMarker(MarkerOptions().position(latLng).title(location))
+            mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng))
+            Toast.makeText(
+                applicationContext,
+                address.latitude.toString() + " " + address.longitude,
+                Toast.LENGTH_LONG
+            ).show()
         }
     }
 
