@@ -25,6 +25,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.stepasha.keyconservation.model.Campaign
 import com.stepasha.keyconservation.model.User
 import com.stepasha.keyconservation.retrofit.ServiceBuilder
+import kotlinx.android.synthetic.main.activity_maps.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -44,6 +45,39 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
+        mapSearchButton.setOnClickListener {
+            fun searchLocation() {
+
+                var location: String = editText.text.toString()
+                var addressList: List<Address>? = null
+
+                if (location == "") {
+                    Toast.makeText(applicationContext, "provide location", Toast.LENGTH_SHORT)
+                        .show()
+                } else {
+                    val geoCoder = Geocoder(this)
+                    try {
+                        addressList = geoCoder.getFromLocationName(location, 4)
+
+                    } catch (e: IOException) {
+                        e.printStackTrace()
+                    }
+                    val address = addressList!![1]
+                    val latLng = LatLng(address.latitude, address.longitude)
+                    mMap.addMarker(MarkerOptions().position(latLng).title(location))
+                    mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng))
+                    Toast.makeText(
+                        applicationContext,
+                        address.latitude.toString() + " " + address.longitude,
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+            }
+        }
+
+
+
+
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
@@ -101,15 +135,16 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
 
     override fun onMapReady(googleMap: GoogleMap) {
 
-        mMap = googleMap
-        mMap.setOnInfoWindowLongClickListener(this)
-        mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
-        mMap.uiSettings.isZoomControlsEnabled = true
-        mMap.uiSettings.isZoomGesturesEnabled = true
-        mMap.uiSettings.isCompassEnabled = true
+
+            mMap = googleMap
+            mMap.setOnInfoWindowLongClickListener(this)
+            mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
+            mMap.uiSettings.isZoomControlsEnabled = true
+            mMap.uiSettings.isZoomGesturesEnabled = true
+            mMap.uiSettings.isCompassEnabled = true
 
 
-    }
+        }
 
     var location:Location?=null
 
@@ -125,14 +160,17 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
         }
 
         override fun onLocationChanged(p0: Location?) {
-            location=p0
+            location = p0
         }
+
         override fun onStatusChanged(p0: String?, p1: Int, p2: Bundle?) {
             //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         }
+
         override fun onProviderEnabled(p0: String?) {
             //TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         }
+
         override fun onProviderDisabled(p0: String?) {
             TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         }
@@ -360,30 +398,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
             mapUsern = (p0.title)
             val intent = Intent(this, ConnectActivity::class.java)
             startActivity(intent)
-        }
-    }
-    fun searchLocation(view: View) {
-        val locationSearch: EditText = findViewById<EditText>(R.id.editText)
-        lateinit var location: String
-        location = locationSearch.text.toString()
-        var addressList: List<Address>? = null
-
-        if (location == null || location == "") {
-            Toast.makeText(applicationContext,"provide location",Toast.LENGTH_SHORT).show()
-        }
-        else{
-            val geoCoder = Geocoder(this)
-            try {
-                addressList = geoCoder.getFromLocationName(location, 1)
-
-            } catch (e: IOException) {
-                e.printStackTrace()
-            }
-            val address = addressList?.get(0)
-            val latLng = LatLng(address?.latitude ?: 0.0, address?.longitude ?: 0.0)
-            mMap.addMarker(MarkerOptions().position(latLng).title(location))
-            mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng))
-            Toast.makeText(applicationContext, address?.latitude.toString() + " " + address?.longitude, Toast.LENGTH_LONG).show()
         }
     }
 
