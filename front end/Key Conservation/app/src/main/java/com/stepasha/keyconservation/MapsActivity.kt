@@ -5,11 +5,10 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.*
+import android.os.AsyncTask
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import android.view.View
-import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -37,7 +36,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
     private lateinit var mMap: GoogleMap
     internal lateinit var mLocationRequest: LocationRequest
 
-
     var profilepic = ""
     var username = ""
 
@@ -45,14 +43,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
+
+
         mapSearchButton.setOnClickListener {
-            SearchLocation()
+
+                SearchLocation()
+
+
         }
-
-
-
-
-
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
@@ -116,6 +114,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
             mMap.uiSettings.isZoomControlsEnabled = true
             mMap.uiSettings.isZoomGesturesEnabled = true
             mMap.uiSettings.isCompassEnabled = true
+
 
 
         }
@@ -219,13 +218,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
                             LatLng(newCampaign.latitude ?: 0.0, newCampaign.longitude ?: 0.0)
 
                         val campTitle = newCampaign.event_name ?: ""
-
                         val campDesc = newCampaign.event_description ?: ""
+                        val campUsername = newCampaign.user.username ?: ""
                         mMap.addMarker(
                             MarkerOptions()
                                 .position(campaignLoc)
                                 .title(campTitle)
-                                .snippet(campDesc)
+                                .snippet(campUsername)
                                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.camp_icon))
                         )
 //if you are within 2 ft of pokemon he is yours
@@ -286,18 +285,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
                         ID = newUser.userid ?: 777
                         val image = newUser.profilepicture ?: ""
 
-
-
-
                         val mapUsername = newUser.username ?: ""
-
                         val mapUserDescription = newUser.mini_bio ?: ""
 
                       mMap.addMarker(
                                 MarkerOptions()
                                     .position(userLoc)
-                                    .title(mapUsername)
-                                    .snippet(mapUserDescription)
+                                    .title(mapUserDescription)
+                                    .snippet(mapUsername)
                                     .visible(true)
                                     .icon(BitmapDescriptorFactory.fromResource(R.drawable.user_icon)))
 
@@ -369,16 +364,14 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
 
     override fun onInfoWindowLongClick(p0: Marker?) {
         if (p0 != null) {
-            mapUsern = (p0.title)
+            mapUsern = (p0.snippet)
             val intent = Intent(this, ConnectActivity::class.java)
             startActivity(intent)
         }
     }
     fun SearchLocation() {
-
         var location: String = editText?.text.toString()
         var addressList: List<Address>? = null
-
         if (location == "") {
             Toast.makeText(applicationContext, "provide location", Toast.LENGTH_SHORT)
                 .show()
@@ -386,7 +379,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
             val geoCoder = Geocoder(this)
             try {
                 addressList = geoCoder.getFromLocationName(location, 4)
-
             } catch (e: IOException) {
                 e.printStackTrace()
             }
@@ -401,11 +393,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
             ).show()
         }
     }
-
-
-
-
-
-
 }
+
+
+
 
