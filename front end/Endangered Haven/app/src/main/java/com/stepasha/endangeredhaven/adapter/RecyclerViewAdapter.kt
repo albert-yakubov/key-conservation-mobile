@@ -91,7 +91,10 @@ class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
         holder.lon?.text = currentCampaign?.longitude.toString()
         holder.eventName?.text = currentCampaign?.event_name
         holder.eventDescription?.text = currentCampaign?.event_description
-        holder.eventDate?.text = currentCampaign?.created_at.toString()
+       // holder.eventDate?.text = currentCampaign?.created_at.toString()
+        val myString = currentCampaign?.created_at.toString()
+        val ms = "" +myString[0] + myString[1] + myString[2] + myString[3] + "/" + myString[4] + myString[5] + "/" + myString[6] + "0"
+        holder.eventDate?.text = ms
         holder.username?.text = currentCampaign?.user?.username.toString()
         holder.title?.text = currentCampaign?.title.toString()
         if (LoginActivity.username4D == currentCampaign?.user?.username.toString()){
