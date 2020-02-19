@@ -33,6 +33,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tap_for_title_or_hold_for_event">tap for title, or hold for event</string>
     <string name="on1">Just after brief overview and process you will be on your way to creating your own custom page for your organization</string>
+    <string name="on2">Help tackle projects that need specialized skills by connecting your organization with professionals who want to make a difeerence.  \nGain global support for unplanned events for long and short term goals to help you achieve your overall mission.  \nProvide a way to connect with local communities and visitors about realtime events and ways to get involved.</string>
+    <string name="on4">Complete your base profile then update your profile for review. Once approved, you will receive a survey by email following by welcome kit. You can start using the app right of way. Start adding your campaigns!</string>
+    <string name="on5">Let\'s set up the account! You\'ll need to fill out an initial form, upload your credentials, and set up the profile on following screens</string>
+    <string name="on6">Now that you know how we can help your organization with individual contributors. Thats why we re here. Lets keep it brief.</string>
 
 
 </resources>

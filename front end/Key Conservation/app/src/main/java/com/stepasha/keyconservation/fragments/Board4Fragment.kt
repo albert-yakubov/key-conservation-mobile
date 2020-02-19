@@ -10,7 +10,7 @@ import android.view.ViewGroup
 
 import com.stepasha.keyconservation.R
 
-class Board3Fragment : Fragment() {
+class Board4Fragment : Fragment() {
 
 
 
@@ -19,7 +19,7 @@ class Board3Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_board3, container, false)
+        return inflater.inflate(R.layout.fragment_board4, container, false)
     }
 
 
