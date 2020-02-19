@@ -3,6 +3,7 @@ package com.stepasha.keyconservation
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.stepasha.keyconservation.fragments.BoardOneFragment
 import kotlinx.android.synthetic.main.activity_login_screen.*
 
 class LoginScreenActivity : AppCompatActivity() {
@@ -16,7 +17,7 @@ class LoginScreenActivity : AppCompatActivity() {
             startActivity(intent)
         }
         view_iNeedHelpButton.setOnClickListener {
-            val intent = Intent(this, ConservationRegisterActivity::class.java)
+            val intent = Intent(this, OnboardingActivity::class.java)
             startActivity(intent)
         }
     }

@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.fragment.app.Fragment
+import com.stepasha.keyconservation.fragments.BoardOneFragment
 import com.stepasha.keyconservation.model.UpdateUser
 import com.stepasha.keyconservation.model.User
 import com.stepasha.keyconservation.retrofit.ServiceBuilder
@@ -44,6 +46,8 @@ class UpdateProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_update_profile)
+
+
         minibio2 = edittext_minibio?.text.toString()
         species2 = edittext_species?.text.toString()
         facebook2 = edittext_facebook?.text.toString()
@@ -70,8 +74,12 @@ class UpdateProfileActivity : AppCompatActivity() {
             aboutUs2 = edittext_about_us?.text.toString()
             issues2 = edittext_issues?.text.toString()
             updateUserById()
+
         }
+
+
     }
+
 
 
     fun updateUserById(){
