@@ -12,6 +12,8 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.squareup.picasso.Picasso
 import com.stepasha.keyconservation.adapter.RecyclerViewAdapter
+import com.stepasha.keyconservation.fragments.BoardOneFragment
+import com.stepasha.keyconservation.fragments.BoardTwoFragment
 import com.stepasha.keyconservation.model.Campaign
 import com.stepasha.keyconservation.model.User
 import com.stepasha.keyconservation.retrofit.ServiceBuilder

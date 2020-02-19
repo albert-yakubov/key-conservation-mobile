@@ -18,6 +18,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.exifinterface.media.ExifInterface
+import androidx.fragment.app.Fragment
 import com.cloudinary.android.MediaManager
 import com.cloudinary.android.callback.ErrorInfo
 import com.cloudinary.android.callback.UploadCallback
@@ -26,6 +27,7 @@ import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.model.LatLng
+import com.stepasha.keyconservation.fragments.BoardOneFragment
 import com.stepasha.keyconservation.model.Neweruser
 import com.stepasha.keyconservation.model.RegisterResponse
 import com.stepasha.keyconservation.retrofit.ServiceBuilder
