@@ -46,8 +46,8 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="56dp"
-            android:layout_marginEnd="57dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginEnd="56dp"
+            android:layout_marginBottom="10dp"
             android:text="Cant wait to get \nyour organization \non board"
             android:textSize="28sp"
             android:textStyle="bold"
@@ -61,35 +61,16 @@
             android:layout_width="201dp"
             android:layout_height="223dp"
 
-            android:layout_above="@+id/button1"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="85dp"
-            android:layout_marginEnd="124dp"
-            android:layout_marginBottom="75dp"
-            android:text="@string/on1"
-            android:textSize="24sp" />
-
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="86dp"
-            android:layout_height="40dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="282dp"
-            android:layout_marginEnd="43dp"
-            android:layout_marginBottom="28dp"
-            android:background="@drawable/rounded_button_settings"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:text="next"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.913"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.921" />
+            android:layout_marginStart="95dp"
+            android:layout_marginEnd="113dp"
+            android:layout_marginBottom="163dp"
+            android:text="@string/on1"
+            android:textSize="24sp" />
+
+
     </RelativeLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

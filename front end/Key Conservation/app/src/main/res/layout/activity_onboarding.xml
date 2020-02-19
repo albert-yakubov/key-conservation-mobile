@@ -9,24 +9,61 @@
     android:background="#EDF1F7">
 
     <ScrollView
-        android:layout_above="@+id/navigation"
-        android:layout_alignParentTop="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/navigation"
 
-        <FrameLayout
+        android:layout_marginTop="-2dp">
+
+        <RelativeLayout
             android:id="@+id/fl_container"
+            android:paddingBottom="16dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+            android:layout_height="wrap_content">
+
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="86dp"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="282dp"
+                android:layout_marginEnd="43dp"
+                android:layout_marginBottom="28dp"
+                android:background="@drawable/rounded_button_settings"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="next"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.913"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.921" />
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="86dp"
+                android:layout_height="40dp"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="282dp"
+                android:layout_marginEnd="43dp"
+                android:layout_marginBottom="28dp"
+                android:background="@drawable/rounded_button_settings"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="next"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.913"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.921" />
+        </RelativeLayout>
+
+
     </ScrollView>
-
-
-
-
-
-
-
 
 
 </RelativeLayout>

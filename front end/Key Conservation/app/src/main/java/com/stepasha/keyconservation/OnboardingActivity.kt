@@ -7,6 +7,7 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import com.stepasha.keyconservation.fragments.Board3Fragment
 import com.stepasha.keyconservation.fragments.BoardTwoFragment
+import kotlinx.android.synthetic.main.activity_onboarding.*
 import kotlinx.android.synthetic.main.fragment_board_two.*
 
 class OnboardingActivity : AppCompatActivity(){
@@ -18,14 +19,19 @@ class OnboardingActivity : AppCompatActivity(){
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_onboarding)
         loadFragment(BoardTwoFragment())
+        button2.visibility = View.INVISIBLE
 
         button1.setOnClickListener {
-            val newFragment = Board3Fragment()
-            val transaction = supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.fl_container, newFragment)
-            transaction.addToBackStack(null)
-            transaction.commit()
-        }
+            button2.visibility = View.VISIBLE
+            button1.visibility = View.GONE
+         val newFragment : Fragment = Board3Fragment()
+         val transaction = supportFragmentManager.beginTransaction()
+         transaction.replace(R.id.fl_container, newFragment)
+         transaction.addToBackStack(null)
+         transaction.commit()
+     }
+
+
 
 
 
