@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/grey"
+    tools:context=".fragments.Board3Fragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/imag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nusll"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="18dp"
+        android:layout_toStartOf="@+id/nussll"
+        android:src="@drawable/check_icon" />
+
+    <TextView
+        android:id="@+id/nusll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="74dp"
+        android:text="Up next: Register."
+        android:textSize="32sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/nussll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nusll"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="206dp"
+        android:text="Overview"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/nukssssssll"
+        android:layout_width="325dp"
+        android:layout_height="113dp"
+        android:layout_below="@+id/nussll"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="61dp"
+        android:text="@string/on6"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/ima"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/nusssssll"
+        android:layout_marginEnd="31dp"
+        android:layout_marginBottom="1dp"
+        android:layout_toStartOf="@+id/nussssll"
+        android:src="@drawable/check_icon" />
+
+    <TextView
+        android:id="@+id/nusssssll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nusll"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="281dp"
+        android:layout_marginEnd="207dp"
+        android:text="Register"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/nuksssll"
+        android:layout_width="325dp"
+        android:layout_height="113dp"
+        android:layout_below="@+id/nusssssll"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/on5"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:id="@+id/im"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/nussssll"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="2dp"
+        android:layout_toStartOf="@+id/nussssll"
+        android:src="@drawable/check_icon" />
+
+    <TextView
+        android:id="@+id/nussssll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nuksssll"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="78dp"
+        android:text="Create Your Profile"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/nusssll"
+        android:layout_width="334dp"
+        android:layout_height="171dp"
+        android:layout_below="@+id/nussssll"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="29dp"
+        android:text="@string/on4"
+        android:textSize="20sp" />
+</RelativeLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

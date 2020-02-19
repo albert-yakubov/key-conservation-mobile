@@ -1,60 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/sg3"
-    tools:context=".fragments.Board3Fragment">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:padding="16dp"
+android:background="@color/grey"
+tools:context=".fragments.Board3Fragment">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+<!-- TODO: Update blank fragment layout -->
 
-        <TextView
-            android:id="@+id/nnull"
-            android:layout_width="251dp"
-            android:layout_height="122dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="88dp"
-            android:layout_marginTop="245dp"
-            android:layout_marginEnd="72dp"
-            android:layout_marginBottom="364dp"
-            android:foregroundGravity="center"
-            android:gravity="center_vertical"
-            android:src="@drawable/sg4"
-            android:text="Lets go over \nhow GO Habitats \nworks"
-            android:textSize="32sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+<TextView
+    android:id="@+id/nusll"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:layout_marginTop="79dp"
+    android:text="What we"
+    android:textSize="32sp"
+    android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="86dp"
-            android:layout_height="40dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="288dp"
-            android:layout_marginTop="630dp"
-            android:layout_marginEnd="37dp"
-            android:background="@drawable/rounded_button_settings"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:text="next"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.913"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.921" />
-    </RelativeLayout>
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBottom="@+id/nusll"
+    android:layout_marginStart="12dp"
+    android:layout_marginBottom="0dp"
+    android:layout_toEndOf="@+id/nusll"
+    android:background="@color/colorPrimaryDark"
+    android:text="can"
+    android:textSize="32sp"
+    android:textStyle="bold" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+<TextView
+    android:id="@+id/nussll"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/nusll"
+    android:layout_alignParentStart="true"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="9dp"
+    android:text="do to help your \norganization"
+    android:textSize="32sp"
+    android:textStyle="bold" />
+
+<TextView
+    android:id="@+id/nusssll"
+    android:layout_width="337dp"
+    android:layout_height="452dp"
+    android:layout_below="@+id/nussll"
+    android:layout_alignParentStart="true"
+    android:layout_marginStart="20dp"
+    android:layout_marginTop="11dp"
+    android:text="@string/on2"
+    android:textSize="20sp" />
+
+</RelativeLayout>

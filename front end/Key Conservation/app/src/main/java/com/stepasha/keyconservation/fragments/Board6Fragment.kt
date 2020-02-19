@@ -1,16 +1,16 @@
 package com.stepasha.keyconservation.fragments
 
+import android.content.Context
+import android.net.Uri
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import androidx.fragment.app.Fragment
+
 import com.stepasha.keyconservation.R
-import kotlinx.android.synthetic.main.fragment_board_two.*
 
-
-class BoardTwoFragment : Fragment() {
+class Board6Fragment : Fragment() {
 
 
 
@@ -19,17 +19,8 @@ class BoardTwoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
-        val v =  inflater.inflate(R.layout.fragment_board_two, container, false)
-
-        return v
+        return inflater.inflate(R.layout.fragment_board6, container, false)
     }
 
 
-
-
-
 }
-
-
-

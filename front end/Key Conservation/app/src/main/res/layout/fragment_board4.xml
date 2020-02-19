@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/grey"
+    tools:context=".fragments.Board4Fragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <TextView
+        android:id="@+id/nusll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="79dp"
+        android:text="What we"
+        android:textSize="32sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/nnn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/nusll"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="0dp"
+        android:layout_toEndOf="@+id/nusll"
+        android:background="@color/red"
+        android:text="cannot"
+        android:textSize="32sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/nussll"
+        android:layout_width="49dp"
+        android:layout_height="58dp"
+        android:layout_alignBottom="@+id/nnn"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="0dp"
+        android:layout_toEndOf="@+id/nnn"
+        android:text="do"
+        android:textSize="32sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/ss"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nusll"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="12dp"
+        android:layout_toStartOf="@+id/nusssll"
+        android:src="@drawable/block_icon" />
+
+    <TextView
+        android:id="@+id/nusssll"
+        android:layout_width="250dp"
+        android:layout_height="71dp"
+        android:layout_below="@+id/nussll"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="61dp"
+        android:layout_marginEnd="74dp"
+        android:text="Guarante all the requests will get the support needed."
+        android:textSize="20sp" />
+
+    <ImageView
+android:id="@+id/dddd"
+        android:layout_width="57dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ss"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginEnd="15dp"
+        android:layout_toStartOf="@+id/nusssll"
+        android:src="@drawable/block_icon" />
+
+    <TextView
+        android:id="@+id/nusssdll"
+        android:layout_width="242dp"
+        android:layout_height="62dp"
+        android:layout_below="@+id/nusssll"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="41dp"
+        android:layout_marginEnd="81dp"
+        android:text="Provide Organization with internet access."
+        android:textSize="20sp" />
+
+    <ImageView
+android:id="@+id/dsds"
+        android:layout_width="54dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dddd"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="17dp"
+        android:layout_toStartOf="@+id/nusssll"
+        android:src="@drawable/block_icon" />
+
+    <TextView
+        android:id="@+id/nussssll"
+        android:layout_width="250dp"
+        android:layout_height="71dp"
+        android:layout_below="@+id/nusssdll"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="41dp"
+        android:layout_marginEnd="87dp"
+        android:layout_toEndOf="@+id/dsds"
+        android:text="Oversee work completed by skilled professionals."
+        android:textSize="20sp" />
+
+</RelativeLayout>
