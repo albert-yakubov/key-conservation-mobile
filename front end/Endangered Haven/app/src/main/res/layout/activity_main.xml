@@ -33,7 +33,7 @@
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="54dp"
-        android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+        android:theme="@style/AppThemeTransparent"
         app:layout_constraintBottom_toTopOf="parent">
 
         <RelativeLayout
@@ -49,6 +49,7 @@
                 android:layout_marginEnd="4dp"
                 android:layout_toEndOf="@+id/enterText"
                 android:text="Search"
+                android:background="@drawable/rounded_button_settings"
 
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -60,6 +61,7 @@
                 android:id="@+id/enterText"
                 android:layout_width="300dp"
                 android:layout_height="44dp"
+                android:layout_weight="0.5"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="6dp"
                 android:layout_marginTop="1dp"
