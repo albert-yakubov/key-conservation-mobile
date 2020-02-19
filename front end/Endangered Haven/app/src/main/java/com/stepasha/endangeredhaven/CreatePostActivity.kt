@@ -58,6 +58,9 @@ class CreatePostActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallba
     var spinner: Spinner? = null
     var textView_msg:TextView? = null
 
+
+
+
     //location:
     private var mLatitudeTextView = ""
     private var mLongitudeTextView = ""
