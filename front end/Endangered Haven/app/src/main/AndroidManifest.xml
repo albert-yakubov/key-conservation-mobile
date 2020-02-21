@@ -16,17 +16,18 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
-        android:name="com.stepasha.endangeredhaven.Util.AppController"
+        android:name=".Util.AppController"
         android:allowBackup="true"
         android:icon="@drawable/cat_icon"
         android:label="@string/app_name"
         android:roundIcon="@drawable/cat_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.stepasha.endangeredhaven.OnboardingActivity"></activity>
-        <activity android:name="com.stepasha.endangeredhaven.ConservationRegisterActivity" />
-        <activity android:name="com.stepasha.endangeredhaven.ConnectActivity" />
-        <activity android:name="com.stepasha.endangeredhaven.UpdateProfileActivity" />
+        <activity android:name=".ResetPassActivity"></activity>
+        <activity android:name=".OnboardingActivity" />
+        <activity android:name=".ConservationRegisterActivity" />
+        <activity android:name=".ConnectActivity" />
+        <activity android:name=".UpdateProfileActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -43,21 +44,21 @@
             android:value="cloudinary://@dpcjkgjfm" />
 
         <activity
-            android:name="com.stepasha.endangeredhaven.MapsActivity"
+            android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name="com.stepasha.endangeredhaven.ProfileActivity" />
-        <activity android:name="com.stepasha.endangeredhaven.CreatePostActivity" />
-        <activity android:name="com.stepasha.endangeredhaven.RegisterActivity" />
-        <activity android:name="com.stepasha.endangeredhaven.LoginActivity" />
-        <activity android:name="com.stepasha.endangeredhaven.LoginScreenActivity" />
-        <activity android:name="com.stepasha.endangeredhaven.SplashActivity">
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".CreatePostActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".LoginScreenActivity" />
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.stepasha.endangeredhaven.MainActivity" />
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

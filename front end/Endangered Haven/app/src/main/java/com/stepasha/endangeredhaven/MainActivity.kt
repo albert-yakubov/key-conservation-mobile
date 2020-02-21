@@ -44,8 +44,9 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         var ulatitude: Double = 0.0
         var ulongitude: Double = 0.0
         var username4D: String = ""
+        lateinit var username: String
     }
-    lateinit var username: String
+
     lateinit var password: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -133,6 +134,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
                     ulatitude = response.body()?.ulatitude ?: 0.0
                     ulongitude = response.body()?.ulongitude ?: 0.0
                     username4D = response.body()?.username ?: ""
+                    username = response.body()?.username ?: ""
 
                     Log.i("Login", "Success ${response.body()}")
 

@@ -27,7 +27,8 @@ interface LoginServiceSql{
     @PUT("users/user/{id}")
     fun updateUserById(@Path("id") id: Long, @Body updateUser: UpdateUser) : Call<Void>
 
-
+    @PUT("users/user/{id}")
+    fun updateUserPById(@Path("id") id: Long, @Body resetPassword: ResetPassword) : Call<Void>
 
     @POST("users/user")
     fun createUser(@Body newUser: Neweruser): Call<RegisterResponse>
@@ -51,6 +52,8 @@ interface LoginServiceSql{
     @GET("users/user/name/{userName}")
     fun getUser2(@Path("userName")username: String): Call<User>
 
+    @GET("users/user/name/{userName}")
+    fun getUser3(@Path("userName")username: String): Call<User>
 
 
     @GET("campaigns/campaign/title/like/{title}")
