@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.squareup.picasso.Picasso
 import com.stepasha.endangeredhaven.ConnectActivity
-import com.stepasha.endangeredhaven.LoginActivity
+import com.stepasha.endangeredhaven.MainActivity
 import com.stepasha.endangeredhaven.MapsActivity
 import com.stepasha.endangeredhaven.R
 
@@ -56,9 +56,9 @@ class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
 
 
 
-      //  if (!LoginActivity.admins){
+      //  if (!MainActivity.admins){
       //      holder.deleteButton.visibility = View.GONE
-      //  }else if(LoginActivity.admins){
+      //  }else if(MainActivity.admins){
       //      holder.deleteButton.visibility =View.VISIBLE
       //  }
 
@@ -97,9 +97,9 @@ class RecyclerViewAdapter(private var campaigns: MutableList<Campaign>?) :
         holder.eventDate?.text = ms
         holder.username?.text = currentCampaign?.user?.username.toString()
         holder.title?.text = currentCampaign?.title.toString()
-        if (LoginActivity.username4D == currentCampaign?.user?.username.toString()){
+        if (MainActivity.username4D == currentCampaign?.user?.username.toString()){
             holder.deleteButton.visibility = View.VISIBLE
-        }else if(LoginActivity.username4D != currentCampaign?.user?.username.toString()){
+        }else if(MainActivity.username4D != currentCampaign?.user?.username.toString()){
             holder.deleteButton.visibility =View.GONE
         }
         holder.status?.text = currentCampaign?.banner_image.toString()

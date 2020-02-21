@@ -2,9 +2,11 @@ package com.stepasha.endangeredhaven
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Base64
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.stepasha.endangeredhaven.model.ResponseBody
 import com.stepasha.endangeredhaven.model.UserResult
 import com.stepasha.endangeredhaven.retrofit.ServiceBuilder
 import io.reactivex.annotations.Nullable
@@ -17,19 +19,30 @@ import retrofit2.Response
 class LoginActivity : AppCompatActivity() {
 companion object{
     var successfulLogin: Boolean = false
-    var admins : Boolean = false
-    var userid: Long = 12314546
-    var ulatitude: Double = 0.0
-    var ulongitude: Double = 0.0
-    var username4D: String = ""
+    var content_type = "application/x-www-form-urlencoded"
+    //var content_type = "application/json"
+    const val CLIENT_ID = "lambda-client"
+    const val CLIENT_SECRET = "lambda-secret"
+
+
+    var authString = "$CLIENT_ID:$CLIENT_SECRET"
+    var encodedAuthString: String = Base64.encodeToString(authString.toByteArray(), Base64.NO_WRAP)
+    var auth = "Basic $encodedAuthString"
+
+    lateinit var username: String
+    lateinit var password: String
+ //  var admins : Boolean = false
+ //  var userid: Long = 12314546
+ //  var ulatitude: Double = 0.0
+ //  var ulongitude: Double = 0.0
+ //  var username4D: String = ""
 
 }
 
     private var validatedUsername: Boolean = false
     private var validatedPassword: Boolean = false
     private var error: Boolean? = false
-    lateinit var username: String
-    lateinit var password: String
+
 
 
     override fun onCreate(@Nullable savedInstanceState: Bundle?) {
@@ -39,7 +52,8 @@ companion object{
         btn_login.setOnClickListener {
             validateUsername()
             validatePassword()
-            getUser()
+            login()
+
         }
         btn_register.setOnClickListener {
             val intent = Intent(this@LoginActivity, LoginScreenActivity::class.java)
@@ -95,40 +109,31 @@ companion object{
         }
     }
 
-    private fun login() {
-        val intent = Intent(this@LoginActivity, MainActivity::class.java)
-        startActivity(intent)
-
-    }
-    fun getUser(){
-        username = text_input_username.editText?.text.toString().trim()
+    fun login(){
 
 
-        val call: Call<UserResult> = ServiceBuilder.create().getUser(username)
-        call.enqueue(object: Callback<UserResult> {
-            override fun onFailure(call: Call<UserResult>, t: Throwable) {
-                Log.i("Login:", "OnFailure ${t.message.toString()}")
-                Toast.makeText(this@LoginActivity, "Connection Timed Out! Try Again!", Toast.LENGTH_LONG).show()
+        val call: Call<ResponseBody> = ServiceBuilder.create()
+            .login( auth, content_type, username, password )
+
+        call.enqueue(object: Callback<ResponseBody> {
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                Log.i("Login:", "OnFailure ${t.message}")
             }
 
-            override fun onResponse(call: Call<UserResult>, response: Response<UserResult>) {
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 if(response.isSuccessful) {
+                    Log.i("Login", "Success ${response.body()}")
 
-                    admins = response.body()?.position ?: false
-                    userid = response.body()?.userid ?: 1231234
-                    ulatitude = response.body()?.ulatitude ?: 0.0
-                    ulongitude = response.body()?.ulongitude ?: 0.0
-                    username4D = response.body()?.username ?: ""
 
                     Log.i("Login", "Success ${response.body()}")
-        
+
                     Toast.makeText(this@LoginActivity, "Welcome $username", Toast.LENGTH_LONG).show()
                     successfulLogin = true
 
                 }
                 else{
-                    Log.i("Login", "Failure ${response.errorBody().toString()}")
-                    Toast.makeText(this@LoginActivity, "Invalid Login info!", Toast.LENGTH_LONG).show()
+                    Log.i("Login", "Failure ${response.body()}")
+
 
                     successfulLogin = false
                 }
@@ -142,4 +147,5 @@ companion object{
 
         })
     }
+
 }

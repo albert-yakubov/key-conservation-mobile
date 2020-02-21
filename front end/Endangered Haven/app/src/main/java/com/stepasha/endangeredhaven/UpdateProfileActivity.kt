@@ -14,7 +14,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class UpdateProfileActivity : AppCompatActivity() {
-    var userid = LoginActivity.userid
+    var userid = MainActivity.userid
       var minibio: String = ""
       var species:String= ""
      var facebook: String= ""
@@ -52,8 +52,8 @@ class UpdateProfileActivity : AppCompatActivity() {
         instagram2 = edittext_instagram?.text.toString()
         twitter2 = edittext_twitter?.text.toString()
         location2 = edittext_location?.text.toString()
-        ulatitude2 = LoginActivity.ulatitude
-        ulongitude2 = LoginActivity.ulongitude
+        ulatitude2 = MainActivity.ulatitude
+        ulongitude2 = MainActivity.ulongitude
         aboutUs2 = edittext_about_us?.text.toString()
         issues2 = edittext_issues?.text.toString()
 
@@ -67,8 +67,8 @@ class UpdateProfileActivity : AppCompatActivity() {
             instagram2 = edittext_instagram?.text.toString()
             twitter2 = edittext_twitter?.text.toString()
             location2 = edittext_location?.text.toString()
-            ulatitude2 = LoginActivity.ulatitude
-            ulongitude2 = LoginActivity.ulongitude
+            ulatitude2 = MainActivity.ulatitude
+            ulongitude2 = MainActivity.ulongitude
             aboutUs2 = edittext_about_us?.text.toString()
             issues2 = edittext_issues?.text.toString()
             updateUserById()
@@ -81,7 +81,7 @@ class UpdateProfileActivity : AppCompatActivity() {
 
 
     fun updateUserById(){
-        val call: Call<Void> = ServiceBuilder.create().updateUserById(LoginActivity.userid, UpdateUser(minibio2,
+        val call: Call<Void> = ServiceBuilder.create().updateUserById(MainActivity.userid, UpdateUser(minibio2,
         species2, facebook2, instagram2, twitter2, location2, ulatitude2, ulongitude2, aboutUs2, issues2)
         )
 
@@ -112,7 +112,7 @@ class UpdateProfileActivity : AppCompatActivity() {
 
     }
     fun getUserById(){
-        val call: Call<User> = ServiceBuilder.create().getUserById(LoginActivity.userid)
+        val call: Call<User> = ServiceBuilder.create().getUserById(MainActivity.userid)
 
         call.enqueue(object: Callback<User> {
             override fun onFailure(call: Call<User>, t: Throwable) {
@@ -133,9 +133,9 @@ class UpdateProfileActivity : AppCompatActivity() {
                     edittext_twitter.setText(twitter)
                     location = response.body()?.location ?: ""
                     edittext_location.setText(location)
-                    ulatitude = LoginActivity.ulatitude
+                    ulatitude = MainActivity.ulatitude
                     edittext_lat.setText(ulatitude.toString())
-                    ulongitude = LoginActivity.ulongitude
+                    ulongitude = MainActivity.ulongitude
                     edittext_lon.setText(ulongitude.toString())
                     aboutUs = response.body()?.about_us ?: ""
                     edittext_about_us.setText(aboutUs)

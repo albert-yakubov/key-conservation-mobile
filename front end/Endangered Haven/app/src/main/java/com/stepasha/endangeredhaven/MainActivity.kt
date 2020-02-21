@@ -13,11 +13,13 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.stepasha.endangeredhaven.Util.AppController
 import com.stepasha.endangeredhaven.adapter.RecyclerViewAdapter
 import com.stepasha.endangeredhaven.model.Campaign
+import com.stepasha.endangeredhaven.model.UserResult
 import com.stepasha.endangeredhaven.retrofit.LoginServiceSql
 import com.stepasha.endangeredhaven.retrofit.ServiceBuilder
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -36,11 +38,20 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     lateinit var foundUserService: LoginServiceSql
     companion object{
         var campaign: MutableList<Campaign>? = null
-    }
 
+        var admins : Boolean = false
+        var userid: Long = 12314546
+        var ulatitude: Double = 0.0
+        var ulongitude: Double = 0.0
+        var username4D: String = ""
+    }
+    lateinit var username: String
+    lateinit var password: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        getUser()
+
         navigation.setOnNavigationItemSelectedListener(this)
 
         (application as AppController).appComponent.inject(this)
@@ -89,9 +100,9 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
         }
 
-        if (!LoginActivity.admins){
+        if (!admins){
             view_floatingbutton.visibility = View.GONE
-        }else if(LoginActivity.admins){
+        }else if(admins){
             view_floatingbutton.visibility = View.VISIBLE
         }
 
@@ -103,6 +114,38 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         getAllCampaigns()
 
 
+    }
+    fun getUser(){
+
+
+        val call: Call<UserResult> = ServiceBuilder.create().getUser(LoginActivity.username)
+        call.enqueue(object: Callback<UserResult> {
+            override fun onFailure(call: Call<UserResult>, t: Throwable) {
+                Log.i("Login:", "OnFailure ${t.message.toString()}")
+                Toast.makeText(this@MainActivity, "Connection Timed Out! Try Again!", Toast.LENGTH_LONG).show()
+            }
+
+            override fun onResponse(call: Call<UserResult>, response: Response<UserResult>) {
+                if(response.isSuccessful) {
+
+                    admins = response.body()?.position ?: false
+                    userid = response.body()?.userid ?: 1231234
+                    ulatitude = response.body()?.ulatitude ?: 0.0
+                    ulongitude = response.body()?.ulongitude ?: 0.0
+                    username4D = response.body()?.username ?: ""
+
+                    Log.i("Login", "Success ${response.body()}")
+
+
+                }
+                else{
+                    Log.i("Login", "Failure ${response.errorBody().toString()}")
+                    Toast.makeText(this@MainActivity, "Invalid Login info!", Toast.LENGTH_LONG).show()
+
+                }
+            }
+
+        })
     }
     fun getAllCampaigns(){
         val call: Call<MutableList<Campaign>> = ServiceBuilder.create().getAllCampaigns()
@@ -164,4 +207,5 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         }
         return true
     }
+
 }

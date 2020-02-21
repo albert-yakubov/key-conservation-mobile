@@ -37,12 +37,12 @@ class ProfileActivity : AppCompatActivity() {
         view_lon.visibility = View.GONE
 
 
-        if (!LoginActivity.admins){
+        if (!MainActivity.admins){
            view_buttonUpdate.visibility = View.GONE
 
 
 
-        }else if(LoginActivity.admins){
+        }else if(MainActivity.admins){
             view_buttonUpdate.visibility = View.VISIBLE
 
         }
@@ -70,7 +70,7 @@ class ProfileActivity : AppCompatActivity() {
 
     }
     fun getUserById(){
-        val call: Call<User> = ServiceBuilder.create().getUserById(LoginActivity.userid)
+        val call: Call<User> = ServiceBuilder.create().getUserById(MainActivity.userid)
 
         call.enqueue(object: Callback<User> {
             override fun onFailure(call: Call<User>, t: Throwable) {
@@ -84,9 +84,9 @@ class ProfileActivity : AppCompatActivity() {
                     twitter = response.body()?.twitter ?: ""
                     instagram = response.body()?.instagram ?: ""
                     primaryemail = response.body()?.primaryemail ?: ""
-                    ulatitude = LoginActivity.ulatitude
+                    ulatitude = MainActivity.ulatitude
                     view_lat.setText(ulatitude.toString())
-                    ulongitude = LoginActivity.ulongitude
+                    ulongitude = MainActivity.ulongitude
                     view_lon.setText(ulongitude.toString())
                     view_location.text = response.body()?.location.toString()
 
