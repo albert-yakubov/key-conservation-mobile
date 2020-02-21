@@ -1,5 +1,6 @@
 package com.stepasha.endangeredhaven
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Base64
@@ -11,6 +12,7 @@ import com.stepasha.endangeredhaven.model.UserResult
 import com.stepasha.endangeredhaven.retrofit.ServiceBuilder
 import io.reactivex.annotations.Nullable
 import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_reset_pass.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -29,7 +31,7 @@ companion object{
     var encodedAuthString: String = Base64.encodeToString(authString.toByteArray(), Base64.NO_WRAP)
     var auth = "Basic $encodedAuthString"
 
-    lateinit var username: String
+     var username = ""
     lateinit var password: String
  //  var admins : Boolean = false
  //  var userid: Long = 12314546
@@ -59,6 +61,23 @@ companion object{
             val intent = Intent(this@LoginActivity, LoginScreenActivity::class.java)
             startActivity(intent)
 
+        }
+        btn_reset.setOnClickListener {
+            username = text_input_username.editText?.text.toString().trim()
+            if (username.isEmpty()) {
+
+                val builder = AlertDialog.Builder(this@LoginActivity)
+                builder.setTitle("Empty Username")
+                builder.setMessage("Please enter your username to continue")
+                builder.setNegativeButton("OK"){ dialogInterface, _ ->
+                    dialogInterface.dismiss()
+                }
+                builder.show()
+
+            }else{
+                val intent = Intent(this@LoginActivity, ResetPassActivity::class.java)
+                startActivity(intent)
+            }
         }
 
     }

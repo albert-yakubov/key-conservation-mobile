@@ -269,13 +269,14 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
+        android:background="@drawable/rounded_button_settings"
+
         android:id="@+id/btn_register_create2"
         android:layout_width="145dp"
         android:layout_height="52dp"
         android:layout_margin="16dp"
         android:layout_marginTop="56dp"
         android:layout_marginEnd="32dp"
-        android:backgroundTint="@color/colorPrimaryDark"
         android:text="Complete Registration"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_register_cancel2"
@@ -289,7 +290,7 @@
         android:layout_height="51dp"
         android:layout_margin="16dp"
         android:layout_marginStart="84dp"
-        android:backgroundTint="@android:color/holo_red_dark"
+        android:background="@drawable/rounded_button_settings"
         android:text="Cancel Registration"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -49,7 +49,22 @@ class UpdateUser(
 
 )
 
+class ResetPassword(
 
+    var mini_bio: String? = null,
+    var species: String? = null,
+    var facebook: String? = null,
+    var instagram: String? = null,
+    var twitter: String? = null,
+    var location: String? = null,
+    var ulatitude: Double? = null,
+    var ulongitude: Double? = null,
+    var about_us: String? = null,
+    var issues: String? = null,
+    var password: String? = null
+
+
+)
 
 
 
