@@ -114,7 +114,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
             mMap.uiSettings.isZoomGesturesEnabled = true
             mMap.uiSettings.isCompassEnabled = true
 
-
+        loadCampaign()
+        loadUser()
+        load()
 
         }
 

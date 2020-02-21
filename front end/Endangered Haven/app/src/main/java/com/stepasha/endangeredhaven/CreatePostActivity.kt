@@ -171,7 +171,7 @@ class CreatePostActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallba
                 event_image,
                 eventname,
                 event_description,
-                NewCampUser(LoginActivity.userid)
+                NewCampUser(MainActivity.userid)
             )
         )
         call.enqueue(object : Callback<Void> {
@@ -192,7 +192,7 @@ class CreatePostActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallba
                         event_image,
                         eventname,
                         event_description,
-                        NewCampUser(LoginActivity.userid)
+                        NewCampUser(MainActivity.userid)
 
                     )
                     //     LoginActivity.properties?.plus(nProperty)

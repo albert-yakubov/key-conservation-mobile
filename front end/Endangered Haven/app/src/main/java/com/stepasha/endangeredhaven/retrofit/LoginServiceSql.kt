@@ -32,6 +32,11 @@ interface LoginServiceSql{
     @POST("users/user")
     fun createUser(@Body newUser: Neweruser): Call<RegisterResponse>
 
+    @FormUrlEncoded
+    @POST("login?grant_type=password&client_id=lambda-client&client_secret=lambda-secret")
+    fun login(@Header ("Authorization") authorization: String, @Header("Content-Type") content_type: String,
+              @Field("username") username: String, @Field("password") password: String) : Call<ResponseBody>
+
     @POST("campaigns/campaign")
     //  fun createProperty(@Header("Authorization") authToken: String, @Body newProperty: NewProperty): Call<Void>
     fun createNewCampaign(@Body newCampaign: NewCampaign) : Call<Void>
