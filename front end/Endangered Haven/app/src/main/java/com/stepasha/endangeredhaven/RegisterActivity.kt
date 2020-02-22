@@ -254,16 +254,19 @@ class RegisterActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallback
     //Checks to see if all the fields are correct or not. If so, return back to the login page.
     private fun confirmRegister() {
         //If any of the entered information isn't entered properly, prevent the user from successfully registering.
-        if (!validatedFirstName || !validatedLastName || !validatedUsername || !validatedEmail || !validatedPassword)
+        if (!validatedFirstName || !validatedLastName || !validatedUsername || !validatedEmail || !validatedPassword){
             return
-
-        Toast.makeText(
-            this,
-            "New User successfully created\nWelcome $firstname",
-            Toast.LENGTH_SHORT
-        ).show()
-        createUserr()
-        finish()
+        }else {
+            val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
+            startActivity(intent)
+            Toast.makeText(
+                this,
+                "New User successfully created\nWelcome $firstname",
+                Toast.LENGTH_SHORT
+            ).show()
+            createUserr()
+            finish()
+        }
     }
 
 
@@ -430,8 +433,6 @@ class RegisterActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallback
                 val bitmap: Bitmap = MediaStore.Images.Media.getBitmap(contentResolver, uri)
                 // Log.d(TAG, String.valueOf(bitmap));
                 val imageView: ImageView = findViewById<ImageView>(R.id.image_input_upload_image2)
-                imageView.adjustViewBounds = true
-                imageView.scaleType = ImageView.ScaleType.FIT_CENTER
                 imageView.setImageBitmap(bitmap)
             } catch (e: IOException) {
                 e.printStackTrace()
@@ -466,8 +467,6 @@ class RegisterActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallback
             override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
                 token = response.body()?.token ?: ""
                 Log.i("onRespone", token)
-                val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
-                startActivity(intent)
             }
         })
     }

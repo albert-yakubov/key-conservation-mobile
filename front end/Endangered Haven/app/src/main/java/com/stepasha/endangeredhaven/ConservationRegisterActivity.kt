@@ -253,18 +253,21 @@ class ConservationRegisterActivity : AppCompatActivity(), GoogleApiClient.Connec
     //Checks to see if all the fields are correct or not. If so, return back to the login page.
     private fun confirmRegister() {
         //If any of the entered information isn't entered properly, prevent the user from successfully registering.
-        if (!validatedFirstName || !validatedLastName || !validatedUsername || !validatedEmail || !validatedPassword)
+        if (!validatedFirstName || !validatedLastName || !validatedUsername || !validatedEmail || !validatedPassword) {
             return
+        } else {
+            val intent = Intent(this@ConservationRegisterActivity, LoginActivity::class.java)
+            startActivity(intent)
 
-        Toast.makeText(
-            this,
-            "New User successfully created\nWelcome $firstname",
-            Toast.LENGTH_SHORT
-        ).show()
-        createUserr()
-        finish()
+            Toast.makeText(
+                this,
+                "New User successfully created\nWelcome $firstname",
+                Toast.LENGTH_SHORT
+            ).show()
+            createUserr()
+            finish()
+        }
     }
-
 
 
 
@@ -464,6 +467,7 @@ class ConservationRegisterActivity : AppCompatActivity(), GoogleApiClient.Connec
 
             override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
                 token = response.body()?.token ?: ""
+
                 Log.i("onRespone", token)
             }
         })
