@@ -1,9 +1,11 @@
 package com.stepasha.endangeredhaven
 
+import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import com.stepasha.endangeredhaven.model.ResetPassword
 import com.stepasha.endangeredhaven.model.User
@@ -47,7 +49,17 @@ class ResetPassActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reset_pass)
 
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Please Wait")
+        builder.setMessage("Please wait while we verify your info...")
+        builder.setNegativeButton("OK"){ dialogInterface, _ ->
+            dialogInterface.dismiss()
+        }
+        builder.show()
 
+
+
+            progress_user.visibility = View.VISIBLE
             getUser()
 
 
@@ -112,6 +124,10 @@ class ResetPassActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<User>, response: Response<User>) {
                 if(response.isSuccessful) {
+                    progress_user.visibility = View.GONE
+
+
+
 
                     userid = response.body()?.userid ?: 1231234
                     minibio = response.body()?.mini_bio ?: ""
@@ -140,3 +156,4 @@ class ResetPassActivity : AppCompatActivity() {
         })
     }
 }
+

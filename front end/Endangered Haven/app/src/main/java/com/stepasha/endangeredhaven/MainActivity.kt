@@ -101,6 +101,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
         }
 
+
         if (!admins){
             view_floatingbutton.visibility = View.GONE
         }else if(admins){
@@ -115,6 +116,24 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         getAllCampaigns()
 
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (!admins){
+            view_floatingbutton.visibility = View.GONE
+        }else if(admins){
+            view_floatingbutton.visibility = View.VISIBLE
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (!admins){
+            view_floatingbutton.visibility = View.GONE
+        }else if(admins){
+            view_floatingbutton.visibility = View.VISIBLE
+        }
     }
     fun getUser(){
 

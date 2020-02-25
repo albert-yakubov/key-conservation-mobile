@@ -1,16 +1,23 @@
 package com.stepasha.endangeredhaven
 
 import android.Manifest
+import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import android.location.*
 import android.os.Build
+import android.os.Build.VERSION_CODES.O
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.graphics.drawable.toBitmap
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -20,6 +27,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.stepasha.endangeredhaven.Util.Notification
 import com.stepasha.endangeredhaven.model.Campaign
 import com.stepasha.endangeredhaven.model.User
 import com.stepasha.endangeredhaven.retrofit.ServiceBuilder
@@ -220,14 +228,26 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
 
                         val campTitle = newCampaign.event_name ?: ""
                         val campDesc = newCampaign.event_description ?: ""
-                        val campUsername = newCampaign.user.username ?: ""
+                        val campUsername = newCampaign.user.username
                         mMap.addMarker(
                             MarkerOptions()
                                 .position(campaignLoc)
                                 .title(campTitle)
                                 .snippet(campUsername)
-                                .icon(BitmapDescriptorFactory.fromResource(R.drawable.camp_icon))
+                                .icon(BitmapDescriptorFactory.fromResource(R.drawable.flag))
                         )
+
+                        var campLoc = Location("Campaign")
+                        campLoc.latitude = newCampaign.latitude ?: 0.0
+                        campLoc.longitude = newCampaign.longitude ?: 0.0
+
+                        if(location!!.distanceTo(  campLoc )>2) {
+                            Notification.Notification(this@MapsActivity)
+                            val intent = Intent(this@MapsActivity, MapsActivity::class.java)
+                            PendingIntent.getActivity(
+                                this@MapsActivity, O, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+                        }
+
 //if you are within 2 ft of pokemon he is yours
                         /*if(location!!.distanceTo((newCampaign.location))<2){
 
@@ -295,10 +315,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
                                     .title(mapUserDescription)
                                     .snippet(mapUsername)
                                     .visible(true)
-                                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.user_icon)))
-
-
-
+                                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.new_person_png)))
 
 
 //if you are within 2 ft of pokemon he is yours
@@ -338,7 +355,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
         var users: MutableList<User>? =null
         var ID : Long = 12134556456
         var mapUsern = ""
-
+        const val NOTIFICATION_ID = 1
 
         fun checkPermission(mapsActivity: MapsActivity){
             //check permissions on older versions
@@ -394,6 +411,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
             ).show()
         }
     }
+
 }
 
 

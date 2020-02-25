@@ -2,12 +2,14 @@ package com.stepasha.endangeredhaven
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.location.Location
 import android.location.LocationManager
+import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.provider.Settings
@@ -25,6 +27,7 @@ import com.google.android.gms.common.api.GoogleApiClient
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.model.LatLng
+import com.stepasha.endangeredhaven.Util.Notification
 import com.stepasha.endangeredhaven.model.NewCampUser
 import com.stepasha.endangeredhaven.model.NewCampaign
 import com.stepasha.endangeredhaven.retrofit.ServiceBuilder
@@ -200,6 +203,10 @@ class CreatePostActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallba
                     Toast.makeText(this@CreatePostActivity, "Addded", Toast.LENGTH_LONG).show()
                     val intent = Intent(this@CreatePostActivity, MainActivity::class.java)
                     startActivity(intent)
+                    Notification.Notification(this@CreatePostActivity)
+                    val intentP = Intent(this@CreatePostActivity, CreatePostActivity::class.java)
+                    PendingIntent.getActivity(
+                        this@CreatePostActivity, Build.VERSION_CODES.O, intentP, PendingIntent.FLAG_UPDATE_CURRENT)
 
                 } else {
                     Toast.makeText(this@CreatePostActivity, "NOT Addded", Toast.LENGTH_LONG)

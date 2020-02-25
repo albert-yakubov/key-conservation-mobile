@@ -64,7 +64,7 @@
         android:id="@+id/view_image"
         android:layout_width="149dp"
         android:layout_height="114dp"
-        android:src="@drawable/add_icon"
+        android:src="@drawable/vector_picture_add"
         app:layout_constraintBottom_toTopOf="@+id/view_event_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.669"

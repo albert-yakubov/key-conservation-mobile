@@ -149,7 +149,7 @@
             android:id="@+id/image_input_upload_image2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/upload_picture" />
+            android:src="@drawable/vector_picture_add" />
 
     </RelativeLayout>
 

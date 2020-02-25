@@ -35,22 +35,22 @@
                 android:id="@+id/textview_location"
                 android:layout_width="104dp"
                 android:layout_height="18dp"
-                android:layout_marginTop="44dp"
+                android:layout_marginTop="48dp"
                 android:text="@string/location"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.247"
+                app:layout_constraintHorizontal_bias="0.02"
                 app:layout_constraintStart_toEndOf="@+id/textview_profilepicture"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:textStyle="bold"
                 android:id="@+id/textview_title"
-                android:layout_width="140dp"
+                android:layout_width="222dp"
                 android:layout_height="24dp"
-                android:layout_marginTop="44dp"
+                android:layout_marginTop="48dp"
                 android:text="@string/campaign_title"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.902"
+                app:layout_constraintHorizontal_bias="0.879"
                 app:layout_constraintStart_toEndOf="@+id/textview_profilepicture"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -145,13 +145,13 @@
 
 
             <TextView
-                android:textStyle="bold"
-                android:textColor="@color/wine"
                 android:id="@+id/textview_eventname"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="218dp"
+                android:layout_height="26dp"
                 android:layout_marginBottom="8dp"
                 android:text="@string/event_name"
+                android:textColor="@color/wine"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@id/textview_eventdescription"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.049"
@@ -185,10 +185,11 @@
                 app:layout_constraintVertical_bias="0.672" />
 
             <ImageButton
+                android:background="@color/white"
                 android:id="@+id/imageButton"
                 android:layout_width="36dp"
                 android:layout_height="38dp"
-                android:src="@drawable/delete_icon"
+                android:src="@drawable/vector_delete"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.868"
