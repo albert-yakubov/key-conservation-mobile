@@ -136,6 +136,9 @@ companion object{
 
         call.enqueue(object: Callback<ResponseBody> {
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+
+                Toast.makeText(this@LoginActivity, "Connection Issue... try again...", Toast.LENGTH_LONG).show()
+
                 Log.i("Login:", "OnFailure ${t.message}")
             }
 
@@ -149,10 +152,16 @@ companion object{
                     Toast.makeText(this@LoginActivity, "Welcome $username", Toast.LENGTH_LONG).show()
                     successfulLogin = true
 
-                }
-                else{
+                }else{
                     Log.i("Login", "Failure ${response.body()}")
 
+                    val builder2 = AlertDialog.Builder(this@LoginActivity)
+                    builder2.setTitle("Wrong Username or Password")
+                    builder2.setMessage("Please check your credentials and try again")
+                    builder2.setNegativeButton("OK"){ dialogInterface, _ ->
+                        dialogInterface.dismiss()
+                    }
+                    builder2.show()
 
                     successfulLogin = false
                 }

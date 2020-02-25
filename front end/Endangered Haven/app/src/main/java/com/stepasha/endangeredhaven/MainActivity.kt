@@ -2,6 +2,7 @@ package com.stepasha.endangeredhaven
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
@@ -19,7 +20,6 @@ import com.stepasha.endangeredhaven.retrofit.ServiceBuilder
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
     private lateinit var disposable2: Disposable
 
+
     @Inject
     lateinit var foundUserService: LoginServiceSql
     companion object{
@@ -46,11 +47,20 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         var username4D: String = ""
         lateinit var username: String
     }
-
+    private lateinit var handler: Handler
+    private lateinit var r: Runnable
     lateinit var password: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        handler = Handler()
+        r = Runnable {
+            // TODO Auto-generated method stub
+            Toast.makeText(this@MainActivity, "user is inactive from last 5 minutes", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
+        startHandler()
         getUser()
 
         navigation.setOnNavigationItemSelectedListener(this)
@@ -228,5 +238,15 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         }
         return true
     }
-
+    override fun onUserInteraction() { // TODO Auto-generated method stub
+        super.onUserInteraction()
+        stopHandler() //stop first and then start
+        startHandler()
+    }
+    fun stopHandler() {
+        handler.removeCallbacks(r)
+    }
+    fun startHandler() {
+        handler.postDelayed(r, 5 * 60 * 1000.toLong()) //for 5 minutes
+    }
 }

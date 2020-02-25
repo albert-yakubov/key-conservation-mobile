@@ -64,7 +64,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
         mapFragment.getMapAsync(this)
         //check permissions to load the map
         Companion.checkPermission(this)
-        //then load pokemons
         loadCampaign()
         loadUser()
         load()
@@ -243,7 +242,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
 
                         if(location!!.distanceTo(  campLoc )>2) {
                             Notification.Notification(this@MapsActivity)
-                            val intent = Intent(this@MapsActivity, MapsActivity::class.java)
+                            val intent = Intent(this@MapsActivity, LoginActivity::class.java)
                             PendingIntent.getActivity(
                                 this@MapsActivity, O, intent, PendingIntent.FLAG_UPDATE_CURRENT)
                         }
@@ -410,6 +409,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
                 Toast.LENGTH_LONG
             ).show()
         }
+        loadCampaign()
+        loadUser()
+        load()
+
     }
 
 }
