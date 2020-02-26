@@ -244,7 +244,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
                             Notification.Notification(this@MapsActivity)
                             val intent = Intent(this@MapsActivity, LoginActivity::class.java)
                             PendingIntent.getActivity(
-                                this@MapsActivity, O, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+                                this@MapsActivity, O, intent, PendingIntent.FLAG_ONE_SHOT)
                         }
 
 //if you are within 2 ft of pokemon he is yours

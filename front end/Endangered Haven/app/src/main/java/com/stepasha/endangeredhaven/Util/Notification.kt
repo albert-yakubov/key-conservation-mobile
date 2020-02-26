@@ -26,7 +26,7 @@ object Notification{
             context,
             Build.VERSION_CODES.O,
             contentIntent,
-            PendingIntent.FLAG_UPDATE_CURRENT) //can only be executed once
+            PendingIntent.FLAG_ONE_SHOT) //can only be executed once
 
 
 
