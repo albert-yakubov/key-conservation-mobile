@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:padding="40sp"
     android:background="@drawable/loginscreen2"
+    android:screenOrientation="portrait"
     tools:context=".LoginScreenActivity">
 
     <ImageView

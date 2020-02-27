@@ -1,9 +1,12 @@
 package com.stepasha.endangeredhaven
 
 import android.Manifest
+import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
@@ -47,9 +50,11 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
     var username = ""
 
 
+    @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
 
         mapSearchButton.setOnClickListener {
@@ -243,9 +248,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
 
                         if(location!!.distanceTo(  campLoc )>2) {
                             Notification.Notification(this@MapsActivity)
-                            val intent = Intent(this@MapsActivity, LoginActivity::class.java)
-                            PendingIntent.getActivity(
-                                this@MapsActivity, O, intent, PendingIntent.FLAG_ONE_SHOT)
+                            val builder2 = AlertDialog.Builder(this@MapsActivity)
+                            builder2.setTitle("There is a Campaign Near You!")
+                            builder2.setMessage("There is a campaign near you, check it out and feel free show support!")
+                            builder2.setNegativeButton("OK"){ dialogInterface, _ ->
+                                dialogInterface.dismiss()
+                            }
+                            builder2.show()
                         }
 
 //if you are within 2 ft of pokemon he is yours

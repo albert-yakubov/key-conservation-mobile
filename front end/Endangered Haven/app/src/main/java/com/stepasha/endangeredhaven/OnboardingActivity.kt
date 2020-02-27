@@ -1,6 +1,8 @@
 package com.stepasha.endangeredhaven
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -13,9 +15,12 @@ class OnboardingActivity : AppCompatActivity(){
 
 
 
+    @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_onboarding)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+
         loadFragment(BoardOneFragment())
         button2.visibility = View.INVISIBLE
         button3.visibility = View.INVISIBLE

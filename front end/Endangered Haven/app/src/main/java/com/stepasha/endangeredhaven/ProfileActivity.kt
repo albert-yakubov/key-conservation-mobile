@@ -1,6 +1,8 @@
 package com.stepasha.endangeredhaven
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -30,9 +32,13 @@ class ProfileActivity : AppCompatActivity() {
 
 
 
+    @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+
+
         view_lat.visibility = View.GONE
         view_lon.visibility = View.GONE
 

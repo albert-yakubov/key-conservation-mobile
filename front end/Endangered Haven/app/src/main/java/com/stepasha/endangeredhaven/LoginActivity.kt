@@ -1,7 +1,9 @@
 package com.stepasha.endangeredhaven
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.util.Base64
 import android.util.Log
@@ -48,13 +50,16 @@ companion object{
 
 
 
+    @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(@Nullable savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         progress_login.visibility = View.INVISIBLE
 
         btn_login.setOnClickListener {
+            btn_login.visibility= View.INVISIBLE
             progress_login.visibility = View.VISIBLE
             validateUsername()
             validatePassword()
@@ -140,7 +145,8 @@ companion object{
 
         call.enqueue(object: Callback<ResponseBody> {
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                progress_login.visibility = View.VISIBLE
+                progress_login.visibility = View.INVISIBLE
+                btn_login.visibility= View.VISIBLE
 
                 Toast.makeText(this@LoginActivity, "Connection Issue... try again...", Toast.LENGTH_LONG).show()
 
@@ -149,6 +155,7 @@ companion object{
 
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 if(response.isSuccessful) {
+                    btn_login.visibility= View.VISIBLE
 
                     progress_login.visibility = View.GONE
 
@@ -160,6 +167,7 @@ companion object{
 
                 }else{
                     Log.i("Login", "Failure ${response.body()}")
+                    btn_login.visibility= View.VISIBLE
 
                     val builder2 = AlertDialog.Builder(this@LoginActivity)
                     builder2.setTitle("Wrong Username or Password")

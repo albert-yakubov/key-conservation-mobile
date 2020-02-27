@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.location.Location
@@ -98,10 +99,13 @@ class CreatePostActivity : AppCompatActivity(), GoogleApiClient.ConnectionCallba
     lateinit var event_description: String
     //encode image to base64 string
 
-    @SuppressLint("WrongThread", "SimpleDateFormat")
+    @SuppressLint("WrongThread", "SimpleDateFormat", "SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_post)
+
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+
         //spinner
         textView_msg = this.spinnertext_status
 

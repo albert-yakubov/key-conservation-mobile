@@ -1,7 +1,9 @@
 package com.stepasha.endangeredhaven
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -45,9 +47,12 @@ class ResetPassActivity : AppCompatActivity() {
     var issues2 = "Issues"
     var password2 = "1234564"
 
+    @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reset_pass)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+
 
         val builder = AlertDialog.Builder(this)
         builder.setTitle("Please Wait")

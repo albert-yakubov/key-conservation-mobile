@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:background="@drawable/fur_background"
     android:layout_height="match_parent"
+    android:screenOrientation="portrait"
     tools:context=".SplashActivity">
 
     <ImageView

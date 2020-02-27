@@ -1,8 +1,10 @@
 package com.stepasha.endangeredhaven
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.location.Location
@@ -91,10 +93,11 @@ class ConservationRegisterActivity : AppCompatActivity(), GoogleApiClient.Connec
     var twitter = "twitter"
     var instagram = "instagram"
 
+    @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
-
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
     //    mLatitudeTextView = text_input_lat3!!.editText?.text.toString()
      //   mLongitudeTextView = text_input_lon2!!.editText?.text.toString()
 
