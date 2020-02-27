@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/grey"
@@ -27,45 +28,45 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="185dp"
+        android:layout_height="244dp"
         android:background="@color/white"
         android:padding="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.012"
-        tools:layout_editor_absoluteX="0dp">
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="-16dp">
 
 
         <EditText
             android:id="@+id/edittext_facebook"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="407dp"
+            android:layout_height="64dp"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="125dp"
+            android:layout_marginBottom="169dp"
             android:hint="facebook" />
 
         <EditText
             android:id="@+id/edittext_twitter"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="407dp"
+            android:layout_height="65dp"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="67dp"
+            android:layout_marginBottom="83dp"
             android:hint="twitter" />
 
         <EditText
             android:id="@+id/edittext_instagram"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="407dp"
+            android:layout_height="68dp"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="6dp"
+            android:layout_marginBottom="0dp"
             android:hint="instagram" />
 
 
     </RelativeLayout>
-
 
     <RelativeLayout
         android:id="@+id/relativeLayout3"
@@ -84,8 +85,8 @@
             android:id="@+id/edittext_location"
             android:layout_width="135dp"
             android:layout_height="67dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="225dp"
+            android:layout_above="@+id/edittext_minibio"
+            android:layout_marginBottom="21dp"
             android:hint="location" />
 
         <EditText

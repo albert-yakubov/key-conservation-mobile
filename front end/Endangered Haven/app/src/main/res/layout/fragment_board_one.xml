@@ -21,11 +21,9 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="89dp"
+            android:layout_marginStart="94dp"
             android:layout_marginTop="148dp"
-            android:layout_marginEnd="141dp"
-            android:layout_marginBottom="535dp"
+            android:layout_marginEnd="136dp"
             android:foregroundGravity="center"
             android:gravity="center_vertical"
             android:src="@drawable/sg4"
@@ -43,9 +41,11 @@
             android:layout_height="137dp"
 
             android:layout_above="@+id/nnuull"
+            android:layout_below="@+id/nnull"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="56dp"
+            android:layout_marginTop="22dp"
             android:layout_marginEnd="56dp"
             android:layout_marginBottom="10dp"
             android:text="Cant wait to get \nyour organization \non board"
@@ -57,19 +57,19 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/nnuull"
-            android:layout_width="201dp"
-            android:layout_height="223dp"
 
-            android:layout_alignParentStart="true"
+            android:layout_width="261dp"
+            android:layout_height="249dp"
+
+
+            android:layout_below="@+id/nnnull"
             android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
             android:layout_marginStart="95dp"
-            android:layout_marginEnd="113dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="78dp"
             android:layout_marginBottom="163dp"
             android:text="@string/on1"
             android:textSize="24sp" />
-
 
     </RelativeLayout>
 

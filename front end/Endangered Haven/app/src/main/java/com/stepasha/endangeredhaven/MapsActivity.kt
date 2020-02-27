@@ -231,6 +231,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
                         mMap.addMarker(
                             MarkerOptions()
                                 .position(campaignLoc)
+                                .zIndex(+1f)
                                 .title(campTitle)
                                 .snippet(campUsername)
                                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.flag))

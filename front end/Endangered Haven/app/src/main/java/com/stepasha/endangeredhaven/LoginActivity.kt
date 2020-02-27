@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Base64
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.stepasha.endangeredhaven.model.ResponseBody
@@ -51,7 +52,10 @@ companion object{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        progress_login.visibility = View.INVISIBLE
+
         btn_login.setOnClickListener {
+            progress_login.visibility = View.VISIBLE
             validateUsername()
             validatePassword()
             login()
@@ -136,6 +140,7 @@ companion object{
 
         call.enqueue(object: Callback<ResponseBody> {
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                progress_login.visibility = View.VISIBLE
 
                 Toast.makeText(this@LoginActivity, "Connection Issue... try again...", Toast.LENGTH_LONG).show()
 
@@ -144,10 +149,11 @@ companion object{
 
             override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
                 if(response.isSuccessful) {
+
+                    progress_login.visibility = View.GONE
+
                     Log.i("Login", "Success ${response.body()}")
 
-
-                    Log.i("Login", "Success ${response.body()}")
 
                     Toast.makeText(this@LoginActivity, "Welcome $username", Toast.LENGTH_LONG).show()
                     successfulLogin = true
