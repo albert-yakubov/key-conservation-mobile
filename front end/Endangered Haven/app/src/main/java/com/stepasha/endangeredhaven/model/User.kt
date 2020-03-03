@@ -29,11 +29,11 @@ data class User(
     var ulatitude: Double? = null,
     var ulongitude: Double? = null,
     var about_us: String? = null,
-    var issues: String? = null,
-    @SerializedName("following")
-    var followingUsers: MutableList<User> = mutableListOf(),
-    @SerializedName("followers")
-    var followerUsers: MutableList<User> = mutableListOf()
+    var issues: String? = null
+  //  @SerializedName("following")
+  //  var followingUsers: MutableList<User> = mutableListOf(),
+  //  @SerializedName("followers")
+  //  var followerUsers: MutableList<User> = mutableListOf()
 
 
 

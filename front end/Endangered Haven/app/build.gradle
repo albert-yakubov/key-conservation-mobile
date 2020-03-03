@@ -13,8 +13,8 @@ android {
         applicationId "com.stepasha.keyconservation"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 3
-        versionName "3.0"
+        versionCode 4
+        versionName "4.4"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
 

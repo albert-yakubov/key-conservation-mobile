@@ -214,7 +214,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
 
         call.enqueue(object: Callback<MutableList<Campaign>> {
             override fun onFailure(call: Call<MutableList<Campaign>>, t: Throwable) {
-                Log.i("_root_ide_package_.com.stepasha.keyconservation.model.Campaigns ", "onFailure ${t.message.toString()}")
+                Log.i("TAGG", "onFailure ${t.message.toString()}")
             }
 
             override fun onResponse(call: Call<MutableList<Campaign>>, response: Response<MutableList<Campaign>>) {
@@ -290,7 +290,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
 
         call.enqueue(object: Callback<MutableList<User>> {
             override fun onFailure(call: Call<MutableList<User>>, t: Throwable) {
-                Log.i("_root_ide_package_.com.stepasha.keyconservation.model.Users ", "onFailure ${t.message.toString()}")
+                Log.i("TAG", "onFailure ${t.message.toString()}")
             }
 
             override fun onResponse(call: Call<MutableList<User>>, response: Response<MutableList<User>>) {
@@ -393,7 +393,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
     fun SearchLocation() {
         var location: String = editText?.text.toString()
         var addressList: List<Address>? = null
-        if (location == "" || location == null) {
+        if (location == "") {
             Toast.makeText(applicationContext, "provide location city", Toast.LENGTH_SHORT)
                 .show()
         } else {
