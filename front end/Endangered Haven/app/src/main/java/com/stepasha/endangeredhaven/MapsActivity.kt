@@ -236,7 +236,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
                         mMap.addMarker(
                             MarkerOptions()
                                 .position(campaignLoc)
-                                .zIndex(+1f)
+                                .zIndex(+10f)
                                 .title(campTitle)
                                 .snippet(campUsername)
                                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.flag))
@@ -248,13 +248,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
 
                         if(location!!.distanceTo(  campLoc )>2) {
                             Notification.Notification(this@MapsActivity)
-                            val builder2 = AlertDialog.Builder(this@MapsActivity)
-                            builder2.setTitle("There is a Campaign Near You!")
-                            builder2.setMessage("There is a campaign near you, check it out and feel free show support!")
-                            builder2.setNegativeButton("OK"){ dialogInterface, _ ->
-                                dialogInterface.dismiss()
-                            }
-                            builder2.show()
+
                         }
 
 //if you are within 2 ft of pokemon he is yours
@@ -399,8 +393,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnInfoWi
     fun SearchLocation() {
         var location: String = editText?.text.toString()
         var addressList: List<Address>? = null
-        if (location == "") {
-            Toast.makeText(applicationContext, "provide location", Toast.LENGTH_SHORT)
+        if (location == "" || location == null) {
+            Toast.makeText(applicationContext, "provide location city", Toast.LENGTH_SHORT)
                 .show()
         } else {
             val geoCoder = Geocoder(this)

@@ -1,8 +1,10 @@
 package com.stepasha.endangeredhaven.model
 
+import android.os.Parcel
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 
@@ -27,12 +29,20 @@ data class User(
     var ulatitude: Double? = null,
     var ulongitude: Double? = null,
     var about_us: String? = null,
-    var issues: String? = null
+    var issues: String? = null,
+    @SerializedName("following")
+    var followingUsers: MutableList<User> = mutableListOf(),
+    @SerializedName("followers")
+    var followerUsers: MutableList<User> = mutableListOf()
+
+
 
 
 
 
 ):Serializable
+
+
 class UpdateUser(
 
     var mini_bio: String? = null,
@@ -65,6 +75,8 @@ class ResetPassword(
 
 
 )
+
+
 
 
 
